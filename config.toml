@@ -1,4 +1,25 @@
 baseURL = "https://heathhenley.github.io/"
 languageCode = "en-us"
-title = "Hi!"
+title = "Blogging by Heath™"
 theme = "pickles"
+
+# Google Analytics API key.
+# googleAnalytics = "Your Google Analytics tracking id"
+
+[params]
+  paginate = 10
+  custom_css = ["/css/custom.css"]
+  # Social accounts. Link to these accounts are displayed in the header and
+  # footer
+  instagram = "feel_the_heath"
+  github = "heathhenley"
+  linkedin = "hhenley"
+  author = "Heath Henley"
+#  avatar = "/path/to/avatar"
+  contact = "mailto:heath.j.henley@gmail.com"
+  bio = "Just a guy who likes SW dev, computational thermodynamics, rockclimbing and cookies."
+# Short subtitle/tagline. This is displayed in the header.
+#  subtitle = ""
+  # Logo image. This is displayed ogp image.
+#  logo = "/path/to/logo"
+#  favicon = "/path/to/favicon"
