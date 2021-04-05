@@ -15,7 +15,7 @@ theme = "pickles"
   github = "heathhenley"
   linkedin = "hhenley"
   author = "Heath Henley"
-#  avatar = "/path/to/avatar"
+  avatar = "/heathcropped.png"
   contact = "mailto:heath.j.henley@gmail.com"
   bio = "Just a guy who likes SW dev, computational thermodynamics, rockclimbing and cookies."
 # Short subtitle/tagline. This is displayed in the header.
