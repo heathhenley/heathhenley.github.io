@@ -18,5 +18,3 @@ completed my degree I converted into a full-time SWE. I’ve been happily
 FarSounder’ing ever since!
 
 Feel free to reach out if you would like to chat about anything.
-
-Email: heath.j.henley (at) gmail.com
