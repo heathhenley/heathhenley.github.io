@@ -23,6 +23,7 @@ theme = "pickles"
   # Logo image. This is displayed ogp image.
 #  logo = "/path/to/logo"
 #  favicon = "/path/to/favicon"
+  disqusShortname = "therealheath"
 
 [[menu.main]]
     name = "Blog"
