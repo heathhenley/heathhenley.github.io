@@ -7,8 +7,8 @@ categories: ["software development", "desarollo de software"]
 keywords: ["farsounder", "work cycle", "workflow", "ciclo de trabajo"]
 disqus: "therealheath"
 ---
-**Aviso: eso ha sido un trozo de texto que escribí para practicar mí español, no
-tiene nada que ver con FarSounder oficialmente.**
+*Aviso: eso ha sido un trozo de texto que escribí para practicar mí español, no
+tiene nada que ver con FarSounder oficialmente.*
 
 ## Introducción
 En mi empresa, se llama [FarSounder](http://www.farsounder.com/), hacemos un
