@@ -6,6 +6,7 @@ mathjax: true
 tags: ["programming puzzles", "algorithms"]
 categories: ["software development"]
 keywords: ["python", "python3", "algorithms", "hash table", "hackerrank"]
+disqus: "therealheath"
 ---
 We’ve all got a little more time on our hands lately due to social distancing
 and COVID-19 (unless you have young children). I’ve been partly entertaining

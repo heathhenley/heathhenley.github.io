@@ -5,6 +5,7 @@ draft: true
 tags: ["español", "spanish", "writing practice"]
 categories: ["software development", "desarollo de software"]
 keywords: ["farsounder", "work cycle", "workflow", "ciclo de trabajo"]
+disqus: "therealheath"
 ---
 **Aviso: eso ha sido un trozo de texto que escribí para practicar mí español, no
 tiene nada que ver con FarSounder oficialmente.**
