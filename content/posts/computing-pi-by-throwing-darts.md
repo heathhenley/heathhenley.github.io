@@ -16,9 +16,9 @@ a probability class, however we didn't actually write any code to try it, we
 just looked at the idea. Later, I was re-introduced to the example when I began to do
 undergrad ChE research - I was going to be working on a Monte Carlo molecular
 simulation code for small molecules. When I started, I had no idea what that
-meant - and one of the first exercises that my adviser gave me, to the idea of
-computing some physical quantity using simulation, was by chance, this "estimate
-pi by throwing darts" example.
+meant - and one of the first exercises that my adviser gave me, to introduce the
+idea of computing some physical quantity using simulation, was by chance, this
+"estimate pi by throwing darts" example.
 
 ## Estimating Pi by throwing darts
 
