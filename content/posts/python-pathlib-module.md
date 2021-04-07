@@ -80,7 +80,7 @@ Fullpath: c:\dev\heath\pathlib_test\test_dir\b.py
 
 Looping over the files in the directory is simple in both cases, however some of
 utility of the Path object is starting to show through - first we can iterate
-over the directory using the built-in iterdir() method and given that it is
+over the directory using the built-in `iterdir()` method and given that it is
 yielding Path objects itself, we can use this objects `.name` to print the name of
 the file, and it’s `str` representation to print the full path.
 

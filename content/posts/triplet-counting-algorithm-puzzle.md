@@ -170,7 +170,7 @@ def countTriplets(arr, r):
 This implementation is much more efficient in run time for large values of `N`,
 and now all of the test cases pass without timing out!
 
-It took me a while to sort this one out, but I think it’s a an interesting
+It took me a while to sort this one out, but I think it’s an interesting
 problem and I enjoyed working out the solution. I would be interested to hear
 any comments you have or if you have come up with a different solution. The
 [Editorial](https://www.hackerrank.com/challenges/count-triplets-1/editorial)
