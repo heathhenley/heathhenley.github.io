@@ -1,9 +1,9 @@
 ---
 title: "Computing Pi by Throwing Darts"
 date: 2021-03-14T21:17:10-04:00
-draft: true
-tags: ["python3", "python", "random sampling", "pi day"]
-keywords: ["python3", "python", "random sampling"]
+draft: false
+tags: ["python3", "python", "random sampling", "pi day", "matplotlib"]
+keywords: ["python3", "python", "random sampling", "matplotlib"]
 disqus: therealheath
 mathjax: true
 ---

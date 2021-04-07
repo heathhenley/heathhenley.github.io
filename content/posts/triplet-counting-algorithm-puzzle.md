@@ -1,7 +1,7 @@
 ---
 title: "Triplet Counting Algorithmic Puzzle"
 date: 2020-04-15T21:05:24-04:00
-draft: true
+draft: false
 mathjax: true
 tags: ["programming puzzles", "algorithms"]
 categories: ["software development"]

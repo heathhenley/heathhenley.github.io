@@ -1,7 +1,7 @@
 ---
 title: "Switching to the Python Pathlib Module"
 date: 2020-03-15T20:32:39-04:00
-draft: true
+draft: false 
 tags: ["python3"]
 categories: ["software development"]
 keywords: ["python", "python3", "pathlib", "os"]

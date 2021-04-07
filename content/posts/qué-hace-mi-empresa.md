@@ -1,7 +1,7 @@
 ---
 title: "Qué Hace Mi Empresa"
 date: 2021-01-05T18:40:07-04:00
-draft: true
+draft: false
 tags: ["español", "spanish", "writing practice"]
 categories: ["software development", "desarollo de software"]
 keywords: ["farsounder", "work cycle", "workflow", "ciclo de trabajo"]
