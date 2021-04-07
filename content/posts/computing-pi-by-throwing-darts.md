@@ -66,7 +66,7 @@ results, and use that to calculate the fraction of times the dart lands within
 the circle (and multiply by 4 as above) to estimate pi.
 
 # An example
-You can find a full example of one way to do this in Python3 on [Github](), here
+You can find a full example of one way to do this in Python3 [on GitHub](https://github.com/heathhenley/heathhenley.github.io/blob/main/static/examples/Estimating%20PI%20by%20throwing%20darts.ipynb), here
 is what the main loop looks like. It references helper functions that are
 defined at the start of the file, but this should give a pretty good idea of how
 it works:
