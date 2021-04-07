@@ -29,7 +29,7 @@ Let's assume we have a weird dart board, it's a circle inscribed in a square,
 where the height of the square is equal to the diameter of the circle, so it
 looks like this:
 
-![square with circle inscribed]()
+![Square with circle inscribed](/pi/pi_0_darts.png)
 
 We know what the area of the square is `$A_s = H^2$` (where `$H$` is the height
 and width of the square). As the circle is inscribed in the square, the
@@ -55,3 +55,63 @@ Before we start writing any actual code, let's assume:
  - Yet we are still bad enough, that hitting any where on the board is equally
    likely. That is to say, despite any attempt aiming at a specific point, we're
    no more likely to hit that point than any other spot on the board.
+
+The idea is that we will randomly throw darts, and keep track of how many land
+within the circle (and the square), and how many land only within the square,
+but not the circle. Assuming that we never miss the board, every dart is within
+the square.
+
+So with our simulation, we just have to throw a ton of darts, keep track of the
+results, and use that to calculate the fraction of times the dart lands within
+the circle (and multiply by 4 as above) to estimate pi.
+
+# An example
+You can find a full example of one way to do this in Python3 on [Github](), here
+is what the main loop looks like. It references helper functions that are
+defined at the start of the file, but this should give a pretty good idea of how
+it works:
+
+```python
+while throw_counter < number_of_darts_to_throw:
+        
+    # Make a random dart and throw it...
+    x, y = throw_dart(R)
+    throw_counter += 1
+        
+    # ...it hits the board, is it within the circle?
+    in_circle = is_within_circle(x, y, R)
+    hit_counter += in_circle
+        
+    # Now we add the point to the plot...
+    add_to_plot(x, y, R, in_circle)
+
+# Calculate pi estimate    
+pi = 4.0 * (hit_counter / throw_counter)
+```
+
+So we can run this for different numbers of darts, and as you probably guessed,
+"throwing" more darts tends to give a closer approximation to pi. Here are the
+results with 1000 darts - red x's are darts that are hits (within the circle),
+while black circles are misses (outside the circle):
+
+![1000 Darts](/pi/pi_1000_darts.png)
+
+verses with 10000 darts:
+
+![10000 Darts](/pi/pi_10000_darts.png)
+
+Clearly we're getting a much closer approximation in
+the second case. 
+
+# Conclusion
+This is a cool example that, though is definitely not efficient for
+approximating pi, provides a starting point for using "random" numbers to
+perform a simulation and then use the results of that simulation to compute
+something "physical". Also if you aren't familiar with the Python3 plotting
+module, `matplotlib`, this example will also demonstrate how to plot some
+shapes, and how to plot scattered x, y points with different colors and markers.
+
+As I mentioned above, this example was given to me as a starting point for
+understanding Monte Carlo integration, and then eventually Monte Carlo
+simulation. Maybe some future posts will demonstrate some examples of those
+types of simulations. 
