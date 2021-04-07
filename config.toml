@@ -4,7 +4,7 @@ title = "Blogging by Heath™"
 theme = "pickles"
 
 # Google Analytics API key.
-# googleAnalytics = "Your Google Analytics tracking id"
+# googleAnalytics = "UA-48985842-4"
 
 [params]
   paginate = 10
