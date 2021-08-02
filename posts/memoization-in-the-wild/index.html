@@ -2,12 +2,12 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Qué Hace Mi Empresa</title>
-<meta property="og:title" content="Qué Hace Mi Empresa">
-<meta name=twitter:title content="Qué Hace Mi Empresa">
+<title>Memoization in the Wild</title>
+<meta property="og:title" content="Memoization in the Wild">
+<meta name=twitter:title content="Memoization in the Wild">
 <meta name=author content="Heath Henley">
 <meta property="og:site_name" content="Blogging by Heath™">
-<meta property="og:url" content="https://heathhenley.github.io/posts/qu%C3%A9-hace-mi-empresa/">
+<meta property="og:url" content="https://heathhenley.github.io/posts/memoization-in-the-wild/">
 <meta name=twitter:card content="summary">
 <meta property="og:type" content="article">
 <meta name=generator content="Hugo 0.86.1">
@@ -25,59 +25,110 @@
 <main id=main class=l-main>
 <article class=p-article>
 <header>
-<h1>Qué Hace Mi Empresa</h1>
+<h1>Memoization in the Wild</h1>
 <div>
 <div class=c-time>
 Posted on
-<time datetime=2021-01-05T18:40:07-04:00>
-Jan 5, 2021
+<time datetime=2021-08-02T17:32:43-04:00>
+Aug 2, 2021
 </time>
 </div>
-<a href=https://heathhenley.github.io/tags/espa%C3%B1ol class=c-tag>español</a>
-<a href=https://heathhenley.github.io/tags/spanish class=c-tag>spanish</a>
-<a href=https://heathhenley.github.io/tags/writing-practice class=c-tag>writing practice</a>
+<a href=https://heathhenley.github.io/tags/algorithms class=c-tag>algorithms</a>
+<a href=https://heathhenley.github.io/tags/computer-science class=c-tag>computer science</a>
+<a href=https://heathhenley.github.io/tags/python3 class=c-tag>python3</a>
+<a href=https://heathhenley.github.io/tags/python class=c-tag>python</a>
+<a href=https://heathhenley.github.io/tags/optimization class=c-tag>optimization</a>
 </div>
 </header>
 <section id=js-article class=p-article__body>
-<p><em>Aviso: eso ha sido un trozo de texto que escribí para practicar mí español, no
-tiene nada que ver con FarSounder oficialmente.</em></p>
-<h2 id=introducción>Introducción</h2>
-<p>En mi empresa, se llama <a href=http://www.farsounder.com/>FarSounder</a>, hacemos un
-sistema de Sónar para los buques y los yates. El objetivo principal de este
-sistema es buscar cosas que sean peligrosas delante de la nave y bajo el agua.
-Hay un sensor que se pone en la proa, que está dirigido hacia delante, por
-supuesto. El sensor emite una señal de sónar, y las ondas de sonido se reflejan
-cuando hay algo en el agua. Puede ser una roca, un gran trozo de hielo, un
-contenedor de envío, o algo así. Después, los datos se envían al puente de la
-nave para notificar al navegador sobre el posible peligro.</p>
-<p>El rango de distancia en que el sistema puede detectar una amenaza depende del
-producto. Ahora mismo, tenemos tres opciones disponibles con un rango de
-detección que va desde los 350 a los 1000 metros. La elección del producto más
-adecuado para cada aplicación dependerá del tamaño de su barco y también, de la
-velocidad en que quiera usarlo. Por supuesto, a mayor velocidad, necesitará
-mayor distancia para parar o cambiar su rumbo, y por eso será necesario un
-producto con mayor rango de detección.</p>
-<h2 id=que-hago-yo-allí>¿Que hago yo allí?</h2>
-<p>Soy ingeniero de software en FarSounder, así que mi funcion de trabajo
-principal, por supuesto, es desarollar el software. Pero ¿qué se trata esa rollo
-en el día a día? Pues trabajamos en periodos de tres meses cada uno. Al
-principio de cada periodo, hacemos un plan y tomamos las decisiones sobre que
-features (funciones de software?) vamos a añadir en este periodo. Después,
-durante los dos meses siguiente, desarollamos todas las funciones de software, y
-también resolvemos todos los problemas que, desde luego, nadíe podía haber
-predicho. Tal vez eso suena un poco raro, pero casí siempre hayan algunos porque
-los sistemas en que trabajamos son bastante complejos. Por fin, durante la
-ultima mes, paramos de añadir funciones nuevas y cambiamos nuestro rumbo hacia
-hacer pruebas de calidad. Por supuesto el objetivo es asegurar que no habiamos
-introducido ningun error cuando estábamos desarollando, o mejor dicho, es que
-encontramos todos los errores que habiamos introducido durante el periodo. :)</p>
-<p>Despues de todo eso, empezamos a enviar la versión nueva a nuestras clientes, y
-el ciclo se repite otra vez.</p>
-<h2 id=conclusión>Conclusión</h2>
-<p>Eso es lo que hace mi empresa y cómo gestionamos nuestros ciclos de trabajo. En
-cuanto a los tipos de proyectos que hacemos, puede cambiar - pero normalmente, tiene
-que ver con agregar nuevas funciones o &ldquo;features&rdquo;, optimizar, o desarollar mejor
-algoritmos para procesar los datos del Sónar.</p>
+<h2 id=overview>Overview</h2>
+<p>Memoization or memoisation is a method used to optimize programs. Usually, at
+least in my experience, it’s one of the first topics introduced when dynamic
+programming algorithms are being discussed. With a quick google search you can
+find the <a href=https://en.wikipedia.org/wiki/Memoization>Wiki</a> or a trillion other
+blogs about it - most will show the canonical example - the “hello world” of the
+topic - that is, using memoization to optimize a recursive implementation of a
+function that generates the n-th Fibonacci number (or sometimes a function
+computing factorials).</p>
+<p>In brief, the idea is that there are some cases where the same function is going
+to be called many times, and some of those inputs will be repeated. So the trick
+is to cache the results of the function calls for each input - and then on each
+call of the function, check whether the result is already cached. This allows
+the function to only be called with a given set of input parameters once.</p>
+<p>As mentioned, the internet is full of detailed examples of this using the
+recursive Fibonacci function. In Python3, that looks like going from:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fib</span>(n):
+  <span style=color:#66d9ef>if</span> n <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
+    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+  <span style=color:#66d9ef>return</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>+</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
+</code></pre></div><p>To something like:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>cache <span style=color:#f92672>=</span> {}
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fib</span>(n):
+  <span style=color:#66d9ef>if</span> n <span style=color:#f92672>in</span> cache:
+    <span style=color:#66d9ef>return</span> cache[n]
+  <span style=color:#66d9ef>if</span> n <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
+    cache[n] <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+  <span style=color:#66d9ef>else</span>:
+    cache[n] <span style=color:#f92672>=</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>+</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
+  <span style=color:#66d9ef>return</span> cache[n] 
+</code></pre></div><p>Of course for a recursive function like this, the speedup is great - even for
+relatively small input like n=20, the &ldquo;memoized&rdquo; version runs orders of magnitude
+faster (about 2000x faster for n=20). More generally, if you’re a Python
+developer, you can use Python standard library tools to do this, for example you
+can use <a href=https://docs.python.org/3/library/functools.html#functools.cache>functools.cache</a> introduced in
+3.9 (for older versions, take a look at <a href=https://docs.python.org/3/library/functools.html#functools.lru_cache>func.tools.lru_cache</a> instead).</p>
+<h2 id=application-to-drawing-module>Application to Drawing Module</h2>
+<p>That’s the toy example, however the inspiration for this post was that I finally
+had the opportunity to apply this optimization technique to a real world problem
+in a very concrete and self contained way at <a href=www.farsounder.com>FarSounder</a>!</p>
+<p>In this case, the speed up was a bit more modest, and the function was not a
+recursive one, but the idea was the same.</p>
+<p>In one of the viewers of FarSounder’s main data display, sonar data is overlaid
+with the vessel outline and some other things in real time. This data includes
+&ldquo;in-water detections&rdquo;, things like pilings, containers, rocks, etc, things in
+the water that produce a loud return and typically correspond to objects that a
+user doesn’t want to hit. The seafloor depths ahead of the vessel are also
+displayed as a surface, typically with the color mapped to depth. The location
+of each point on the bottom surface is known, but in order to draw it, its real
+world location must be converted into screen coordinates so that it can be
+placed on the screen in the correct location.</p>
+<p>When the display code was profiled for this viewer, it showed that this
+transformation was taking an unexpectedly large chunk of the processing time in
+cases with a large bottom surface. Digging into this further, it was clear that
+there was an opportunity here to use &ldquo;memoization&rdquo;, or simply cache the results
+of the transformation for a given input, so that if the screen coordinates for
+any vertex had already been computed they would not be recomputed (provided the
+chart has not moved / scaled).</p>
+<p>The real case was in C++, but here is some pseudocode for this approach:</p>
+<h4 id=result>Result</h4>
+<p>Transform geographic coordinates (latitude, longitude) into a position on the screen.</p>
+<h4 id=initialization>Initialization</h4>
+<p>Set up a cache for function results. A hash table, or map (or python dictionary)
+should be used so that value lookups can be done in constant time.</p>
+<h4 id=algorithm><strong>Algorithm:</strong></h4>
+<pre><code>for each geopoint in points to transform:
+  if geopoint is in cache:
+    return cached screen point result for this geopoint
+  else:
+    compute screen point for this geopoint
+    update cache with screen point
+    finally, return the screen point 
+</code></pre><p>This approach was applied, and in the &ldquo;worst&rdquo; cases, the ones
+with a large bottom surface being displayed, the processing time was reduced by
+about 30%!</p>
+<p>Of course the cost of this method is that now more memory is used (to store
+the cache), but in this case, it was not a problem. In general, the speed up was
+modest - in cases with little bottom to display, other steps in the processing
+chain are certainly the bottleneck. That being said, a 30% reduction in
+processing time for in the slowest cases was a big win as this is code that is
+run many times in normal program execution, basically any time new sonar data is
+pushed or the chart is moved or scaled.</p>
+<p>I think this is a neat example and straightforward application of a concept
+typically introduced early in the Computer Science Algorithms curriculum. This
+was pretty easy to implement for a 30% reduction in the processing time of our
+worst cases, so it was totally worth it. I recommend keeping your eyes peeled
+for places where you might be able to apply this simple concept (but profile
+first of course)!</p>
 </section>
 <footer>
 <div id=disqus_thread></div>
@@ -86,13 +137,32 @@ algoritmos para procesar los datos del Sónar.</p>
 <nav class="p-pagination c-pagination">
 <div class=c-pagination__ctrl>
 <div class=c-pagination__newer>
-<a href=https://heathhenley.github.io/posts/computing-pi-by-throwing-darts/>Newer</a>
 </div>
 <div class=c-pagination__older>
-<a href=https://heathhenley.github.io/posts/triplet-counting-algorithm-puzzle/>Older</a>
+<a href=https://heathhenley.github.io/posts/fake-chicken-nugget-hierarchy/>Older</a>
 </div>
 </div>
 </nav>
+<section class=p-related>
+<h3>See Also</h3>
+<ul id=slider class=p-related__list>
+<li class="p-related__item js-related__item">
+<a href=/posts/triplet-counting-algorithm-puzzle/>
+<span>Triplet Counting Algorithmic Puzzle</span>
+</a>
+</li>
+<li class="p-related__item js-related__item">
+<a href=/posts/computing-pi-by-throwing-darts/>
+<span>Computing Pi by Throwing Darts</span>
+</a>
+</li>
+<li class="p-related__item js-related__item">
+<a href=/posts/python-pathlib-module/>
+<span>Switching to the Python Pathlib Module</span>
+</a>
+</li>
+</ul>
+</section>
 <aside class=p-author>
 <div class="c-avatar p-author__avatar">
 <img alt="Author Avatar" src=/heathcropped.png>
