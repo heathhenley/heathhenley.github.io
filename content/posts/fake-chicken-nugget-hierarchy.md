@@ -2,7 +2,6 @@
 title: "'Chicken' Nugget Hierarchy"
 date: 2021-04-06T20:54:43-04:00
 draft: false
-disqus: therealheath
 tags: ["random", "food", "vegetarian", "bored"]
 keywords: ["vegetarian"]
 ---

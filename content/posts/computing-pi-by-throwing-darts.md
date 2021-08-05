@@ -4,7 +4,6 @@ date: 2021-03-14T21:17:10-04:00
 draft: false
 tags: ["python3", "python", "random sampling", "pi day", "matplotlib"]
 keywords: ["python3", "python", "random sampling", "matplotlib"]
-disqus: therealheath
 mathjax: true
 ---
 In celebration of pi-day, let's look at a method of computing pi using

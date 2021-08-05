@@ -5,7 +5,6 @@ draft: false
 tags: ["python3"]
 categories: ["software development"]
 keywords: ["python", "python3", "pathlib", "os"]
-disqus: "therealheath"
 ---
 It’s been about a year or so since we officially upgraded all of our tooling at
 my job [at FarSounder](www.farsounder.com) from Python 2.7 to Python 3 (3.6 at
