@@ -44,7 +44,7 @@ rápido.
 
 Mis recursos (pues en este momento) favoritos son:
 - [iTalki](https://www.italki.com/) (para encontrar profesores o intercambios)
-- Podcasts (puedes encontrar casi cualquier tema e incluso materiales para
+- Los podcasts (puedes encontrar casi cualquier tema e incluso materiales para
   principiantes y intermedios)
 - Netflix (echate un vistazo a [Language Learning with Netflix](https://languagelearningwithnetflix.com/))
-- Libros (pongo las palabras que no conozco en Anki para repasar)
+- Los libros (pongo las palabras que no conozco en Anki para repasar)
