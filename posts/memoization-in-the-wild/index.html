@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://heathhenley.github.io/posts/memoization-in-the-wild/">
 <meta name=twitter:card content="summary">
 <meta property="og:type" content="article">
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-48985842-4"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','UA-48985842-4')</script>
 <link rel=stylesheet href=https://heathhenley.github.io/css/style.css>
@@ -106,7 +106,7 @@ chart has not moved / scaled).</p>
 <p>Set up a cache for function results. A hash table, or map (or python dictionary)
 should be used so that value lookups can be done in constant time.</p>
 <h4 id=algorithm><strong>Algorithm:</strong></h4>
-<pre><code>for each geopoint in points to transform:
+<pre tabindex=0><code>for each geopoint in points to transform:
   if geopoint is in cache:
     return cached screen point result for this geopoint
   else:
