@@ -11,8 +11,9 @@ Read on to learn more...
 ## What am I talking about?
 Over the summer at a friends house, I was presented with an “old bar game” that
 I was completely unfamiliar with. It’s a wooden tray, with the numbers 1-12
-printed in ascending order on little wooden tiles. Here’s an example of what it
-looks like:
+printed in ascending order on little wooden tiles.
+
+Here’s an example of what it looks like:
 
 ![Shut the box game board](/shut_the_box/shut_the_box.jpg)
 
@@ -31,22 +32,23 @@ tiles equal to the sum you have rolled.
 
 Of course I got to thinking about what the optimum strategy actually is for this
 game, and workshopped a couple ideas against my friends. It seemed like I was
-doing pretty well always taking the option containing the highest number, but I
-wasn’t really sure that was the best strategy. Thinking it over a bit on ride
-home, I decided it would be fun to write a short python script to simulate
-playing shut the box using different strategies, in order to put my strategy to
-the test. 
+doing pretty well with a strategy of always taking the option containing the
+highest number, but I wasn’t really sure that was the best strategy. I thought
+about it a lot on the drive home. Finally, I decided it would be fun to write a
+short python script to simulate playing shut the box using different strategies,
+in order to put my strategy to the test. 
 
 You can find a Gist with the Python 3 script for this [here](https://gist.github.com/heathhenley/4ac69dad35a009d0685c785ecea270e1).
 
 It’s a bit "rough" - but the idea is that it’s a script to "roll some
 dice" randomly and select the shut the box moves based on a predefined, general
 strategy. I was excited to test my hypothosized best strategy of "always taking
-the option with the largest number", but of course, you can see that I also
-included a completely "random" strategy, taking down the most tiles possible,
-and finally taking the fewest possible tiles. The script just plays a given
-number of games according to each defined strategy and tracks the average score,
-so that the strategies can be compared. 
+the option with the largest number". But of course, you can see that I also
+included a completely "random" strategy, the strategy of taking down the most
+tiles possible, and finally strategy of taking the fewest possible tiles. The
+script just plays a given number of games (100k, decided arbitrarily to be
+long enough to give consistent results between runs) according to each defined
+strategy and tracks the average score, so that the strategies can be compared. 
 
 ## Results
 
@@ -72,22 +74,27 @@ as possible - that won’t pan out for you! :)
 
 A couple notes about the implementation of these strategies - the two best
 strategies perform statistically the same with the number of trials I’ve run.
+
 Another note, is that when there was ambiguity, after the first step in the
 strategy, I implemented a random choice. So for example, if two valid options
-allow 2 tiles to be dropped, and we’re playing by the “take as few tiles as
-possible” strategy, I choose between those randomly. I applied the same approach
-to the “option with the largest number strategy”, when two or more options had
+allow 2 tiles to be dropped, and we’re playing by the "take as few tiles as
+possible" strategy, I choose between those randomly. I applied the same approach
+to the "option with the largest number strategy", when two or more options had
 the same max number - the option played was chosen randomly. I think this is a
 pretty reasonable approach for a casual player - but perhaps a composite
-strategy would preform better. So for example, we could use the max strategy to
-result conflicts in the "take as few as possible" strategy. Or we could use the
-the "take as few as possible" strategy to resolve some conflicts in the max
-strategy. I did try both of these approaches, and I was a bit surprised to see
-that the did not reduce the score in significant way.
+strategy would preform better?
+
+So for example, we could use the max strategy to result conflicts in the "take
+as few as possible" strategy. Or we could use the the "take as few as possible"
+strategy to resolve some conflicts in the max strategy. I did try both of these
+approaches, and I was a bit surprised to see that the did not reduce the score
+in significant way. Perhaps I'll dig into this more in a follow up...
 
 ## Wrapping Up
 
-Anyway - I know you can figure out what the real optimal strategy is for
+Anyway - of course it's possible to calculate the real optimal strategy is for
 crushing your friends at Shut the Box using probability, and perhaps that would
-be a good subject for a follow up post! At least now if you ever come across
-this game, you’ll have a strategy to start with.
+be a another good subject for a follow up post...
+
+At least now if you ever come across this game, you’ll have a strategy to start
+with!
