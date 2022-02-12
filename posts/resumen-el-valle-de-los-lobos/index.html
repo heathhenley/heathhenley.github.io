@@ -2,12 +2,12 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Memoization in the Wild</title>
-<meta property="og:title" content="Memoization in the Wild">
-<meta name=twitter:title content="Memoization in the Wild">
+<title>Resumen: El Valle De Los Lobos</title>
+<meta property="og:title" content="Resumen: El Valle De Los Lobos">
+<meta name=twitter:title content="Resumen: El Valle De Los Lobos">
 <meta name=author content="Heath Henley">
 <meta property="og:site_name" content="Blogging by Heath™">
-<meta property="og:url" content="https://heathhenley.github.io/posts/memoization-in-the-wild/">
+<meta property="og:url" content="https://heathhenley.github.io/posts/resumen-el-valle-de-los-lobos/">
 <meta name=twitter:card content="summary">
 <meta property="og:type" content="article">
 <meta name=generator content="Hugo 0.92.2">
@@ -25,119 +25,94 @@
 <main id=main class=l-main>
 <article class=p-article>
 <header>
-<h1>Memoization in the Wild</h1>
+<h1>Resumen: El Valle De Los Lobos</h1>
 <div>
 <div class=c-time>
 Posted on
-<time datetime=2021-08-02T17:32:43-04:00>
-Aug 2, 2021
+<time datetime=2022-02-12T13:47:41-05:00>
+Feb 12, 2022
 </time>
 </div>
-<a href=https://heathhenley.github.io/tags/algorithms class=c-tag>algorithms</a>
-<a href=https://heathhenley.github.io/tags/computer-science class=c-tag>computer science</a>
-<a href=https://heathhenley.github.io/tags/python3 class=c-tag>python3</a>
-<a href=https://heathhenley.github.io/tags/python class=c-tag>python</a>
-<a href=https://heathhenley.github.io/tags/optimization class=c-tag>optimization</a>
+<a href=https://heathhenley.github.io/tags/espa%C3%B1ol class=c-tag>español</a>
+<a href=https://heathhenley.github.io/tags/spanish class=c-tag>spanish</a>
+<a href=https://heathhenley.github.io/tags/writing-practice class=c-tag>writing practice</a>
+<a href=https://heathhenley.github.io/tags/ejercicios-de-escribir class=c-tag>ejercicios de escribir</a>
 </div>
 </header>
 <section id=js-article class=p-article__body>
-<h2 id=overview>Overview</h2>
-<p>Memoization or memoisation is a method used to optimize programs. Usually, at
-least in my experience, it’s one of the first topics introduced when dynamic
-programming algorithms are being discussed. With a quick google search you can
-find the <a href=https://en.wikipedia.org/wiki/Memoization>Wiki</a> or a trillion other
-blogs about it - most will show the canonical example - the “hello world” of the
-topic - that is, using memoization to optimize a recursive implementation of a
-function that generates the n-th Fibonacci number (or sometimes a function
-computing factorials).</p>
-<p>In brief, the idea is that there are some cases where the same function is going
-to be called many times, and some of those inputs will be repeated. So the trick
-is to cache the results of the function calls for each input - and then on each
-call of the function, check whether the result is already cached. This allows
-the function to only be called with a given set of input parameters once.</p>
-<p>As mentioned, the internet is full of detailed examples of this using the
-recursive Fibonacci function. In Python3, that looks like going from:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fib</span>(n):
-  <span style=color:#66d9ef>if</span> n <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
-    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
-  <span style=color:#66d9ef>return</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>+</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
-</code></pre></div><p>To something like:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>cache <span style=color:#f92672>=</span> {}
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fib</span>(n):
-  <span style=color:#66d9ef>if</span> n <span style=color:#f92672>in</span> cache:
-    <span style=color:#66d9ef>return</span> cache[n]
-  <span style=color:#66d9ef>if</span> n <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
-    cache[n] <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
-  <span style=color:#66d9ef>else</span>:
-    cache[n] <span style=color:#f92672>=</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>+</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
-  <span style=color:#66d9ef>return</span> cache[n] 
-</code></pre></div><p>Of course for a recursive function like this, the speedup is great - even for
-relatively small input like n=20, the &ldquo;memoized&rdquo; version runs orders of magnitude
-faster (about 2000x faster for n=20). More generally, if you’re a Python
-developer, you can use Python standard library tools to do this, for example you
-can use <a href=https://docs.python.org/3/library/functools.html#functools.cache>functools.cache</a> introduced in
-3.9 (for older versions, take a look at <a href=https://docs.python.org/3/library/functools.html#functools.lru_cache>func.tools.lru_cache</a> instead).</p>
-<h2 id=application-to-drawing-module>Application to Drawing Module</h2>
-<p>That’s the toy example, however the inspiration for this post was that I finally
-had the opportunity to apply this optimization technique to a real world problem
-in a very concrete and self contained way at <a href=www.farsounder.com>FarSounder</a>!</p>
-<p>In this case, the speed up was a bit more modest, and the function was not a
-recursive one, but the idea was the same.</p>
-<p>In one of the viewers of FarSounder’s main data display, sonar data is overlaid
-with the vessel outline and some other things in real time. This data includes
-&ldquo;in-water detections&rdquo;, things like pilings, containers, rocks, etc, things in
-the water that produce a loud return and typically correspond to objects that a
-user doesn’t want to hit. The seafloor depths ahead of the vessel are also
-displayed as a surface, typically with the color mapped to depth. The location
-of each point on the bottom surface is known, but in order to draw it, its real
-world location must be converted into screen coordinates so that it can be
-placed on the screen in the correct location.</p>
-<p>When the display code was profiled for this viewer, it showed that this
-transformation was taking an unexpectedly large chunk of the processing time in
-cases with a large bottom surface. Digging into this further, it was clear that
-there was an opportunity here to use &ldquo;memoization&rdquo;, or simply cache the results
-of the transformation for a given input, so that if the screen coordinates for
-any vertex had already been computed they would not be recomputed (provided the
-chart has not moved / scaled).</p>
-<p>The real case was in C++, but here is some pseudocode for this approach:</p>
-<h4 id=result>Result</h4>
-<p>Transform geographic coordinates (latitude, longitude) into a position on the screen.</p>
-<h4 id=initialization>Initialization</h4>
-<p>Set up a cache for function results. A hash table, or map (or python dictionary)
-should be used so that value lookups can be done in constant time.</p>
-<h4 id=algorithm><strong>Algorithm:</strong></h4>
-<pre tabindex=0><code>for each geopoint in points to transform:
-  if geopoint is in cache:
-    return cached screen point result for this geopoint
-  else:
-    compute screen point for this geopoint
-    update cache with screen point
-    finally, return the screen point 
-</code></pre><p>This approach was applied, and in the &ldquo;worst&rdquo; cases, the ones
-with a large bottom surface being displayed, the processing time was reduced by
-about 30%!</p>
-<p>Of course the cost of this method is that now more memory is used (to store
-the cache), but in this case, it was not a problem. In general, the speed up was
-modest - in cases with little bottom to display, other steps in the processing
-chain are certainly the bottleneck. That being said, a 30% reduction in
-processing time for in the slowest cases was a big win as this is code that is
-run many times in normal program execution, basically any time new sonar data is
-pushed or the chart is moved or scaled.</p>
-<p>I think this is a neat example and straightforward application of a concept
-typically introduced early in the Computer Science Algorithms curriculum. This
-was pretty easy to implement for a 30% reduction in the processing time of our
-worst cases, so it was totally worth it. I recommend keeping your eyes peeled
-for places where you might be able to apply this simple concept (but profile
-first of course)!</p>
+<h2 id=introducción>Introducción</h2>
+<p>El valle de los lobos es un libro para adolescentes que narra las
+aventuras inesperadas de una niña que se llama Dana. Es un libro interesante,
+aunque sea un poco juvenil. En mi opinión, es útil para los estudiantes del
+idioma porque la historia es fácil de entender y no se usa un vocabulario tan
+complejo, ya que el libro se escribió para los adultos jóvenes. De hecho, es muy
+parecido a los libros de Harry Potter. Pero en mi opinión, es mejor que los
+libros de Harry Potter para la gente que está estudiando el español porque la
+autora lo ha escrito en español como primer idioma. Por supuesto, no es el caso
+de los libros de Harry Potter que se escribieron en inglés y se ha traducido a
+español después.</p>
+<h2 id=resumen-de-la-historia>Resumen de la historia</h2>
+<p>Dana vive y trabaja en una granja con sus padres y
+hermanas, pero desde muy chica nunca se ha llevado bien con su familia. Conoce a
+un chico de su misma edad que se llama Kai, y se hacen mejores amigos. Pero
+después de un tiempo, Dana nota que Kai no es normal, la verdad es que sólo Dana
+puede verlo u oírlo. Además, ni siquiera Dana puede tocarlo, si intenta hacerlo
+sus dedos simplemente pasan por el otro lado de Kai. Dana tiene curiosidad y un
+poco de miedo, y le pregunta a Kai porque es así - pero Kai prefiere no darle
+las respuestas, &ldquo;aún&rdquo;.</p>
+<p>Aunque quiere saber la verdad, Dana deja de preguntarle sobre su estado de
+existencia o su historia, y solo disfruta su compañía. Además ahora Kai se ha
+convertido en su mejor amigo, incluso mejor que sus propias hermanas.</p>
+<p>Como vive en una granja, Dana tiene muchas tareas para hacer periódicamente,
+como por ejemplo, ir al pueblo para comprar o recoger las comidas para su
+familia mensualmente. Durante uno de estos viajes, conoce a un hombre con una
+apariencia de altivez y riqueza que está montado en un caballo bonito, y que
+lleva una armadura resplandeciente. Platican un poco, y como nadie antes, el
+hombre mira directamente a Kai, en sus ojos, como si pudiera verlo, aunque
+todavía no dice nada sobre su presencia. Terminan de una charla corta y
+superficial y el hombre se va. Dana y Kai están sorprendidos, pero piensan que
+tal vez el hombre miró a Kai directamente por casualidad, y deciden que no
+pueden hacer nada sino continuar con sus vidas.</p>
+<p>Después de unos meses, el caballero vuelve y Dana lo encuentra hablando en
+privado con sus padres. El caballero quiere llevarla a algún tipo de escuela
+donde ella puede aprender a usar sus habilidades, de las cuáles aún no tiene ni
+idea. Pero le interesa mucho lo que dice el hombre misterioso. Finalmente, los
+padres de Dana y el hombre llegan a un acuerdo con los términos, y deciden que
+Dana puede ir con el desconocido para asistir a la escuela. Dana tiene miedo y
+al principio no quiere irse de la granja, pero su mamá dice que debería hacerlo
+para ver el resto del mundo, o por lo menos más del mundo que su propia granja y
+el pueblo cercano. Por fin Dana está de acuerdo, y se va con Kai por supuesto,
+con el caballero desconocido.</p>
+<p>Viajan durante algunas semanas hasta una torre grande que está ubicada en un
+valle exuberante. Dana todavía no tiene ni idea de lo que está haciendo allí o
+lo que va a estudiar a la escuela, hasta que llegan a la verja&mldr;</p>
+<p>Es una verja fuerte y reforzada de hierro y cuando llegan allí, el hombre, que
+ahora Dana conoce como “El Maestro”, para por un momento y dice unas palabras
+que parecen pertenecer a un idioma extraño. La verja se abre suavemente y sin
+que el hombre la toque - en ese momento Dana se da cuenta de que el maestro es
+mago, y supone que la escuela puede ser una escuela de magia…</p>
+<p>Después de llegar a la escuela e iniciar sus estudios de magia, conoce a un
+chico que tiene más o menos cuatro años más que ella y que se llama Fenris. A
+través de unos años, desarollan una amistad compleja, porque Fenris no es muy
+amable pero al mismo tiempo la ayuda cuando es necesario. Los chicos se
+encuentran con varios problemas durante los años en la escuela, pero un tema
+resurgente tiene que ver con los lobos…es que la torre en la que viven está en
+medio de una valla con una puerta de magia y hierro. Lo que notan es que cada
+noche oyen las aullidos de lobos a su alrededor, y siempre el maestro les avisa
+del peligro de salir de la torre por la noche. Debido en parte a su curiosidad y
+en parte a sus habilidades mágicas crecientes, Dana empieza a descubrir la
+verdad sobre la torre y el maestro, y cosas son como aparentan. El maestro un
+hombre con su propios fines en mente, y se dan cuenta de que los estudiantes de
+la torre habian sido escogidos con cuidado por sus habilidades de una índole
+concreta que servirían como herramientas para llevar a cabo su gran plan&mldr;</p>
 </section>
 <footer>
 <nav class="p-pagination c-pagination">
 <div class=c-pagination__ctrl>
 <div class=c-pagination__newer>
-<a href=https://heathhenley.github.io/posts/como-aprender-un-idioma-nuevo/>Newer</a>
 </div>
 <div class=c-pagination__older>
-<a href=https://heathhenley.github.io/posts/fake-chicken-nugget-hierarchy/>Older</a>
+<a href=https://heathhenley.github.io/posts/shut-the-box/>Older</a>
 </div>
 </div>
 </nav>
@@ -145,18 +120,13 @@ first of course)!</p>
 <h3>See Also</h3>
 <ul id=slider class=p-related__list>
 <li class="p-related__item js-related__item">
-<a href=/posts/triplet-counting-algorithm-puzzle/>
-<span>Triplet Counting Algorithmic Puzzle</span>
+<a href=/posts/como-aprender-un-idioma-nuevo/>
+<span>¿Cómo Aprender Un Idioma Nuevo?</span>
 </a>
 </li>
 <li class="p-related__item js-related__item">
-<a href=/posts/computing-pi-by-throwing-darts/>
-<span>Computing Pi by Throwing Darts</span>
-</a>
-</li>
-<li class="p-related__item js-related__item">
-<a href=/posts/python-pathlib-module/>
-<span>Switching to the Python Pathlib Module</span>
+<a href=/posts/qu%C3%A9-hace-mi-empresa/>
+<span>¿Qué Hace Mi Empresa?</span>
 </a>
 </li>
 </ul>
