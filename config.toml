@@ -6,8 +6,9 @@ theme = "pickles"
 # Google Analytics API key.
 googleAnalytics = "UA-48985842-4"
 
+paginate = 3
+
 [params]
-  paginate = 10
   custom_css = ["/css/custom.css"]
   # Social accounts. Link to these accounts are displayed in the header and
   # footer

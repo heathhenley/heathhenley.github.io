@@ -4,13 +4,13 @@ draft: False
 hideDate: true
 ---
 # Technical Blogs
+- [Update for Argos Forward Looking Sonars (SeaTechnology)](https://lsc-pagepro.mydigitalpublication.com/publication/?m=60787&i=741069&p=10&ver=html5)
 - [Argos Integration in Autonomous Systems](http://www.farsounder.com/technology/blog/argos-integration-autonomous-systems)
 - [Overcoming Real World Navigation Challenges](http://www.farsounder.com/technology/blog/overcoming-real-world-navigation-challenges)
 - [Expedition Sourced Data Collection Program: Progress Update](http://www.farsounder.com/technology/blog/expedition-sourced-data-collection-program-progress-update)
 - [A First Look at Expedition Sourced Data](http://www.farsounder.com/technology/blog/first-look-expedition-sourced-data)
-
 # Selected Conference Papers
-- [Deep Learning in Shallow Water](http://www.farsounder.com/technology/blog/deep-learning-shallow-water) - Link to paper available in the tech blog, or [here](http://www.farsounder.com/sites/default/files/2019-10/oceans_18.pdf).
+- [Deep Learning in Shallow Water](http://www.farsounder.com/technology/blog/deep-learning-shallow-water) - Link to paper available in the tech blog, or [here](https://static1.squarespace.com/static/60cce3169290423b889a1b09/t/61f05ce9db45d603450c470b/1643142379212/oceans_18.pdf).
 - [Applications of Today’s 3D Forward Looking Sonar
 for Real-time Navigation and Bathymetric Survey](http://www.farsounder.com/files/3dfls_applications_oceans_2017.pdf)
 - [Performance of 3D Forward Looking Sonar for Bathymetric Survey](http://www.farsounder.com/files/3dfls_bathymetry_oceans_2017_0.pdf)
