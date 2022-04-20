@@ -12,8 +12,8 @@ hideDate: true
 # Selected Conference Papers
 - [Deep Learning in Shallow Water](http://www.farsounder.com/technology/blog/deep-learning-shallow-water) - Link to paper available in the tech blog, or [here](https://static1.squarespace.com/static/60cce3169290423b889a1b09/t/61f05ce9db45d603450c470b/1643142379212/oceans_18.pdf).
 - [Applications of Today’s 3D Forward Looking Sonar
-for Real-time Navigation and Bathymetric Survey](http://www.farsounder.com/files/3dfls_applications_oceans_2017.pdf)
-- [Performance of 3D Forward Looking Sonar for Bathymetric Survey](http://www.farsounder.com/files/3dfls_bathymetry_oceans_2017_0.pdf)
+for Real-time Navigation and Bathymetric Survey](https://static1.squarespace.com/static/60cce3169290423b889a1b09/t/61f056191aba81541da5c23f/1643140633817/3dfls_applications_oceans_2017.pdf)
+- [Performance of 3D Forward Looking Sonar for Bathymetric Survey](https://static1.squarespace.com/static/60cce3169290423b889a1b09/t/61f05596ebf9c569d2384247/1643140505426/3dfls_bathymetry_oceans_2017.pdf)
 
 # Selected Journal Articles
 - [Fully compositional multi-scale reservoir simulation of various CO2 sequestration mechanisms](https://www.sciencedirect.com/science/article/abs/pii/S0098135416303076)
