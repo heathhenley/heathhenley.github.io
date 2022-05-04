@@ -9,12 +9,12 @@ allocated resource needs multiple owners, use a `shared_ptr` instead.*
 I find myself reviewing C++ smart pointer types over and over again. I guess for
 me, it’s just been one of those things that doesn’t stick, or perhaps I’ve only
 needed to use them infrequently enough to forget about them. So, here’s a note
-to myself, and anyone else dying to read about smart pointers in C++, with some
-examples. This is not something that a veteran “hardcore” C++ programmer will
-gain anything from reading. Though if you’re a a bit of a generalist like I am
-and you find yourself switching between projects and languages, maybe you’ll
-find this useful. Honestly, I’m hoping that through writing it up, I’ll never
-have to look it up again :)
+to myself, and anyone else dying to read about smart pointers in C++. This is
+not something that a veteran "hardcore" C++ programmer will gain anything from
+reading. Though if you’re a a bit of a generalist like I am and you find
+yourself switching between projects and languages, maybe you’ll find this
+useful. Honestly, I’m hoping that through writing it up, I’ll never have to look
+it up again :)
 
 I must say, that all of the information below, including the examples, is
 summarized from the Microsoft C++ docs, in particular, the section on [Smart
