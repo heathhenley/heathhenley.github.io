@@ -1,7 +1,7 @@
 ---
 title: "Smart Pointer Pointers"
 date: 2022-05-04T10:05:29-04:00
-draft: true
+draft: false
 ---
 *TL;DR - Switch raw heap pointers to `unique_ptr`s when possible. If your heap
 allocated resource needs multiple owners, use a `shared_ptr` instead.*
