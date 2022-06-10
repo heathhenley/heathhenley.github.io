@@ -4,6 +4,7 @@ draft: False
 hideDate: true
 ---
 # Technical Blogs
+- [FarSounder's Qinsy Integration](https://www.farsounder.com/blog/farsounder-integration-with-qinsy)
 - [Update for Argos Forward Looking Sonars (SeaTechnology)](https://lsc-pagepro.mydigitalpublication.com/publication/?m=60787&i=741069&p=10&ver=html5)
 - [Argos Integration in Autonomous Systems](http://www.farsounder.com/technology/blog/argos-integration-autonomous-systems)
 - [Overcoming Real World Navigation Challenges](http://www.farsounder.com/technology/blog/overcoming-real-world-navigation-challenges)

@@ -51,4 +51,9 @@ paginate = 3
     url = "/writing"
     weight = 5
 
+[[menu.main]]
+    name = "ESOL Class"
+    url = "https://sites.google.com/view/english-at-pcl/home"
+    weight = 6
+
 
