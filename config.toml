@@ -56,4 +56,7 @@ paginate = 3
     url = "https://sites.google.com/view/english-at-pcl/home"
     weight = 6
 
-
+[[menu.main]]
+    name = "Photography"
+    url = "https://hhenley.darkroom.tech/"
+    weight = 7
