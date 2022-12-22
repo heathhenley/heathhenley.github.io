@@ -2,6 +2,8 @@
 title: "Shut the Box"
 date: 2021-11-01T21:11:13-04:00
 draft: false
+tags: ["python3", "python"]
+keywords: ["python3", "python", "algorithms"]
 ---
 **TL;DR** - choose either the option containing the largest number, or the fewest
 tiles and you'll be ok!
