@@ -1,7 +1,7 @@
 ---
 title: "New England Shipwreck Map"
 date: 2022-12-22T15:28:45-05:00
-draft: true
+draft: false
 tags: ["python3", "python", "django", "project", "leafletjs"]
 keywords: ["shipwrecks", "new england shipwrecks", "map", "sonar"]
 ---
@@ -36,12 +36,12 @@ So from a sonar testing standpoint, I'll be my own first user 😀. We'll now be
 
 As far as continued development of this app, I am also thinking about introducing some API endpoints that return wrecks, location, and links to their references as a JSON response, potentially based on a location passed in with the request. For example: a user could programmatically request all of the wrecks within some miles of a location. Django has a REST API framework, but this might also be a fun way to check out [FastAPI](https://fastapi.tiangolo.com/) - TBD.
 
-On a more technical level, I think it would be cool to stop using Django template language with pure Javascript for the front end, and instead use Django (or something else eg FastAPI) only for the backend. Then the main frontend client could be written in React (which I've been hoping to jump into for a while) - and it could just use the mentioned REST API to get data.
+I also think it would be cool to stop using Django template language with pure Javascript for the front end, and instead use Django (or something else eg FastAPI) only for the backend. Then the main frontend client could be written in React (which I've been hoping to jump into for a while) - and it could just use the mentioned REST API to get data.
 
 Posting notes, comments, or warnings on a given wreck could be potentially interesting to divers, and maybe historians also. Also the ability to flag errors or suggests edits would be nice. It might be interesting to set up a system to notify any of the data sources of the suggested edit.
 
 ## Conclusion
-This has been a fun little side project so far, it has already helped me to check out areas where we might be able to find some interesting sonar data. Hopefully it's useful to someone else out there as well!
+This has been a fun project so far, it has already helped me to check out areas where we might be able to find some interesting sonar data. Hopefully it's useful to someone else out there as well!
 
 Please reach out with any suggestions or idea for improvements on [Github](https://github.com/heathhenley/Shipwrecks).
 
