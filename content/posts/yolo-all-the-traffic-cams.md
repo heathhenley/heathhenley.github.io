@@ -33,18 +33,18 @@ It's still great that it worked at all given it was trained on dash cam data. It
 
 There is a public dataset developed in the writing of [this paper](https://proceedings.neurips.cc/paper/2019/file/ee389847678a3a9d1ce9e4ca69200d06-Paper.pdf) constisting of a bunch of labeled (vehicles only) traffic cam images. That's perfect for this application - so I used a subset of that data from Kaggle to train the model for about 13 more epochs (a couple hours). The results were much better!
 
-The model does a pretty good job detecting vehicles, it detects way more vehicles in the frame than the previous version - and it still has not been fine tuned ond data from the specific traffic cams I'm using. So that's on the list!
+The model does a pretty good job detecting vehicles, it detects way more vehicles in the frame than the previous version - and it still has not been fine tuned on data from the specific traffic cams I'm using. So that's on the next step list of course!
 
-To deploy the model I set up a service on [railway](https://railway.app/) to run through the traffic cam images, detect vehicles, and push the results (to images --> S3, results --> Postgres). It runs every 5 minutes at the moment, but that might be adjusted - the camera streams from RI DOT update about once a minute, but I don't want to store too much data. 
+To deploy the model I set up a service on [railway](https://railway.app/) to run through the traffic cam images, detect vehicles, and push the results (images --> S3, vehicle counts --> Postgres). It runs every 5 minutes at the moment, but that might be adjusted. The camera streams from RI DOT update about once a minute, but I don't want to store too much data.
 
 # Lessons Learned
 
-These is a list of the things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgot - and there's definitely a lot more to come as I continue to work on this project.
+These is a list of the things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgotten - and there's definitely a lot more to come as I continue to work on this project.
 
 ## CORS setup for FastAPI
 I had to set up CORS for the API server to allow the React app to make requests to it. I used the [FastAPI CORS middleware](https://fastapi.tiangolo.com/tutorial/cors/). This was a bit tricky for me at first, I was pretty bummed when I first started trying to hit the REST API from the frontend and couldn't get it working.
 
-For context, I'm a desktop developer C++ and Python - so needless to say I haven't had to deal with before. It was pretty simple to fix by following the docs and pulling in that middleware:
+For context, I'm a desktop developer C++ and Python - so I haven't had to deal with CORS before. It was pretty simple to fix by following the docs and pulling in that middleware:
 
 ``` python
 # This is the extra config needed to allow GET requests from anyone
@@ -72,9 +72,11 @@ You can see in the snippet, I had to make sure to explictly set the `ContentType
       CacheControl='max-age=300')
 ```
 
-The `ContentType` attribute lets the browser know it's an image - otherwise it will try to download the file. The `CacheControl` attribute tells the browser to cache the image for 5 minutes. I chose five minutes because I'm only running the worker through the cams every 5 minutes, so I don't want to be making a bunch of requests to S3 for the same image. Because the images for each cam are stored with the same name and overwritten each time, if you don't set the `CacheControl` header, the browser will not know to update the image and even though the image has changed, it will still show the old, cached version of the image on the front end.
+The `ContentType` attribute lets the browser know it's an image - otherwise it will try to download the file. The `CacheControl` attribute tells the browser to cache the image for 5 minutes. I chose five minutes because I'm only running the worker through the cams every 5 minutes, so I don't want to be making a bunch of requests to S3 for the same image. The images for each cam are stored with the same name and overwritten each time, so if you don't set the `CacheControl` header, the browser will not know to update the image and even though the image has changed, it will still show the old, cached version of the image on the front end.
 
 ## Worker Service on Railway
+
+### Run Pytorch on Railway (via Ultalytics/YOLOv8)
 Railway set up is pretty easy for simple projects. If what you're running is simple enough, their Nixbuild system will build your project into a docker image and deploy it to their servers with basically no configuration (except maybe the start command). This set up was trivial with the API Server, but took quite a while to get right with the Worker service due to the dependencies of the YOLOv8 module.
 
 In the end - by running Nixbuild and playing around in the docker image it made locally, I figured out that in order to run [YOLOv8 by ultalytics](https://github.com/ultralytics/ultralytics) I needed to install a libGL library and modify the default library path. Simple to type out now, but it took a while to figure out (please don't look at the commit history 😅).
@@ -86,7 +88,7 @@ In the end - by running Nixbuild and playing around in the docker image it made 
 [phases.setup]
   aptPkgs = ['...', 'libgl1']
 ```
-
+### Drop Git LFS to Railway working
 The previous model I was using (YOLOv2) was a lot larger - so I originally had set up Git LFS to store the model weights. I found out that when railway cloned my repo, it didn't pull down the LFS files. This was a problem for running worker! Eg: we're gonna need those weights, sir. This also took me while to figure out, because I couldn't get it to replicate locally. The new YOLOv8 model is much smaller, so I just stored it in the repo without using LFS. I'm sure I could have run a build command to pull down the LFS files, but I didn't want to spend more time on it and the weight file is only like 5 MB.
 
 ## React Router on Gihub Pages
