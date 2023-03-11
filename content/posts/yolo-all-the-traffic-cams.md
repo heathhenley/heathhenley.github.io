@@ -37,17 +37,20 @@ The model does a pretty good job detecting vehicles, it detects way more vehicle
 
 To deploy the model I set up a service on [railway](https://railway.app/) to run through the traffic cam images, detect vehicles, and push the results (images --> S3, vehicle counts --> Postgres). It runs every 5 minutes at the moment, but that might be adjusted. The camera streams from RI DOT update about once a minute, but I don't want to store too much data.
 
-# Lessons Learned
+# Camera Location Data
+This part was a grind, no way around that. I could not find any listing of the actual locations of the cameras, in terms of latitude and longitude. They are only labelled in the DOT data with approximate locations (eg I-95 at Branch Ave, etc). I really wanted to drop them on a map (using [Leaflet.js](https://leafletjs.com/)) - so I just sat on the couch with the TV on the background and plugged away at estimating their locations. I just roughly compared the camera feed to Google StreetView in the area described by the description. They aren't perfect, but it's better than "Camera at I-95 and Branch Ave" - especially for showing on a map view! (or doing any kind of geospatial analysis...)
 
-These is a list of the things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgotten - and there's definitely a lot more to come as I continue to work on this project.
+# Lessons Learned
+This is a list of the things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgotten - and there's definitely a lot more to come as I continue to work on this project.
 
 ## CORS setup for FastAPI
-I had to set up CORS for the API server to allow the React app to make requests to it. I used the [FastAPI CORS middleware](https://fastapi.tiangolo.com/tutorial/cors/). This was a bit tricky for me at first, I was pretty bummed when I first started trying to hit the REST API from the frontend and couldn't get it working.
+I had to set up CORS for the API server to allow my React app to make requests to it. I used the [FastAPI CORS middleware](https://fastapi.tiangolo.com/tutorial/cors/). This was a bit tricky for me at first, I was pretty bummed when I first started trying to hit the REST API from the frontend and couldn't get it working.
 
 For context, I'm a desktop developer C++ and Python - so I haven't had to deal with CORS before. It was pretty simple to fix by following the docs and pulling in that middleware:
 
 ``` python
 # This is the extra config needed to allow GET requests from anyone
+# after importing the middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -57,10 +60,10 @@ app.add_middleware(
 )
 ```
 
-Basically you need to configure your server to allow specific origins (your client) to make requests to it, for each http method (GET, POST, etc). The REST API server is currently set up to allow all origins to make GET requests only.
+Basically you need to configure your server to allow specific origins (your client) to make requests to it for each http method (GET, POST, etc). The REST API server is currently set up to allow all origins to make GET requests only.
 
 ## Dropping Images into S3
-The worker drops images into an S3 bucket - the two gotchas that I ran into with this were related to the headers set on the "objects".
+The worker drops images into an S3 bucket - the two gotchas that I ran into with this were related to the headers set on the "file objects".
 
 You can see in the snippet, I had to make sure to explictly set the `ContentType` and `CacheControl` headers. Maybe obvious to a web dev - but I missed it at first.
 
@@ -77,9 +80,9 @@ The `ContentType` attribute lets the browser know it's an image - otherwise it w
 ## Worker Service on Railway
 
 ### Run Pytorch on Railway (via Ultalytics/YOLOv8)
-Railway set up is pretty easy for simple projects. If what you're running is simple enough, their Nixbuild system will build your project into a docker image and deploy it to their servers with basically no configuration (except maybe the start command). This set up was trivial with the API Server, but took quite a while to get right with the Worker service due to the dependencies of the YOLOv8 module.
+Railway set up is pretty easy for simple projects. If what you're running is simple enough, their [Nixpacks](https://nixpacks.com/docs/getting-started) system will build your project into a docker image and deploy it to their as a service with basically no configuration (except maybe the start command). This set up was trivial with the API Server, but took quite a while to get right with the Worker service due to the dependencies of the YOLOv8 module.
 
-In the end - by running Nixbuild and playing around in the docker image it made locally, I figured out that in order to run [YOLOv8 by ultalytics](https://github.com/ultralytics/ultralytics) I needed to install a libGL library and modify the default library path. Simple to type out now, but it took a while to figure out (please don't look at the commit history 😅).
+In the end - by running Nixpacks and playing around in the docker image it made locally, I figured out that in order to run [YOLOv8 by ultalytics](https://github.com/ultralytics/ultralytics) I needed to install a libGL library and modify the default library path. Simple to type out now, but it took a while to figure out (please don't look at the commit history 😅).
 
 ``` toml
 [variables]
