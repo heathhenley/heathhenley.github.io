@@ -19,10 +19,10 @@ paginate = 3
   avatar = "/heathcropped.png"
   contact = "mailto:heath.j.henley@gmail.com"
   bio = "Just your average software developing, sonar data processing rockclimber with a taste for computational thermodynamics and cookies."
+  favicon = "/favicon.png"
 # Short subtitle/tagline. This is displayed in the header.
 #  subtitle = ""
 #  logo = "/path/to/logo"
-  favicon = "/favicon.ico"
 
 [[menu.main]]
     name = "Blog"
