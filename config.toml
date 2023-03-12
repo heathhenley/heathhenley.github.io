@@ -21,10 +21,8 @@ paginate = 3
   bio = "Just your average software developing, sonar data processing rockclimber with a taste for computational thermodynamics and cookies."
 # Short subtitle/tagline. This is displayed in the header.
 #  subtitle = ""
-  # Logo image. This is displayed ogp image.
 #  logo = "/path/to/logo"
-#  favicon = "/path/to/favicon"
-#  disqusShortname = "therealheath"
+  favicon = "/favicon.ico"
 
 [[menu.main]]
     name = "Blog"
