@@ -1,12 +1,12 @@
 ---
 title: "YOLO-ing All the Traffic Cams"
 date: 2023-03-11T15:40:04-05:00
-draft: true
+draft: false
 tags: ["python3", "python", "project", "react"]
 keywords: ["fastapi", "yolo", "leafletjs", "react", "object detection",
 "deep learning"]
 ---
-**TL;DR** - Here's a list labelled [traffic cam](https://heathhenley.github.io/RhodyCarCounter) images from the RI DOT website. I used YOLO (You Only Look Once) to detect objects in the images and [FastAPI](https://fastapi.tiangolo.com/) to serve the results to a React app. The app uses LeafletJS to display the images and the results. The backend is hosted on [Railway](https://railway.app/) and the front end on Github Pages. The code is available on [GitHub](https://github.com/heathhenley/RhodyCarCounter).
+**TL;DR** - Here's a web app to list labelled [traffic cam](https://heathhenley.github.io/RhodyCarCounter) images from the RI DOT website. I used YOLO (You Only Look Once) to detect objects (vehicles) in the images and [FastAPI](https://fastapi.tiangolo.com/) to serve the results to a React app. The app uses [LeafletJS](https://leafletjs.com/) to display the images and the results. The backend is hosted on [Railway](https://railway.app/) and the front end on Github Pages. The code is available on [GitHub](https://github.com/heathhenley/RhodyCarCounter).
 
 # Motivation
 I recently completed the deeplearning.ai [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera as a refresher. I have done some [work](https://ieeexplore.ieee.org/document/8604518) that involved training an end-to-end CNN model for semantic segmentation on 3D sonar data, but I had not worked with object detection or NLP, so I took the course. Plus I was pumped that it was updated to use tensorflow and Python. Not to mention everything is developing super quickly in that field, so there were a bunch of new things to learn and conventions that had been updated based on new best practices. It's also great to be able to take advantage of transfer learning, and use a model architecture that is well established - so much easier to get going than building your own from scratch based on a similar approach in a paper (which is what I did for the 3D sonar project using a model for 3D MRI data segmentation).
@@ -29,19 +29,19 @@ And here's an example where it did not do so well:
 
 ![Bad Job!](/car_counting/examplebad.jpg)
 
-It's still great that it worked at all given it was trained on dash cam data. It definitely needed to be fine tuned on some real traffic cam data, and that was the plan. But while searching around the internet, I found some great open source models ([YOLOv8 by ultalytics](https://github.com/ultralytics/ultralytics)) that seemed a lost better than the set up I was using, so I swapped it out.
+It's still great that it worked at all given it was trained on dash cam data. It definitely needed to be fine tuned on some real traffic cam data, and that was the plan. But while searching around the internet, I found some great open source models ([YOLOv8 by ultalytics](https://github.com/ultralytics/ultralytics)) that seemed a lot better than the set up I was using, so I swapped it out.
 
 There is a public dataset developed in the writing of [this paper](https://proceedings.neurips.cc/paper/2019/file/ee389847678a3a9d1ce9e4ca69200d06-Paper.pdf) constisting of a bunch of labeled (vehicles only) traffic cam images. That's perfect for this application - so I used a subset of that data from Kaggle to train the model for about 13 more epochs (a couple hours). The results were much better!
 
 The model does a pretty good job detecting vehicles, it detects way more vehicles in the frame than the previous version - and it still has not been fine tuned on data from the specific traffic cams I'm using. So that's on the next step list of course!
 
-To deploy the model I set up a service on [railway](https://railway.app/) to run through the traffic cam images, detect vehicles, and push the results (images --> S3, vehicle counts --> Postgres). It runs every 5 minutes at the moment, but that might be adjusted. The camera streams from RI DOT update about once a minute, but I don't want to store too much data.
+To deploy the model I set up a service on [railway](https://railway.app/) to run through the traffic cam images, detect vehicles, and push the results (images go to an S3 bucket, vehicle counts go in a Postgres DB). It runs every 5 minutes at the moment, but that might be adjusted. The camera streams from RI DOT update about once a minute, but I don't want to accumulate / store too much data.
 
 # Camera Location Data
-This part was a grind, no way around that. I could not find any listing of the actual locations of the cameras, in terms of latitude and longitude. They are only labelled in the DOT data with approximate locations (eg I-95 at Branch Ave, etc). I really wanted to drop them on a map (using [Leaflet.js](https://leafletjs.com/)) - so I just sat on the couch with the TV on the background and plugged away at estimating their locations. I just roughly compared the camera feed to Google StreetView in the area described by the description. They aren't perfect, but it's better than "Camera at I-95 and Branch Ave" - especially for showing on a map view! (or doing any kind of geospatial analysis...)
+This part was a grind, no way around that. I could not find any listing of the actual locations of the cameras in terms of latitude and longitude. They are only labelled in the DOT data with approximate locations (eg I-95 at Branch Ave, etc). I really wanted to drop them on a map (using [Leaflet.js](https://leafletjs.com/)) - so I just sat on the couch with the TV on the background and plugged away at estimating their locations. I just roughly compared the camera feed to Google StreetView in the area described by the description. They aren't perfect, but it's better than "Camera at I-95 and Branch Ave" - especially for showing on a map view! (or doing any kind of geospatial analysis...)
 
 # Lessons Learned
-This is a list of the things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgotten - and there's definitely a lot more to come as I continue to work on this project.
+This is a list of some small things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgotten - and there's definitely a lot more to come as I continue to work on this project.
 
 ## CORS setup for FastAPI
 I had to set up CORS for the API server to allow my React app to make requests to it. I used the [FastAPI CORS middleware](https://fastapi.tiangolo.com/tutorial/cors/). This was a bit tricky for me at first, I was pretty bummed when I first started trying to hit the REST API from the frontend and couldn't get it working.
@@ -131,6 +131,8 @@ const router = createHashRouter(
 ```
 
 # Plans for Improvement
-You can see my [idea list / backlog / graveyard 🪦](https://github.com/heathhenley/RhodyCarCounter/issues/1) - I have a lot of random ideas that would be fun to implement. Some of them are just things I should fix 😬- eg things I hacked together to get things working, that I now understand much better; other things are just things I want to try out 🤓.
+You can see my [plans / backlog / idea graveyard 🪦](https://github.com/heathhenley/RhodyCarCounter/issues/1) - I have a lot of random ideas that would be fun to implement. Some of them are just things I should really fix 😬- eg things I hacked together to get things working, that I now understand much better; other things are just things I want to try out 🤓.
 
-I'm not sure how much time I'll have to work on this, but I'll try to keep it updated! If you have suggestions or would like to help, open an issue on the repo or send me and email.
+I'm not sure how much time I'll have to work on this, but I'm planning to try to keep it updated!
+
+If you have suggestions or would like to help, open an issue on the repo or send me and email.
