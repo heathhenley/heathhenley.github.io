@@ -10,9 +10,9 @@ keywords: ["random", "google docs", "google", "image", "download"]
 # The deets
 Here are two simple ways to get an image out of a Google Doc, at least until Google (maybe inevitably?) adds a “right click-> save image as” feature. 
 
-The first way is pretty straightforward, download the Google Doc containing the image files you would like to extract as a web page (File → Download → Web page (.html, zipped)). The image files will be contained in the downloaded .zip file. Extract the zip and the images will be in an “images” directory. 
+The first way is pretty straightforward, download the Google Doc containing the image files you would like to extract as a web page (File → Download → Web page (.html, zipped)). The image files will be contained in the downloaded .zip file. Extract the zip and the images will be in an “images” directory.
 
-The second way to grab the image is to open developer tools in your browser of choice, and navigate to the “Network” tab. We’re going to watch for the browser to request the image, and then we can use that link to download the image directly. 
+The second way to grab the image is to open developer tools in your browser of choice (Chrome and Chromium based browsers: `CTRL + SHIFT + I`), and navigate to the “Network” tab. We’re going to watch for the browser to request the image, and then we can use that link to download the image directly.
 
 ![Network Tab in Dev Tools](/gdoc/gdoc_1.png)
 
