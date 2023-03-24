@@ -43,10 +43,10 @@ This part was a grind, no way around that. I could not find any listing of the a
 # Lessons Learned
 This is a list of some small things I remember getting stuck on, or that I learned while working on this project. I'm sure there's more that I've forgotten - and there's definitely a lot more to come as I continue to work on this project.
 
-## CORS setup for FastAPI
-I had to set up CORS for the API server to allow my React app to make requests to it. I used the [FastAPI CORS middleware](https://fastapi.tiangolo.com/tutorial/cors/). This was a bit tricky for me at first, I was pretty bummed when I first started trying to hit the REST API from the frontend and couldn't get it working.
+## Cross-Origin Resource Sharing (CORS) setup for FastAPI
+I had to set up CORS for the API server to allow my React app to make requests to it. I used the [FastAPI CORS middleware](https://fastapi.tiangolo.com/tutorial/cors/). This was a bit tricky for me at first, I was pretty bummed when I first started trying to hit the REST API from the frontend and couldn't get it working due to a bunch of `Cross-Origin Request Blocked` errors.
 
-For context, I'm a desktop developer C++ and Python - so I haven't had to deal with CORS before. It was pretty simple to fix by following the docs and pulling in that middleware:
+For context, I'm a desktop developer (mostly C++ and Python) - so I haven't had to deal with CORS before. It was pretty simple to fix by following the docs and pulling in that middleware:
 
 ``` python
 # This is the extra config needed to allow GET requests from anyone
@@ -59,7 +59,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 ```
-
 Basically you need to configure your server to allow specific origins (your client) to make requests to it for each http method (GET, POST, etc). The REST API server is currently set up to allow all origins to make GET requests only.
 
 ## Dropping Images into S3
@@ -93,6 +92,10 @@ In the end - by running Nixpacks and playing around in the docker image it made 
 ```
 ### Drop Git LFS to Railway working
 The previous model I was using (YOLOv2) was a lot larger - so I originally had set up Git LFS to store the model weights. I found out that when railway cloned my repo, it didn't pull down the LFS files. This was a problem for running worker! Eg: we're gonna need those weights, sir. This also took me while to figure out, because I couldn't get it to replicate locally. The new YOLOv8 model is much smaller, so I just stored it in the repo without using LFS. I'm sure I could have run a build command to pull down the LFS files, but I didn't want to spend more time on it and the weight file is only like 5 MB.
+
+### More Monorepo woes on Railway
+
+I wanted to keep my monorepo structure because it's nice and simple for a small project like this. I also have the YOLO worker and the API Server set up to use the database schema. I could have avoided some of this trouble by having the worker `GET` the cam list and `POST` new data to the API Server instead of creating a direct DB connection, and I'll do that in the future. But for now, I wanted to keep it simple. That meant two railway services from the same repo, that both use the same database schema. So there are two services on Railway that both launch from the `backend` directory (the API server and the worker). The cool thing that you can do is tell Railway (or it was really nixpacks here) to build your app using a specific config file via an environment variable (eg `NIXPACKS_CONFIG_FILE`) in the service settings. So there are now two .toml files in the `backend` directory - `api_nixpacks_config.toml.toml` and `worker_nixpacks_config.toml.toml`, to launch the API Server and the Worker respectively. This is super convenient, it did take a while to figure out how to get it working though. I finally figured out that I could use nixpacks to create the build plan (see `nixpacks plan`) it would have used by default for the python services, and just modify the plan slightly for each service. ✅
 
 ## React Router on Gihub Pages
 I set up the front end as a React.js single page app. I've been wanting to learn React for a while, so this was a good excuse to do so. I used the latest version of [React Router](https://reactrouter.com/en/main) to handle routing for the SPA, but when I got started I didn't realize that hosting on Github doesn't give the option to redirect all endpoints to the root path.
@@ -131,8 +134,6 @@ const router = createHashRouter(
 ```
 
 # Plans for Improvement
-You can see my [plans / backlog / idea graveyard 🪦](https://github.com/heathhenley/RhodyCarCounter/issues/1) - I have a lot of random ideas that would be fun to implement. Some of them are just things I should really fix 😬- eg things I hacked together to get things working, that I now understand much better; other things are just things I want to try out 🤓.
-
-I'm not sure how much time I'll have to work on this, but I'm planning to try to keep it updated!
+You can see my [plans / backlog / idea graveyard 🪦](https://github.com/heathhenley/RhodyCarCounter/issues/1) - I have a lot of random ideas that would be fun to implement. Some of them are just things I should really fix 😬- eg things I hacked together to get things working, that I now understand much better; other things are just things I want to try out 🤓. I want to get docker/docker-compose setup to spin up a dev environment with a database, some fake data and a worker to play around with. I will update with the learnings from that and whatever else I try!
 
 If you have suggestions or would like to help, open an issue on the repo or send me and email.
