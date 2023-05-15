@@ -23,4 +23,4 @@ for Real-time Navigation and Bathymetric Survey](https://static1.squarespace.com
 - [Density and phase equilibrium for ice and structure I hydrates using the Gibbs–Helmholtz constrained equation of state](https://www.sciencedirect.com/science/article/abs/pii/S0263876214002688)
 - [Fully compositional and thermal reservoir simulation](https://www.sciencedirect.com/science/article/abs/pii/S0098135413003864)
 
-Full list available on [Google Scholar](https://scholar.google.com/citations?user=qreLbyMAAAAJ).
+Full list available on [Google Scholar](https://scholar.google.com/citations?user=00NAEc8AAAAJ).
