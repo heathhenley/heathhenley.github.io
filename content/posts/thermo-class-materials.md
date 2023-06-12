@@ -9,8 +9,8 @@ keywords: ["chemical engineering", "thermodynamics", "fluid phase equilibria",
 ---
 
 In the Fall of 2017, while finishing my PhD I taught ChE thermodynamics to a
-class of graduate and advanced undergraduate students at University of Rhode
-Island. I recently discovere of of my old course materials and decided to post
+class of graduate and advanced undergraduate students at the University of Rhode
+Island. I recently discovered some of my old course materials and decided to post
 them publically. It was a project based class, so after the first few lectures, 
 most of the class meetings were spent working on problems and projects.
 
