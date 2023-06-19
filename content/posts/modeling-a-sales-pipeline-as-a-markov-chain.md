@@ -12,7 +12,7 @@ can help you understand the probability of eventually closing a deal based on
 lets you estimate the future value of your current pipeline based on your own past data.
 
 ## What is a Markov Chain?
-It is a mathematical model used to describe how probabilistic systems or processes evolve over time. They have been used to model all kinds of processes in fields ranging from physics and chemistry, to economics and finance. They can even be used to model games of chance (Snakes and Ladders, etc). Here, we look at a sales pipeline as a Markov Process.
+It is a mathematical model used to describe how probabilistic systems or processes evolve over time. They have been used to model all kinds of processes in fields ranging from physics and chemistry, to economics and finance. They can even be used to model games of chance (Snakes and Ladders, etc). Here, we look at a sales pipeline as a discrete [Markov Chain](https://en.wikipedia.org/wiki/Markov_chain).
 
 The main idea is that you have a number of “states” - each representing a specific situation. In the figure below, there are three states, A, B, and C. Everytime we advance a “timestep”, there is a certain probability to transition from one state to another state. For example, if you start in state A in the figure below, there is a 100% probability of moving to state B. However, starting in state B, there is a 50% probability of going to state A or C.
 
