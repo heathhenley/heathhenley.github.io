@@ -5,6 +5,8 @@ draft: false
 tags: ["python", "business development", "sales", "data modeling"]
 categories: ["sales", "business development", "data modeling"]
 keywords: ["python", "salesforce", "sales", "business development", "data modeling", "markov chain", "probability of opportunity close", "sales pipeline"]
+metathumbnail: "/sf_markov_chain/markov_chain.png"
+description: "Using a Markov Chain to model your historical sales pipeline data can help you understand the probability of eventually closing a deal based on (1) the stage the opportunity is currently in and (2) your historical data."
 ---
 TL;DR - Using a Markov Chain to model your historical sales pipeline data
 can help you understand the probability of eventually closing a deal based on
