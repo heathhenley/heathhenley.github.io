@@ -13,6 +13,10 @@ description: "All the places I visited in Mallora and my opinionated reviews of 
 These are places visited over two short trips, one in September of 2022 and one
 in April/May of 2023. If I go again, I'll update this list!
 
+# TL;DR
+Mallorca is great! My favorite place is Sineu because it's small and quiet but still has a couple restaurants, bars, a brewery, wineshop and beautiful old town. My favorite hike was the [Deia loop](https://www.alltrails.com/explore/trail/spain/mallorca/deia-bens-d-avall-llucalcari-via-gr-221?u=i) and stopping at Cala Deia for beach time.
+Really liked [Bar Abaco](https://bar-abaco.es/inicio/) in Palma for cocktails but mostly because of the cool garden courtyard and [Merlet](https://merlet-restaurante-de-tapas-alcudia.negocio.site/) in Alcudia for a fancier than expected lunch. Also, the Sineu night market on Fridays in September is a must!
+
 ## Where we stayed
 The first trip we stayed in Lloret de Vistalegre at an "agroturismo" hotel
 called [Sa Rota](https://sa-rota.com/en/home-2/), which was a hotel on an old
@@ -70,3 +74,6 @@ Another hike! Parked in Soller (need to get there early as the lots fill up) and
 
 ![picasso plates](/mallorca/picasso_plates.jpg)
 There's probably a ton more to do in Soller, but we didn't spend much time there that day. Let me know we missed for next time!
+
+# That's it! 
+That's all we got up to in Mallorca. If you have any questions, or suggestions for what should do next time, let me know!
