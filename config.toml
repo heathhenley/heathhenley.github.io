@@ -54,5 +54,5 @@ paginate = 5
 
 [[menu.main]]
     name = "Photography"
-    url = "https://hhenley.darkroom.tech/"
+    url = "https://gobeoutside.darkroom.com/"
     weight = 7
