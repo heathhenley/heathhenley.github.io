@@ -7,7 +7,7 @@ running with the GDAL extension and postgreSQL/postGIS backend. These notes
 are what it took to get it deployed on GCP Cloud Run, and to use Github Actions
 to run automated tests on push or pull request. Pretty straight forward, but I
 had to iterate a few times to get it right so hopefully this helps someone
-else.</em></p><h1 id=notes-from-test-and-deploy-django-with-postgis>Notes from Test and Deploy Django with PostGIS</h1><p>Running a Django app in a Docker container is pretty straightforward, but some
+else.</em></p><h1 id=notes-testing-and-deploying-django-with-postgis>Notes: Testing and Deploying Django with PostGIS</h1><p>Running a Django app in a Docker container is pretty straightforward, but some
 minor extra configuration is required to install the dependencies when using
 a Postgres backend with the PostGIS extension to support storing GIS data. I
 recently set up a Django REST API server on Google Cloud Platform&rsquo;s Cloud Run
