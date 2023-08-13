@@ -1,0 +1,22 @@
+name: Update Redis Cache for FastAPI example
+
+on:
+  push:
+    branches:
+    - gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        repository: heathhenley/ChatGPTBot
+    - name: Run a one-line script
+      env:
+        REDIS_URL: ${{ secrets.REDIS_URL }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run:
+        |
+        python -m pip install -r examples/fast_api/requirements.txt
+        python ./chatbot/redis_utils/add_to_redis.py
