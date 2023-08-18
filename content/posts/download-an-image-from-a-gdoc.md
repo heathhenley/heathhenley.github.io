@@ -4,6 +4,7 @@ date: 2023-03-19T23:20:05-04:00
 draft: false
 tags: ["notes", "google docs", "random", "tips"]
 keywords: ["random", "google docs", "google", "image", "download"]
+description: "This is a short post about how to download an image from a Google Doc - which should be simpler than it is IMO."
 ---
 *TL;DR: Either "File --> Download" the Google Doc as a web page, or open developer tools and watch for the browser to request the image from Google's file servers.*
 

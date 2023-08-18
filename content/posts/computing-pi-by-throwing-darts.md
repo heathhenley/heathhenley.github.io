@@ -5,6 +5,7 @@ draft: false
 tags: ["python3", "python", "random sampling", "pi day", "matplotlib"]
 keywords: ["python3", "python", "random sampling", "matplotlib"]
 mathjax: true
+description: "A fun example of using random sampling to compute pi in python, plotting with matplotlib. All the code is available on GitHub and in a Jupyter notebook."
 ---
 In celebration of pi-day, let's look at a method of computing pi using
 random numbers that is often presented in probability, statistics or other classes, as

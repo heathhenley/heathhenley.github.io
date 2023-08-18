@@ -5,6 +5,7 @@ draft: false
 tags: ["python3", "python", "project", "react"]
 keywords: ["fastapi", "yolo", "leafletjs", "react", "object detection",
 "deep learning"]
+description: "Run YOLO object detection on Rhode Island DOT traffic cam images, store and display the results in a web app. A heck of a lot of work to learn that there is more traffic at rush hour."
 ---
 **TL;DR** - Here's a [web app](https://heathhenley.github.io/RhodyCarCounter) to list labelled traffic cam images from the [RI DOT website](https://www.dot.ri.gov/travel/index.php). I used YOLO (You Only Look Once) to detect objects (vehicles) in the images and [FastAPI](https://fastapi.tiangolo.com/) to serve the results to a React app. The displays the cam images and results and uses [LeafletJS](https://leafletjs.com/) to display the cameras on a map. The backend is hosted on [Railway](https://railway.app/) and the front end on Github Pages. All the code is available on [GitHub](https://github.com/heathhenley/RhodyCarCounter).
 

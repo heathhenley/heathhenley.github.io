@@ -5,7 +5,7 @@ draft: false
 tags: ["django", "python", "python3"]
 categories: ["software"]
 keywords: ["django", "python", "python3", "postgis", "cloud run", "gh actions", "github actions", "github", "gdal", "geodjango", "postgres"]
-description: "This a short post about the configuration steps I took to get django running with gdal extension and postgres/postgis on cloud run and github actions (for testing). Pretty straight forward, but I had to iteratae a few times to get it right so hopefully this helps someone else."
+description: "This is a short post about the configuration steps I took to get django running with gdal extension and postgres/postgis on cloud run and github actions (for testing). Pretty straight forward, but I had to iteratae a few times to get it right so hopefully this helps someone else."
 ---
 *TL;DR: this a short post about the configuration steps I took to get django
 running with the GDAL extension and postgreSQL/postGIS backend. These notes

@@ -6,6 +6,7 @@ tags: ["chemical engineering", "thermodynamics", "course materials"]
 categories: ["teaching", "thermodynamics"]
 keywords: ["chemical engineering", "thermodynamics", "fluid phase equilibria",
 "equations of state", "phase behavior", "CHE513", "URI"]
+description: "Materials from University of Rhode Island ChE 513 - Thermodynamics from the falls of 2016 and 2017, mostly based on notes from Professor Angelo Lucia, and the textbook by Prausnitz, et al."
 ---
 
 In the Fall of 2017, while finishing my PhD I taught ChE thermodynamics to a

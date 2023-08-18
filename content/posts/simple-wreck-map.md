@@ -4,6 +4,7 @@ date: 2022-12-22T15:28:45-05:00
 draft: false
 tags: ["python3", "python", "django", "project", "leafletjs"]
 keywords: ["shipwrecks", "new england shipwrecks", "map", "sonar"]
+description: "A map of the shipwrecks in Narragansett Bay, Rhode Island, and really the greater New England area in general. The data is aggregated from two sources, and plotted on an interactive map using Leaflet.js."
 ---
 **TL;DR** - Here's a list of shipwrecks plotted on an [interactive map](https://www.neshipwrecksmap.com), all over the Narragansett Bay and greater New England area.
 

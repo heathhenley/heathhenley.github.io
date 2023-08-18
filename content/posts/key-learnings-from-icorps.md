@@ -4,6 +4,7 @@ date: 2022-05-29T13:00:28-04:00
 draft: false
 tags: ["notes", "business development"]
 keywords: ["i-corps", "nsf", "innovation corps", "customer discovery"]
+description: "My experience with the NSF I-CORPS program and the key learnings I took away from it, even after years since participating in the program."
 ---
 
 *TL;DR: Listen to customers, test your assumptions, follow the data, repeat*
