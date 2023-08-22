@@ -2,6 +2,7 @@
 title: "Refactoring my Simple Python Chatbot Module"
 date: 2023-08-17T23:40:00-04:00
 draft: false
+metathumbnail: "/chatbot/chatbot_avatar.jpg"
 description: "I wrote a chatbot in python to impersonate one of my friends on Slack. It was a fun project, but originally I set it up a pretty hacky way. Recently, I decided to refactor it to make it more maintainable and easier to add new features. There's no real reason to use this module instead of LangChain, but it's a simple example that I hope will help somewhere learn."
 tags: ["python", "software"]
 categories: ["software"]
