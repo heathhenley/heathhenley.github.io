@@ -1,7 +1,7 @@
 ---
 title: "Update Github Profile Readme Dynamically using a Github Workflow"
 date: 2023-08-29T20:44:26-04:00
-draft: true
+draft: false
 metathumbnail: "/readme_action/github-mark.png"
 description: "Github introduced the option to add profile readme, which is a
 special repository that is used to display a readme on your profile page. This
