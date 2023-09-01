@@ -30,7 +30,7 @@ set up railway to deploy from the new branch. In my case I called the new branch
 </span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Push to deploy branch</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>          git checkout -b deploy
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>          git rm --cached api/ChatGPTBot
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          git rm --cached api/ChatGPTBot # here api/ChatGPTBot is a submodule
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>          git rm .gitmodules
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>          rm -rf api/ChatGPTBot/.git
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>          git add api/ChatGPTBot
