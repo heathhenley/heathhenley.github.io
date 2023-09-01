@@ -52,7 +52,7 @@ jobs:
       - name: Push to deploy branch
         run: |
           git checkout -b deploy
-          git rm --cached api/ChatGPTBot
+          git rm --cached api/ChatGPTBot # here api/ChatGPTBot is a submodule
           git rm .gitmodules
           rm -rf api/ChatGPTBot/.git
           git add api/ChatGPTBot
