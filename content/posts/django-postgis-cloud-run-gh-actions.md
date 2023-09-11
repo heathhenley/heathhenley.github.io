@@ -14,7 +14,6 @@ to run automated tests on push or pull request. Pretty straight forward, but I
 had to iterate a few times to get it right so hopefully this helps someone
 else.*
 
-# Notes: Testing and Deploying Django (w/ GIS extensions)
 Running a Django app in a Docker container is pretty straightforward, but some
 minor extra configuration is required to install the dependencies when using
 a Postgres backend with the PostGIS extension to support storing GIS data. I 
