@@ -109,7 +109,7 @@ If we run it 1000 times, we get the following stats for the overall probability 
 | --- | --- | --- | --- |
 | 0.309 | 0.023 | 0.378 | 0.235 |
 
-For comparison, in the Markov Chain post, we used just the average transition probabilities and got the following that 0.31 of the opportunities would end up in "Closed Won". So we can see that using Monte Carlo Simulation, we get a similar result on average, but there are some runs where we get a much higher or lower probability of ending in "Closed Won" (0.24 or 0.38, repsectively).
+For comparison, in the Markov Chain post, we used just the average transition probabilities and got the following that 0.31 of the opportunities would end up in "Closed Won". So we can see that using Monte Carlo Simulation, we get a similar result on average, but there are some runs where we get a much higher or lower probability of ending in "Closed Won" (0.38 or 0.24, respectively).
 
 We can even create a histogram of the results to see the approximate frequency of each value of "Closed Won":
 
