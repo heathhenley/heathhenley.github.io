@@ -45,7 +45,7 @@ You can find a Gist with the Python 3 script for this [here](https://gist.github
 
 It’s a bit "rough" - but the idea is that it’s a script to "roll some
 dice" randomly and select the shut the box moves based on a predefined, general
-strategy. I was excited to test my hypothosized best strategy of "always taking
+strategy. I was excited to test my hypothesized best strategy of "always taking
 the option with the largest number". But of course, you can see that I also
 included a completely "random" strategy, the strategy of taking down the most
 tiles possible, and finally strategy of taking the fewest possible tiles. The
