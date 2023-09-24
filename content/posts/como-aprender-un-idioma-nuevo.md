@@ -4,6 +4,7 @@ date: 2021-08-18T17:23:07-04:00
 draft: false
 tags: ["español", "spanish", "writing practice", "ejercicios de escribir"]
 categories: ["random"]
+description: "Consejos sobre cómo aprender un idioma nuevo, en mi caso, el español."
 ---
 Si en tu vida no has aprendido un idioma después de tu primer idioma, puede ser
 difícil empezar. Estos son mis consejos sobre el tema. Si sigues algunos de mis

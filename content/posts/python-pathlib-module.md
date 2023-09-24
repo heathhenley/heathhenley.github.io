@@ -5,6 +5,7 @@ draft: false
 tags: ["python3"]
 categories: ["software development"]
 keywords: ["python", "python3", "pathlib", "os"]
+description: "Using Python's pathlib module instead of os.path to manipulate file system paths can make your code more readable and easier to maintain, with a couple examples of how to use it."
 ---
 It’s been about a year or so since we officially upgraded all of our tooling at
 my job [at FarSounder](www.farsounder.com) from Python 2.7 to Python 3 (3.6 at

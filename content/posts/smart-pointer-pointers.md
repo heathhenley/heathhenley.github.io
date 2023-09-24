@@ -5,6 +5,7 @@ draft: false
 tags: ["cpp", "c++", "programming"]
 categories: ["software development"]
 keywords: ["smart pointers", "pointers", "memory management", "c++", "cpp"]
+description: "Notes on how to use smart pointers which smart pointers in C++ and when to use them (plot twist: answer is always)."
 ---
 *TL;DR - Switch raw heap pointers to `unique_ptr`s when possible. If your heap
 allocated resource needs multiple owners, use a `shared_ptr` instead.*

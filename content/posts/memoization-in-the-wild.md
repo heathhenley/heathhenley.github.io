@@ -4,6 +4,7 @@ date: 2021-08-02T17:32:43-04:00
 draft: false
 tags: ["algorithms", "computer science", "python3", "python", "optimization"]
 keywords: ["memoization", "caching", "optimization", "algorithms"]
+description: "Using caching to optimize a function that transforms geographic coordinates into screen coordinates in a real world application."
 ---
 
 ## Overview
