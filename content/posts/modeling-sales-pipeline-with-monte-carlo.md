@@ -10,15 +10,15 @@ categories: ["sales", "business development", "data modeling"]
 keywords: ["python", "salesforce", "sales", "business development", "data modeling", "markov chain", "probability of opportunity close", "sales pipeline"]
 ---
 
-TL;DR - Monte Carlo Simulation can be used to model your historical sales pipeline data to account for som of the randomness and uncertainty in the sales process. In this post, Monte Carlo Simluation is introduced and then applied to
+TL;DR - Monte Carlo Simulation can be used to model your historical sales pipeline data to account for some of the randomness and uncertainty in the sales process. In this post, Monte Carlo Simulation is introduced and then applied to
 the same case introduced in a [previous post](/posts/modeling-a-sales-pipeline-as-a-markov-chain/).
 
 ## What is Monte Carlo Simulation?
 Monte Carlo Simulation is used to simulate a process using random sampling. It is a very general technique that can be used to model all kinds of processes in fields ranging from physics and chemistry, to economics and finance. In previous
-posts, I used Monte Carlo Simulation to [Play 'Shut the Box'](/posts/shut-the-box/) and to [esimate the value of pi](/posts/computing-pi-by-throwing-darts/). Here, I use it to approach the sales pipeline
-model introduced in a [previous post](/posts/modeling-a-sales-pipeline-as-a-markov-chain/) differently. Basically, that approach used a Markov Chain to model the sales pipeline. The probablities used in the Markov Chain were computed from the data, and understood to represent
+posts, I used Monte Carlo Simulation to [Play 'Shut the Box'](/posts/shut-the-box/) and to [estimate the value of pi](/posts/computing-pi-by-throwing-darts/). Here, I use it to approach the sales pipeline
+model introduced in a [previous post](/posts/modeling-a-sales-pipeline-as-a-markov-chain/) differently. Basically, that approach used a Markov Chain to model the sales pipeline. The probabilities used in the Markov Chain were computed from the data, and understood to represent
 the overall average probability of moving from one stage to another, or at least the best we could do to estimate that probability. Even if we were right
-about those probabilities on average, a lot of different outcomes are possible for a given starting distribution of opportunties.
+about those probabilities on average, a lot of different outcomes are possible for a given starting distribution of opportunities.
 
 ## Coin Example
 As an example, the probability of flipping heads on a fair coin is 0.5, but if you flip a coin 10 times, you might get 7 heads and 3 tails, or 5 heads and 5 tails, or 10 heads and 0 tails, etc. Obviously some of those outcomes are more likely than others,
@@ -51,7 +51,7 @@ these different possible scenarios and evaluate their relative probabilities. Of
 ## Monte Carlo Simulation of Investment Returns
 
 As another example, let's say you have a portfolio of investments that you expect to return 8% on average, but you know that the actual returns will vary from year to year. Of course you can use the annuity formula and compute the
-what you expect the future value to be based on the average (8%) return, but what happens if we run Monte Carlo Simulations to see what's possbile as the rate fluctuates?
+what you expect the future value to be based on the average (8%) return, but what happens if we run Monte Carlo Simulations to see what's possible as the rate fluctuates?
 
 Here's that the normal case looks like (starting with $0, contributing 5k per year, 8% interest, and 30 years):
 
@@ -102,7 +102,7 @@ I encourage you play with the standard deviation and rate (try running in this
 Using the simulation approach, we can look at the range of possibilities based on the uncertainty in the rate of return we expect to earn from year to year. In our simple sales pipeline case, we can use Monte Carlo to explore the different possible outcomes of the sales pipeline assuming there is some uncertainty in the sales process, or in our estimated transition probabilities. We already know what the we get using the average transition probabilities - but let's see what we get using Monte Carlo!
 
 ## Monte Carlo Simulation of the Sales Pipeline
-In the previous post, we used a Markov Chain to model the sales pipeline. The probablities used in the Markov Chain were computed from the data, and understood to represent probablities of an opportunity in one stage to move to
+In the previous post, we used a Markov Chain to model the sales pipeline. The probabilities used in the Markov Chain were computed from the data, and understood to represent probabilities of an opportunity in one stage to move to
 another stage. We just need to make some updates to the script we used in the previous post to use Monte Carlo Simulation instead of updating the distribution using the transition matrix. Here's the [updated script](https://gist.github.com/heathhenley/7cc46f176c422a3c4817e958b9ab5b83):
 
 This is the main function that runs the simulation (the full context is in the gist linked above)
@@ -169,6 +169,6 @@ We can even create a histogram of the results to see the approximate frequency o
 Using this approach, bounds can be attached the "value" of the pipeline based and other scenarios can be explored in addition to the average case.
 
 ## Conclusion
-To go even further, it would be possible test the sensitivity to the estimates of the transiton matrix probabilities by simply perturbing them randomly by up a fixed amount and observing the changes to the results. Further the model could be updated as real world sales data is collected to improve the estimates of the transition matrix probabilities. Maybe we'll tackle that next...
+To go even further, it would be possible test the sensitivity to the estimates of the transition matrix probabilities by simply perturbing them randomly by up a fixed amount and observing the changes to the results. Further the model could be updated as real world sales data is collected to improve the estimates of the transition matrix probabilities. Maybe we'll tackle that next...
 
 If you have any questions or comments, please reach out!
