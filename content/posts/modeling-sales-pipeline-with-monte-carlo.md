@@ -48,7 +48,58 @@ In some cases, you'll see that the maximum number of heads was 10, the minimum w
 The goal of applying Monte Carlo simulation to a process is often to explore
 these different possible scenarios and evaluate their relative probabilities. Of course, this can be computed in the coin example, but is often hard or impossible to compute in other cases.
 
-In our simple sales pipeline case, we can use Monte Carlo to explore the different possible outcomes of the sales pipeline based on a starting opportunity distribution and the average transition probabilities based on historical data. We already know what the we get using the average transition probabilities - but let's see what we get using Monte Carlo!
+## Monte Carlo Simulation of Investment Returns
+
+As another example, let's say you have a portfolio of investments that you expect to return 8% on average, but you know that the actual returns will vary from year to year. Of course you can use the annuity formula and compute the
+what you expect the future value to be based on the average (8%) return, but what happens if we run Monte Carlo Simulations to see what's possbile as the rate fluctuates?
+
+Here's that the normal case looks like (starting with $0, contributing 5k per year, 8% interest, and 30 years):
+
+![Investment Value](/sf_mc/normal_future_value_calc.png)
+
+So using these assumptions, we expect to have about $566416.06 in 30 years. But what if we run Monte Carlo Simulations to see what's possible as the rate fluctuates every year?
+
+All the [Python code](https://gist.github.com/heathhenley/d207ca2e83a7a39935f3e19435339d1a) to do the work is available at this Gist, but here's the main function that runs the simulation:
+
+```python
+
+def run_mc_simulation(
+    starting_value=starting_usd,
+    yearly_contribution=yearly_additions_usd,
+    average_rate=average_interest_rate,
+    std_dev_rate=std_dev_rate,
+    years=time_in_years):
+  stats = {}
+  accumulated_interest = 0.0
+  current_value = starting_value
+  for year in range(years):
+    rate = np.random.normal(average_rate, std_dev_rate)
+    interest_this_period = current_value * (rate / 100)
+    current_value += (yearly_contribution + interest_this_period)
+    accumulated_interest += interest_this_period
+    stats[year] = dict(
+        contributed=(year+1) * yearly_contribution,
+        interest=accumulated_interest,
+        rate=rate,
+        current_value=current_value)
+  return stats
+
+```
+
+You can see the results after we run 100 simulations. On average, we end with
+an amount pretty similar to what we expected.
+
+![investment value final results](/sf_mc/sims_final_values.png)
+
+But there is a lot of variation simulation to simulation - sometimes we end up with a lot more (~$1M), sometimes a lot less ($230k)... All
+based on our luck! Here's a histogram of the results:
+
+![Histogram of Monte Carlo Results](/sf_mc/investment_hist_100.png)
+
+I encourage you play with the standard deviation and rate (try running in this
+[Google Colaboratory Notebook](https://colab.research.google.com/gist/heathhenley/d207ca2e83a7a39935f3e19435339d1a/investmentmc.ipynb))
+
+Using the simulation approach, we can look at the range of possibilities based on the uncertainty in the rate of return we expect to earn from year to year. In our simple sales pipeline case, we can use Monte Carlo to explore the different possible outcomes of the sales pipeline assuming there is some uncertainty in the sales process, or in our estimated transition probabilities. We already know what the we get using the average transition probabilities - but let's see what we get using Monte Carlo!
 
 ## Monte Carlo Simulation of the Sales Pipeline
 In the previous post, we used a Markov Chain to model the sales pipeline. The probablities used in the Markov Chain were computed from the data, and understood to represent probablities of an opportunity in one stage to move to
