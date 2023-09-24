@@ -103,7 +103,7 @@ When `shared_ptr`s are passed to functions or methods, they behave differently
 depending on whether they are passed by value or reference. This is important to
 keep in mind! If passed by value, the copy constructor is called and the
 reference count is increased, so the method or function receiving the
-`shared_ptr` is now an ower also. If passed by reference, instead the reference
+`shared_ptr` is now an owner also. If passed by reference, instead the reference
 count is not incremented and the “callee” is not an owner. So in this case
 access to the underlying object is only available when the caller is in scope. 
 
