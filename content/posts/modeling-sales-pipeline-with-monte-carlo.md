@@ -3,7 +3,7 @@ title: "Modeling Sales Pipeline using Monte Carlo Simulation"
 date: 2023-09-23T12:44:58-04:00
 draft: false
 metathumbnail: "/sf_mc/hist.png"
-description: "Monte Carlo Simulation can be used to model your historical sales pipeline data to account for some of the randomness and uncertainty in the sales process. In this post, Monte Carlo Simuluation is introduced and then applied to
+description: "Monte Carlo Simulation can be used to model your historical sales pipeline data to account for some of the randomness and uncertainty in the sales process. In this post, Monte Carlo Simulation is introduced and then applied to
 the same case introduced in a [previous post](/posts/modeling-a-sales-pipeline-as-a-markov-chain/)."
 tags: ["python", "business development", "sales", "data modeling"]
 categories: ["sales", "business development", "data modeling"]
