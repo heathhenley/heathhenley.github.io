@@ -79,7 +79,7 @@ so our heap object gets cleaned up when the smart pointer goes out of scope.</p>
 depending on whether they are passed by value or reference. This is important to
 keep in mind! If passed by value, the copy constructor is called and the
 reference count is increased, so the method or function receiving the
-<code>shared_ptr</code> is now an ower also. If passed by reference, instead the reference
+<code>shared_ptr</code> is now an owner also. If passed by reference, instead the reference
 count is not incremented and the “callee” is not an owner. So in this case
 access to the underlying object is only available when the caller is in scope.</p><p>Summary In my experience, when updating or interacting with legacy code, the
 most common and straightforward switch is using <code>unique_ptr</code>s instead of raw
