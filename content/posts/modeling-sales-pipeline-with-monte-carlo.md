@@ -1,7 +1,7 @@
 ---
 title: "Modeling Sales Pipeline using Monte Carlo Simulation"
 date: 2023-09-23T12:44:58-04:00
-draft: true
+draft: false
 metathumbnail: "/sf_mc/hist.png"
 description: "Monte Carlo Simulation can be used to model your historical sales pipeline data to account for some of the randomness and uncertainty in the sales process. In this post, Monte Carlo Simluation is introduced and then applied to
 the same case introduced in a [previous post](/posts/modeling-a-sales-pipeline-as-a-markov-chain/)."
@@ -59,7 +59,7 @@ Here's that the normal case looks like (starting with $0, contributing 5k per ye
 
 So using these assumptions, we expect to have about $566416.06 in 30 years. But what if we run Monte Carlo Simulations to see what's possible as the rate fluctuates every year?
 
-All the [Python code](https://gist.github.com/heathhenley/d207ca2e83a7a39935f3e19435339d1a) to do the work is available at this Gist, but here's the main function that runs the simulation:
+Here's the link to the [Python code](https://gist.github.com/heathhenley/d207ca2e83a7a39935f3e19435339d1a) to do the work. And here's the main function that runs the simulation:
 
 ```python
 
@@ -169,6 +169,6 @@ We can even create a histogram of the results to see the approximate frequency o
 Using this approach, bounds can be attached the "value" of the pipeline based and other scenarios can be explored in addition to the average case.
 
 ## Conclusion
-To go even further, it would be possible test the sensitivity to the estimates of the transiton matrix probabilities by simply perturbing them randomly by up a fixed amount and observing the changes to the results. Further the model could be updated as real world sales data is collected to improve the estimates of the transition matrix probabilities. Maybe I'll do that in a future post!
+To go even further, it would be possible test the sensitivity to the estimates of the transiton matrix probabilities by simply perturbing them randomly by up a fixed amount and observing the changes to the results. Further the model could be updated as real world sales data is collected to improve the estimates of the transition matrix probabilities. Maybe we'll tackle that next...
 
 If you have any questions or comments, please reach out!
