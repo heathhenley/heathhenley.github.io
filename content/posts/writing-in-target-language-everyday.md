@@ -1,7 +1,7 @@
 ---
 title: "Writing in Target Language Everyday and Writescribir"
 date: 2023-10-12T08:00:26-04:00
-draft: true
+draft: false
 metathumbnail: "/writescribir/twitter-card.png"
 description: "I think that writing in your target language everyday is a great way to improve your writing skills! So much so that I'm working on an app to help with that. Check it out at writescribir.com."
 tags: ["language learning", "writescribir"]
