@@ -1,7 +1,7 @@
 ---
 title: "Highlight Text From Multiple User Selections in React"
 date: 2023-10-19T18:06:57-04:00
-draft: true
+draft: false
 metathumbnail: "/writescribir/highlights.png"
 description: "A simple React component that allows you to highlight text from multiple user selections."
 tags: ["react", "typescript", "javascript"]
