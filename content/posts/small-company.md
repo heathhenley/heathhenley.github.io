@@ -19,8 +19,7 @@ There are certainly some huge differences in how your day to day looks when you 
 
 # What’s my deal?
 I can’t really speak to working in a large company, at least for very long. Though I feel I can at least talk about what it’s like to work in a small company / in small research groups. For reference, my career so far consists of:
-- About 5 years as a grad student as part of a small lab (2-3 grad students, a few transient undergraduates semester to semester)
-- I got a PhD in Chem. Eng - but all of my research was computational / simulation based - so all software, albeit a different kind of software.
+- About 5 years as a grad student as part of a small lab (2-3 grad students, a few transient undergraduates semester to semester). I got a PhD in Chem. Eng - but all of my research was computational / simulation based - so all software, albeit a different kind of software.
 - An internship a Chevron - obviously a huge Megacorp, though the Business Unit that I worked in was pretty small and very focused (PVT modeling in the Rock and Fluids Characterization Unit).
 - About 7 years as a full time software engineer as part of a small company < 12 FT employees (FarSounder).
 
