@@ -8,7 +8,7 @@ theme = "pickles"
   custom_css = ["/css/custom.css"]
   # Social accounts. Link to these accounts are displayed in the header and
   # footer
-  instagram = "feel_the_heath"
+  instagram = "keith_with_an_h"
   github = "heathhenley"
   linkedin = "hhenley"
   twitter = "Heath_Henley"
@@ -17,7 +17,7 @@ theme = "pickles"
   contact = "mailto:heath.j.henley@gmail.com"
   bio = "Just your average software developing, sonar data processing rockclimber with a taste for computational thermodynamics and cookies."
   favicon = "/favicon.png"
-  meta_description = "Chemical Engineer turned Software Engineer writing about Python, C++, computer simlulation methods, full stack application development, CI/CD, travel, and whatever else comes up that seems worth sharing."
+  meta_description = "Chemical Engineer turned Software Engineer writing about Python, C++, computer simulation methods, full stack application development, CI/CD, travel, and whatever else comes up that seems worth sharing."
 
 
 #  logo = "/path/to/logo"
