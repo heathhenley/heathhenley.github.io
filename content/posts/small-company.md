@@ -13,7 +13,7 @@ keywords: ["software", "career", "software-engineering"]
 
 **TL;DR** - A small company can be a great place to learn, and it can be a lot easier to see the effects of the results of your work. At the same time, you likely won’t have access to the same structure, level of mentorship, clarity of career path / progression, or resources. In my experience you need to be the kind of person who (1) is happy with being more of a generalist, and (2) take responsibility for your own learning - eg fill in gaps were necessary, go deeper when needed, and lean on outside resources, friends, etc.
 
-Original (I think) meme: https://x.com/OneDevloperArmy/status/1382391187756216323?s=20
+Original (I think) meme:  https://twitter.com/VishalMalvi_/status/1716422409887314302
 
 There are certainly some huge differences in how your day to day looks when you work in a larger company or team vs a smaller one or a startup. Of course, there are pros and cons to each environment, I’ve been thinking about it a bit, talking to a couple friends at MegaCorp™, and comparing. I thought I would jot some of those thoughts down to share my experiences.
 
