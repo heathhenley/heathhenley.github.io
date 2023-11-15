@@ -52,14 +52,8 @@ theme = "pickles"
     url = "https://sites.google.com/view/english-at-pcl/home"
     weight = 6
 
-[[menu.main]]
-    name = "Photography"
-    url = "https://gobeoutside.darkroom.com/"
-    weight = 7
-
 [related]
   # Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.
-  threshold = 80
 
   # To get stable "See also" sections we, by default, exclude newer related pages.
   includeNewer = false
