@@ -1,7 +1,7 @@
 ---
 title: "Random Notes About Python's Random Module"
 date: 2023-12-26T12:10:44-05:00
-draft: true
+draft: false
 description: "Some notes on Python's random module, and why you should use the
 `secrets` module or `os.urandom` for cryptographic applications instead of
 `random`."
