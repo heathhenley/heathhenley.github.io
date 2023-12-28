@@ -12,7 +12,9 @@ keywords: ["random", "os.urandom", "secrets", "python", "software", "software-en
 
 **TL;DR:** Use the functions in the `random` module for modeling, simulations,
 games, sampling, etc. but use `os.urandom`, `secrets`, or 
-`random.SystemRandom` for cryptographic applications.
+`random.SystemRandom` for cryptographic applications. I know very little about 
+cryptography and security, these are just my notes about stuff I recently 
+learned.
 
 # Random Notes About Python's Random Module
 
@@ -56,7 +58,8 @@ use that brute-force the possible seed choices. You would have a reasonable chan
 
 There's still a lot of possibilities, and you won't know the exact state of the
 generator unless you know how many times it's been called since it was seeded,
-but it's still a lot less secure than using a true random source.
+but it's still a lot less entropy than reading the whole state in from
+/dev/urandom.
 
 ## What can you use for a cryptographic applications?
 Python has a [module called `secrets`](https://docs.python.org/3/library/secrets.html) that provides a cryptographically secure
