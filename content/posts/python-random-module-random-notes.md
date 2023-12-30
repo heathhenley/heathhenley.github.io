@@ -29,6 +29,69 @@ There are two reasons for this:
 1. It is set to fallback on choosing a seed based on the system time if there
   is no source of system randomness available (/dev/urandom on linux, etc.)
 
+It's also pretty simple to implement, and there is a really detailed pseudocode
+implementation in the [Wikipedia article](https://en.wikipedia.org/wiki/Mersenne_Twister#Pseudocode). Here's what it might look like in [Python](https://github.com/heathhenley/CryptoPals/blob/main/set3/21.py#L13):
+
+```python
+class MT19937:
+
+  # buncha constants
+  f = 1812433253
+  w, n, m, r = 32, 624, 397, 31
+  a = 0x9908B0DF
+  u, d = 11, 0xFFFFFFFF
+  s, b = 7, 0x9D2C5680
+  t, c = 15, 0xEFC60000
+  l = 18
+
+  def __init__(self, seed: int):
+    # init 
+    self.MT = [0] * self.n  # state
+
+    # masking for 32 bit ints 
+    self.lower_mask = (1 << self.r) - 1
+    self.upper_mask = (1 << self.r)
+
+    # index
+    self.index = self.n + 1
+
+    # init state for the first time
+    self.seed_mt(seed)
+  
+  def seed_mt(self, seed: int):
+    # Initialize the generator from a seed
+    self.index = self.n
+    self.MT[0] = seed
+    for i in range(1, self.n):
+      self.MT[i] = self.f * (
+        (self.MT[i-1] ^ (self.MT[i-1] >> (self.w-2))) + i)
+      self.MT[i] &= self.lower_mask
+
+  def extract_number(self):
+    if self.index >= self.n:
+      if self.index > self.n:
+        raise Exception("Generator was never seeded")
+      self._twist() 
+
+    y = self.MT[self.index]
+    y ^= (( y >> self.u) & self.d)
+    y ^= (( y << self.s) & self.b)
+    y ^= (( y << self.t) & self.c)
+    y ^= ( y >> self.l)
+    self.index += 1
+    return y & self.lower_mask
+
+  def _twist(self):
+    for i in range(self.n):
+      x = (self.MT[i] & self.upper_mask) | (
+        self.MT[ (i+1) % self.n] & self.lower_mask )
+      xA = x >> 1
+      if x % 2 != 0:
+        xA ^= self.a
+      self.MT[i] = self.MT[(i + self.m) % self.n] ^ xA
+    self.index = 0
+```
+
 ## Predicting the Next Number in the Sequence
 The internal state of the generator is used to produce the next number in the
 sequence. Although the numbers generated won't cycle for an astronomically
