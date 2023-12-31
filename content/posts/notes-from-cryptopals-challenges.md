@@ -75,3 +75,13 @@ bitflipping!
  encrypted with ECB, but
   never actually really understood why it happened or implemented a crack like
   this, so it was pretty cool to see it in action.
+
+## Set 3 - Block and Stream Crypto
+
+In progress... I've completed 21, 22, and 23 so far from this set - all the
+challenges introducing the 32 bit version of the Mersenne Twister PRNG.
+
+### What I learned
+I jumped ahead to learn more about Mersenne Twister and how it works because
+it was relevant to another challenge I was trying to solve. I wrote up more
+detailed notes about it in [this post](https://heathhenley.github.io/posts/python-random-module-random-notes/). In short, I learned about how the Mersenne Twister works, how it's seeded in Python specifically, how to clone it and crack, etc.
