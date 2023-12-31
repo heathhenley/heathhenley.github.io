@@ -101,7 +101,7 @@ allows you to reconstruct the current internal state of the generator and to
 predict the next number in the sequence. For example, this is pretty 
 [straightforward to do](https://github.com/heathhenley/CryptoPals/blob/main/set3/23.py).
 
-Basically the generator produces a new number by taking the next number in it's
+Basically the generator produces a new number by taking the next number in its
 624 uint32 internal state and 'tempering' it with a bunch of bitwise operations:
 
 ```python
