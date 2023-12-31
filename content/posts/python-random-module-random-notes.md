@@ -98,13 +98,59 @@ sequence. Although the numbers generated won't cycle for an astronomically
 large amount of time on current computers (the period is 2^19937-1, a number
 with 6000 digits!), reading a sequence of 624 numbers from the generator
 allows you to reconstruct the current internal state of the generator and to
-predict the next number in the sequence. For example, there is a Python module
-available called [RandCrack](https://github.com/tna0y/Python-random-module-cracker) (and I'm sure a host of others) that demonstrate
-this. After reading 624 values output by the generator, it basically becomes a
-clone of it, with the same internal state, so it will produce the same sequence
-of numbers as the original generator.
+predict the next number in the sequence. For example, this is pretty 
+[straightforward to do](https://github.com/heathhenley/CryptoPals/blob/main/set3/23.py).
 
-This alone should make it clear that it's not suitable for cryptographic use.
+Basically the generator produces a new number by taking the next number in it's
+624 uint32 internal state and 'tempering' it with a bunch of bitwise operations:
+
+```python
+ def temper(MT19937, y) -> int:
+    y ^= (( y >> MT19937.u) & MT19937.d)
+    y ^= (( y << MT19937.s) & MT19937.b)
+    y ^= (( y << MT19937.t) & MT19937.c)
+    y ^= ( y >> MT19937.l)
+    return y & ((1 << 32) - 1)
+```
+Where all the constants are defined in the class. The `temper` function is
+reversible, so it's a little tedious but you can undo all the operations and
+get back to the original number:
+
+```python
+def untemper(y: int) -> int:
+  """ Untemper the output of the MT19937 RNG.
+  Used the excellent explanation here:
+    https://occasionallycogent.com/inverting_the_mersenne_temper/index.html
+  to wrap my head around all this bit manipulation.
+  """
+  smask = (1 << MT19937.s) - 1
+  umask = (1 << MT19937.u) - 1
+  lower_mask = (1 << MT19937.w) - 1
+  y ^= (y >> MT19937.l)
+  y ^= ((y << MT19937.t) & MT19937.c)
+  y ^= ((y << MT19937.s) & MT19937.b & (smask << MT19937.s))
+  y ^= ((y << MT19937.s) & MT19937.b & (smask << (MT19937.s * 2)))
+  y ^= ((y << MT19937.s) & MT19937.b & (smask << (MT19937.s * 3)))
+  y ^= ((y << MT19937.s) & MT19937.b & (smask << (MT19937.s * 4)))
+  y ^= (y >> MT19937.u) & (umask << (MT19937.u * 2))
+  y ^= (y >> MT19937.u) & (umask << MT19937.u)
+  y ^= (y >> MT19937.u) & umask
+  return y & lower_mask
+```
+
+I used the
+[blog post](https://occasionallycogent.com/inverting_the_mersenne_temper/index.html) linked in the docstring of the `untemper` function to help me wrap my head around all the bit twiddling,
+check it out for a more detailed explanation and some cool diagrams showing
+what's actually going on at each step.
+
+So basically, after reading 624 values output by the generator, you can `untemper` them to get back to the original internal state of the generator. 
+Then you can use that make a clone of the original generator, with the same 
+internal state, so it will produce the same  sequence of numbers as the 
+original generator.
+
+There is even a Python module available called [RandCrack](https://github.com/tna0y/Python-random-module-cracker) (and I'm sure a host of others) that clone the
+state and then offer the same interface as the `random` module.
+This alone should makes it obviously not suitable for cryptographic use.
 
 ## Fallback to System Time
 The second reason is that if there is no source of system randomness available,
@@ -139,7 +185,6 @@ same methods as are available as functions in `random`, but instead of using
 the Mersenne Twister algorithm PRNG under the hood, it calls `os.urandom` to 
 generate random numbers using the system's source of randomness. See the docs
 on that here: https://docs.python.org/3/library/random.html#random.SystemRandom
-
 
 ## Conclusion
 The Python `random` module is great for generating random numbers for
