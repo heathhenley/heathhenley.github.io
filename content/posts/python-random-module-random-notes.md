@@ -105,7 +105,7 @@ Basically the generator produces a new number by taking the next number in its
 624 uint32 internal state and 'tempering' it with a bunch of bitwise operations:
 
 ```python
- def temper(MT19937, y) -> int:
+ def temper(y) -> int:
     y ^= (( y >> MT19937.u) & MT19937.d)
     y ^= (( y << MT19937.s) & MT19937.b)
     y ^= (( y << MT19937.t) & MT19937.c)
