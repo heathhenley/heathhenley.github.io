@@ -64,17 +64,33 @@ basically finding the padding length first and adjusting above to account for
 it being there.
 
 ### CBC bitflipping attack
-Still working on this set as I update this post, about to attempt CBC 
-bitflipping!
+Basically, you can manipulate the ciphertext to change what the resulting
+plaintext is when it's decrypted when using CBC mode. So for example, in
+this challenge the attack was to change the plaintext so that it would
+decrypt to contain `;admin=true;`. 
+
+In CBC mode, when decrypting a block of ciphertext it is first decrypted as
+in ECB mode, then XOR'd with the previous block of ciphertext. The second part
+is what was used in this attack. If we know then plaintext - eg we provide it,
+then we can manipulate the block immediately before it so that when it's XOR'd
+in decryption, it will result in the plaintext we want.
+
+My solution to this one is [here](https://github.com/heathhenley/CryptoPals/blob/main/set2/16.py). I always seem to have trouble with the
+bit manipulation stuff so this took a bit to get working right, but the idea
+is pretty clear now.
 
 ### What I learned
 - The differences between AES [ECB mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)) and
 [CBC mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_block_chaining_(CBC))
-- [Padding oracle attack](https://en.wikipedia.org/wiki/Padding_oracle_attack) on CBC mode (haven't implemented this yet, but I started to think about it)
+- CBC Bitflipping attack -  this SO answer helped me a bit: https://crypto.stackexchange.com/a/66086/113345
 - I have always heard: "don't use ECB" and I have seen the famous picture of [Tux](https://upload.wikimedia.org/wikipedia/commons/f/f0/Tux_ecb.jpg)
  encrypted with ECB, but
   never actually really understood why it happened or implemented a crack like
   this, so it was pretty cool to see it in action.
+- To be sure that the message hasn't been tampered with like we did in the
+  CBC bitflipping attack, we can use a [Message Authentication Code](https://en.wikipedia.org/wiki/Message_authentication_code)
+  (MAC) to sign the message, if it were HMAC'd the modified ciphertext would
+  cause the MAC change and we would know it was tampered with.
 
 ## Set 3 - Block and Stream Crypto
 
