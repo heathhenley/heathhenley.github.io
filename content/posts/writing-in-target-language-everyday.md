@@ -13,8 +13,6 @@ TL;DR: I think that writing in your target language everyday is a great way to
 improve your writing skills! So much so that I'm working on an app to help with
 that. Check it out at [writescribir.com](https://writescribir.com/en/about).
 
-## Writing Everyday + Writescribir
-
 I think that writing in your target language everyday is a great way to improve
 and to keep your new language on your mind, especially when you don't live in a
 country where your target language is spoken (or primarily spoken). You 

@@ -16,8 +16,6 @@ games, sampling, etc. but use `os.urandom`, `secrets`, or
 cryptography and security, these are just my notes about stuff I recently 
 learned.
 
-# Random Notes About Python's Random Module
-
 It uses the [Mersenne Twister algorithm](https://en.wikipedia.org/wiki/Mersenne_Twister), which is a pseudorandom number 
 generator with a period of 2^19937-1. It is one of the most widely used
 PRNGs in the world, and suitable for many applications. But it is not

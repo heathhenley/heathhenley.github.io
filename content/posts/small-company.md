@@ -18,7 +18,7 @@ Original (I think) meme:  https://twitter.com/VishalMalvi_/status/17164224098873
 
 There are certainly some huge differences in how your day to day looks when you work in a larger company or team vs a smaller one or a startup. Of course, there are pros and cons to each environment, I’ve been thinking about it a bit, talking to a couple friends at MegaCorp™, and comparing. I thought I would jot some of those thoughts down to share my experiences.
 
-# What’s my deal?
+## What’s my deal?
 I can’t really speak to working in a large company, at least for very long. Though I feel I can at least talk about what it’s like to work in a small company / in small research groups. For reference, my career so far consists of:
 - About 5 years as a grad student as part of a small lab (2-3 grad students, a few transient undergraduates semester to semester). I got a PhD in Chem. Eng - but all of my research was computational / simulation based - so all software, albeit a different kind of software.
 - An internship a Chevron - obviously a huge Megacorp, though the Business Unit that I worked in was pretty small and very focused (PVT modeling in the Rock and Fluids Characterization Unit).

@@ -16,7 +16,6 @@ keywords: ["python", "cryptography", "software", "software-engineering" ]
 nothing about cryptography. These are my (not so) random notes and takeaways 
 from them.
 
-# Notes From Cryptopals Challenges
 ## Set 1 - Basics
 This was pretty quick and easy set to go through, but I'm glad I didn't skip it.
 It introduced 'repeating key XOR' and how to break some cyphers 'statistically' 

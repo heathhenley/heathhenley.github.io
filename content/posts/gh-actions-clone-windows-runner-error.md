@@ -16,7 +16,6 @@ switching to use HTTPS instead of SSH for your clones (by providing a [personal 
 
 ![The fetch-pack error I had in actions](/gh_actions/error.png)
 
-# Error Checking out Large Repo on GitHub Actions Windows Runner
 ## Summary
 I was recently working on getting CI setup for a project that has a pretty large
 repo with a few submodules and uses LFS for some large binaries. We use
