@@ -1,6 +1,7 @@
 ---
 title: "Tutoring"
 draft: False
+date: 2024-01-05T00:00:00-04:00
 hideDate: true
 ---
 ## Experience
