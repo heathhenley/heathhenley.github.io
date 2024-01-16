@@ -217,3 +217,6 @@ zooming animation, but unfortunately I think reasonable frame rates would
 require an 'anything but Python' approach 😂
 
 All the code for part two is in this [GitHub Gist](https://gist.github.com/heathhenley/886efece0acf36fa9f2aaf54e7b19b58). 
+
+Checkout this [3Blue1Brown](https://youtu.be/-RdOwhmqP5s?si=PejTBnIB8WOCm6sq) on
+this topic for more details amazing animations.
