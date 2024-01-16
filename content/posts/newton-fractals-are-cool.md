@@ -22,12 +22,12 @@ to model the behavior of fluids. These equations of state are cubic polynomials
 and most solved for their roots in most cases in order to compute fluid
 properties and phase equilibria. For cubic polynomials, it's possible to find
 the roots analytically, it's also possible to find the roots numerically using
-Newton's method. One algorithm that is used sometimes combines both methods,
-it uses Newton's method to find one real root, and then 'deflates' the
-polynomial into a quadratic polynomial, so that quadratic formula can be used
-to find the other two roots.
+Newton's method. One algorithm that is used sometimes combines both methods as
+an optimization. It uses Newton's method to find one real root (will exist
+for a cubic), and then 'deflates' the cubic polynomial into a quadratic 
+polynomial, so that quadratic formula can be used to find the other two roots.
 
-So how does it work?
+So how does Newton's Method work in general?
 
 ## Newton's Method for Root Finding
 Newton's method comes from a Taylor series expansion of a function around a
