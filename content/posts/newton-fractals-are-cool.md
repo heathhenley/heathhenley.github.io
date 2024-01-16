@@ -165,8 +165,9 @@ Here's what it looks like plotted:
 
 The root we find can be different depending on the initial guess. Sometimes,
 this behaves intuitively - e.g. we just converge to the root that is closest
-to the initial guess. But sometimes it really doesn't, and small changes in
-the initial guess can lead to very different roots, and this is where things
+to the initial guess. This is the case for quadratic polynomials. But for 
+cubics and higher, the situation is different and small changes in
+the initial guess can lead to very different roots. This is where things
 get interesting!
 
 # Newton Fractals
