@@ -242,7 +242,7 @@ corresponding `M_KEY`, and use it to decrypt the encrypted `HW_ID` out of the
 UPN.
 
 They now know the secret hardware id (`HW_ID`) for a specific installation.
-They can use that to hardware id to encrypt the random key that they used to
+They can use that hardware id to encrypt the random key that they used to
 encrypt one cell (usually some defined geographic region) of the S-57 data.
 They send that back to the user as a "cell permit".
 
