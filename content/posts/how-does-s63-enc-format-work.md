@@ -435,7 +435,7 @@ chart viewer that supports the format. There's also a GDAL driver for it, so
 it could be converted into other GIS formats, or rasterized, etc. Here's the
 cell we just decrypted, displayed in QGIS:
 
-![NO4D0512](/s63/NO4D0512.png)
+![NO4D0512](/s63/s57.png)
 
 We can see all the vector layers, and while QGIS is not representing the data
 as a chart plotter would, it's all there! It was just a quick way to check that
