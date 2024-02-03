@@ -87,7 +87,7 @@ As a high level overview, here's what happens:
 - a user who wants to use the data must send a User Permit Number (UPN) to the
   data server, and probably some money too (to license the data for a certain
   period of time, or for a certain geographic area, etc)
-- the data server gladly takes the users money, and User Permit Number, and then
+- the data server gladly takes the user's money, and User Permit Number, and then
   sends the user a "permit" file, which contains the key that was used to
   encrypt the parts of the data that the user has licensed
 
@@ -100,9 +100,9 @@ that actually happens, and how to implement some of the main parts in Python.
 Is it really secure? I don't know, I'm not a security expert. I do know that 
 the scheme was
 put in place years ago though. It only uses a 40-bit encryption key for
-the data. That's not unreasonable to brute force 40-bits (we'll probably be trying
+the data. It's not unreasonable to brute force 40-bits (we'll probably be trying
 that in another blog). The scheme might not stop a determined attacker from
-accessing the data if for some reason they really wants some
+accessing the data if for some reason they really want some
 of that juicy navigation info. However, the encrypted cells are also
 signed so that their origin can be confirmed, and if the signature checks out (and the correct public key is
 used checking the signature), the user can trust the origin of the data.
