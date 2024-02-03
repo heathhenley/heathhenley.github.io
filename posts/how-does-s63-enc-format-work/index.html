@@ -288,7 +288,7 @@ the S-57 data for the <code>NO4D0512</code> cell and display it.</p><p>That proc
 </span></span></code></pre></div><p>There you go! We have an unencrypted S-57 file that we can now display in any
 chart viewer that supports the format. There&rsquo;s also a GDAL driver for it, so
 it could be converted into other GIS formats, or rasterized, etc. Here&rsquo;s the
-cell we just decrypted, displayed in QGIS:</p><p><img src=/s63/NO4D0512.png alt=NO4D0512></p><p>We can see all the vector layers, and while QGIS is not representing the data
+cell we just decrypted, displayed in QGIS:</p><p><img src=/s63/s57.png alt=NO4D0512></p><p>We can see all the vector layers, and while QGIS is not representing the data
 as a chart plotter would, it&rsquo;s all there! It was just a quick way to check that
 the decryption / extraction worked.</p><p>In the real scheme, you would want to check the second key if the first one
 fails. The permit checksum should also be checked before using the keys, but
