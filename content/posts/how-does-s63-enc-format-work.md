@@ -299,7 +299,7 @@ let's say we've already generated them (maybe using `os.urandom(5).hex()` or
 some other method) and we have: `9C467D359D` and `27737811B4` for the first and
 second keys for the cell.
 
-They user sent us (we're the data server now) the UPN `66B5CBFDF7E4139D5B6086C23130`, so we've got to use
+The user sent us (we're the data server now) the UPN `66B5CBFDF7E4139D5B6086C23130`, so we've got to use
 that to get their `HW_ID`, then use that to encrypt the keys for the cell. Those
 last 4 characters of the UPN are the `M_ID` - here that's `3130`, we can use
 that to look up the secret `M_KEY` in the official list of OEMs from the IHO. We
