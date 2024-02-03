@@ -198,3 +198,14 @@ module, and they are, of course not deterministic. If you want to be able to
 reproduce the same sequence of random numbers - for example in a simulation, 
 game, or for testing, you cannot do that with `os.urandom` (the higher level
 `secrets` and `random.SystemRandom`).
+
+Whether or not the Mersenne Twister should be used as the default general
+purpose PRNG in so many languages and compilers is called into question in this
+[review article](https://arxiv.org/pdf/1910.06437.pdf). The author's demonstrate a number of statistical tests which
+this family of algorithms fail, and they suggest alternatives. To quote from the conclusion:
+
+> The current, dangerous ubiquity of the Mersenne Twister as basic PRNG in many
+environments is a historical artifact that we, as a community, should take care of.
+
+Something to keep in mind next time you write you own programming language or
+compiler! Or really, when relying on a PRNG for anything important!
