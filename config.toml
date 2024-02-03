@@ -4,7 +4,7 @@ title = "Blogging by Heath™"
 theme = "pickles"
 
 [params]
-  paginate = 5
+  paginate = 6
   custom_css = ["/css/custom.css"]
   # Social accounts. Link to these accounts are displayed in the header and
   # footer
