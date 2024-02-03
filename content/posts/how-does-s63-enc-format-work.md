@@ -19,7 +19,7 @@ in a [Gist](https://gist.github.com/heathhenley/7ecf13aec81eb09399d204e240306e00
 
 ## Vector Charts and S-57 Format
 The International Hydrographic Organization (IHO) has defined a standard for
-vector navigational charts called [S-57](https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf)
+vector navigational charts called [S-57](https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf).
 The standard defines how to store the data, what attributes to use, etc,
 and the format is open so that anyone can implement it. NOAA even publishes all
 their ENC data in S-57 format, you can [download the data](https://charts.noaa.gov/ENCs/ENCs.shtml) or 
