@@ -201,8 +201,8 @@ game, or for testing, you cannot do that with `os.urandom` (the higher level
 
 Whether or not the Mersenne Twister should be used as the default general
 purpose PRNG in so many languages and compilers is called into question in this
-[review article](https://arxiv.org/pdf/1910.06437.pdf). The authors demonstrate a number of statistical tests which
-this family of algorithms fail, and they suggest alternatives. To quote from the conclusion:
+[review article](https://arxiv.org/pdf/1910.06437.pdf). The author demonstrates a number of statistical tests which
+this family of algorithms fail, and suggests alternatives. To quote from the conclusion:
 
 > The current, dangerous ubiquity of the Mersenne Twister as basic PRNG in many
 environments is a historical artifact that we, as a community, should take care of.
