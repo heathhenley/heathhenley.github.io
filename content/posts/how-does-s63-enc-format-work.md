@@ -14,7 +14,8 @@ TL;DR: S-63 is a standard used to encrypt official Electronic Navigational Chart
 signing allow clients to be sure that they have official data and that it has
 not been tampered with. It also make it possible for data providers to license 
 sections of the charts (cells) and be sure that they are not being shared 
-illegally / pirated. All of the examples are implemented in python and available
+illegally / pirated. This post gives an overview of the process and shows how 
+to implement the key steps. All of the examples are implemented in python and available
 in a [Gist](https://gist.github.com/heathhenley/7ecf13aec81eb09399d204e240306e00).
 
 ## Vector Charts and S-57 Format
@@ -34,9 +35,9 @@ that the IHO came up with is the S-63 standard, a process for encrypting and
 signing the S-57 ENC data.
 
 ## IHO S-63 Standard
-The IHO S-63 standard defines a process for encrypting and signing S-57 data, if
+The IHO S-63 standard defines a process for encrypting and signing S-57 data,
 you can find the full standard here in [IHO Publication S-63](https://iho.int/uploads/user/pubs/standards/s-63/S-63_2020_Ed1.2.1_EN_Draft_Clean.pdf). If you
-like to dig though standards like that, and want even more detail that what
+like to dig though standards like that, and want even more detail than what
 is given in this blog, I recommend you go straight to the source. The whole
 process is defined and if you're into that sort of thing you can
 skip the rest of this post and check that out to get an idea of it instead.
@@ -44,7 +45,7 @@ I'm going to attempt to explain the process in a more approachable way, and
 include some code examples that complete the most important parts.
 
 ### Why - What Problem Does S-63 Solve?
-The IHO surveyed the hydrographic offices of the world (the ones that 
+The IHO "surveyed" the hydrographic offices of the world (the ones that 
 participate in the IHO at least) and found that there was a general consensus 
 that they wanted to
 establish a security scheme for their electronic charts. They were concerned
@@ -88,7 +89,7 @@ As a high level overview, here's what happens:
   period of time, or for a certain geographic area, etc)
 - the data server gladly takes the users money, and User Permit Number, and then
   sends the user a "permit" file, which contains the key that was used to
-  encrypt the data that the user has licensed
+  encrypt the parts of the data that the user has licensed
 
 The tricky part here is that the User Permit Number (UPN) is installation specific,
 so every client for a given OEM will have a different one. They need be able to send a unique
@@ -96,12 +97,13 @@ hardware identifier to the data server, and then receive the key(s) needed to
 decrypt the data in a way that is secure. So the rest of this post is about how
 that actually happens, and how to implement some of the main parts in Python.
 
-Is it really secure? I don't know, I'm not a cryptographer. The scheme was
-put in place years ago though, and only uses a 40-bit encryption key for
-the data. That's not unreasonable to brute force (we'll probably be trying
-that in another blog). The scheme might not protect from pirating the
-the data if the attacker is motivated and for some reason really wants some
-of that juicy navigational data. However, the encrypted cells are also
+Is it really secure? I don't know, I'm not a security expert. I do know that 
+the scheme was
+put in place years ago though. It only uses a 40-bit encryption key for
+the data. That's not unreasonable to brute force 40-bits (we'll probably be trying
+that in another blog). The scheme might not stop a determined attacker from
+accessing the data if for some reason they really wants some
+of that juicy navigation info. However, the encrypted cells are also
 signed so that their origin can be confirmed, and if the signature checks out (and the correct public key is
 used checking the signature), the user can trust the origin of the data.
 
@@ -121,8 +123,8 @@ register with the IHO. Once approved, they will be assigned a "manufacturer id"
 `M_KEY` pairs is shared with the official data servers, but not with users,
 other OEMs, or anyone else. The `M_ID` is a 2 character alphanumeric code, but
 represented using it's ASCII representation in hexadecimal. So for example, the
-`M_ID` 01 is represented as `3031`. The `M_KEY` is a five character hexadecimal
-number, but also represented using it's ASCII representation in hexadecimal. So
+`M_ID` `01` is represented as `3031`. The `M_KEY` is a five character hexadecimal
+number, but also often represented using it's ASCII representation in hexadecimal. So
 the `M_KEY` `123AB` is represented as `3132334142`. This needs to be kept secret
 by the OEM. The IHO shares this with the data servers by a secure means that
 is no doubt well documented, so that they have access to it in later steps.
@@ -131,11 +133,11 @@ We can flip these around in python by encoding the ASCII representation to
 bytes and then dumping to hex:
   
 ```python
-# str to hexstr
+# ascii str of hex chars to hexstr
 "01".encode().hex() # --> '3031'
 "123AB".encode().hex() # --> '3132334142'
 
-# hexstr to str
+# back the other way
 bytes.fromhex("3031").decode() # --> '01'
 bytes.fromhex("3132334142").decode() # --> '123AB'
 ```
@@ -145,23 +147,23 @@ So to really get started - we want each installation to have a unique
 identifier, so that the data server can license the data to the specific 
 users / specific installations. We know that each approved OEM has an `M_ID`
 and `M_KEY` assigned by the IHO. Next, the OEM generating this installation 
-specific identifier is the first step in the process real process. 
+specific identifier is the first step in the real process. 
 
 As mentioned, the install specific identifier is called the Hardware ID, and 
 each OEM has their own process for generating it. They could come from serial
-numbers of be random, etc, they just need to be unique. It's not meant to be 
+numbers of some piece of hardware, be randomly generated, etc, they just need to be unique. It's not meant to be 
 shared with the user in raw format. This is a five character string of 
 hexadecimal characters, and it's recommended that it is not generated 
 sequentially.
 
-For example, a valid hardware id "A79AB" - this is the one used in the S-63 
+For example, a valid hardware id is "A79AB" - this is the one used in the S-63 
 docs as an example.
 
 What's our goal now? We want to find a way to give the data server the hardware
 id (`HW_ID`) for a specific installation. They can then use that to encrypt the
-key that they used to encrypt the S-57 data, and send the key back to the user. 
-Then the user can use the same hardware id to decrypt the key, and then use 
-that key to decrypt the S-57 data!
+key that they used to encrypt the cell of S-57 data, and send the cell key back to the user. 
+Then the user can use the same hardware id to decrypt the cell key, and then use 
+that cell key to decrypt the S-57 data that they have licensed!
 
 But how do we get the hardware id to the data server in a secure way? We don't 
 want to just send it and risk it being intercepted, corrupted, or tampered 
@@ -239,14 +241,14 @@ server - remember that they have a list of all the super secret `M_ID` and
 corresponding `M_KEY`, and use it to decrypt the encrypted `HW_ID` out of the 
 UPN.
 
-They now know the secret hardware id (`HW_ID`) for a specific installation, the
-they can use that to hardware id to encrypt the random key that they used to
+They now know the secret hardware id (`HW_ID`) for a specific installation.
+They can use that to hardware id to encrypt the random key that they used to
 encrypt one cell (usually some defined geographic region) of the S-57 data.
 They send that back to the user as a "cell permit".
 
 #### The Permit File
 The data server creates a "cell permit" in order to communicate the key used to 
-encrypt the S-57 data back to the user. The key (well actually two keys) is 
+encrypt the S-57 data back to the user. The cell key (well actually two keys) is 
 encrypted with the hardware id (`HW_ID`) that the user sent in the UPN as 
 described above, and then put in the permit for the user. The user's software
 as we said above, can then decrypt the key (it's knows the `HW_ID` that was
@@ -256,7 +258,7 @@ So what does that permit look like?
 
 It contains the identifier of the ENC cell that it corresponds to, so that's
 usually a geographic region at a particular scale. The cell names look
-something like: `NO4D0512`, or `NO5F1615`. The finally resulting permit file
+something like: `NO4D0512`, or `NO5F1615`. Finally, the resulting permit file
 (`permit.txt` by naming convention) is going to look something like this:
 
 ```
@@ -292,7 +294,7 @@ same `M_ID`, `M_KEY`, and `HW_ID` as above so that we can use the S-63 test kit
 data. We'll stick with our `NO4D0512` cell name - the key used to encrypt the 
 cell data is a random 5 byte number. There is a second cell key sent along too, 
 it can be the next key the server will use if it rotates keys, or it could be 
-same as the first, that's a detail and it's up to the data servers. Either way, 
+same as the first, that's a detail and it's up to each particular data server. Either way, 
 let's say we've already generated them (maybe using `os.urandom(5).hex()` or 
 some other method) and we have: `9C467D359D` and `27737811B4` for the first and
 second keys for the cell.
@@ -453,6 +455,6 @@ to confirm the origin of the data. Maybe that's a topic for another post!
 
 ## Conclusion
 If you read this far, thanks! Hope you learned something, let me know if you
-and any questions or comments.
+have any questions or comments.
 
 The full code for this post is available in a [Gist](https://gist.github.com/heathhenley/7ecf13aec81eb09399d204e240306e00).
