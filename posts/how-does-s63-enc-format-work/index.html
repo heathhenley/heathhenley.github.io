@@ -184,7 +184,7 @@ it can be the next key the server will use if it rotates keys, or it could be
 same as the first, that&rsquo;s a detail and it&rsquo;s up to each particular data server. Either way,
 let&rsquo;s say we&rsquo;ve already generated them (maybe using <code>os.urandom(5).hex()</code> or
 some other method) and we have: <code>9C467D359D</code> and <code>27737811B4</code> for the first and
-second keys for the cell.</p><p>They user sent us (we&rsquo;re the data server now) the UPN <code>66B5CBFDF7E4139D5B6086C23130</code>, so we&rsquo;ve got to use
+second keys for the cell.</p><p>The user sent us (we&rsquo;re the data server now) the UPN <code>66B5CBFDF7E4139D5B6086C23130</code>, so we&rsquo;ve got to use
 that to get their <code>HW_ID</code>, then use that to encrypt the keys for the cell. Those
 last 4 characters of the UPN are the <code>M_ID</code> - here that&rsquo;s <code>3130</code>, we can use
 that to look up the secret <code>M_KEY</code> in the official list of OEMs from the IHO. We
