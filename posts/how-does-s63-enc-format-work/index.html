@@ -51,7 +51,7 @@ the data servers get the official data and OEMs set up their software to display
 it for the user.</p><h3 id=whats-the-process>What&rsquo;s the process?</h3><h4 id=overview>Overview</h4><p>As a high level overview, here&rsquo;s what happens:</p><ul><li>the data server gets the official data from the hydrographic office or another
 official distributor, whoever is making the actual charts from the survey data</li><li>the data is in standard S-57 format (the standard for vector charts)</li><li>the data server encrypts the data with a random key (we&rsquo;ll see more later)</li><li>the data server sends out the encrypted data to any users who might want it</li><li>a user who wants to use the data must send a User Permit Number (UPN) to the
 data server, and probably some money too (to license the data for a certain
-period of time, or for a certain geographic area, etc)</li><li>the data server gladly takes the users money, and User Permit Number, and then
+period of time, or for a certain geographic area, etc)</li><li>the data server gladly takes the user&rsquo;s money, and User Permit Number, and then
 sends the user a &ldquo;permit&rdquo; file, which contains the key that was used to
 encrypt the parts of the data that the user has licensed</li></ul><p>The tricky part here is that the User Permit Number (UPN) is installation specific,
 so every client for a given OEM will have a different one. They need be able to send a unique
@@ -60,9 +60,9 @@ decrypt the data in a way that is secure. So the rest of this post is about how
 that actually happens, and how to implement some of the main parts in Python.</p><p>Is it really secure? I don&rsquo;t know, I&rsquo;m not a security expert. I do know that
 the scheme was
 put in place years ago though. It only uses a 40-bit encryption key for
-the data. That&rsquo;s not unreasonable to brute force 40-bits (we&rsquo;ll probably be trying
+the data. It&rsquo;s not unreasonable to brute force 40-bits (we&rsquo;ll probably be trying
 that in another blog). The scheme might not stop a determined attacker from
-accessing the data if for some reason they really wants some
+accessing the data if for some reason they really want some
 of that juicy navigation info. However, the encrypted cells are also
 signed so that their origin can be confirmed, and if the signature checks out (and the correct public key is
 used checking the signature), the user can trust the origin of the data.</p><p>A new <a href=https://iho.int/uploads/user/pubs/standards/s-100/S-100_5.1.0_Final_Clean.pdf>S-100 standard</a> is set to replace S-57 and S-63,
