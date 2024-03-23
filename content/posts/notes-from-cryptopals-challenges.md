@@ -111,7 +111,10 @@ is really interesting and was used to [break the Flickr API in 2009](https://www
 
 ### Length extension attack
 
-This is really interesting! It's possible because of how the Merkle-Damgard
+Here's my [sha1 keyed MAC crack](https://github.com/heathhenley/CryptoPals/blob/main/set4/29.py) using a length extension attack.
+
+This was really interesting to learn about. It's possible because of how the 
+[Merkle-Damgard](https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction)
 family of hash functions work. Basically, the hash is computed in blocks, with
 the previous block's hash being used as the initial state for the next block. So
 if you know the hash of a message, you can use that to set the initial state of
