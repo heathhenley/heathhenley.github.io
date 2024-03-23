@@ -100,3 +100,75 @@ challenges introducing the 32 bit version of the Mersenne Twister PRNG.
 I jumped ahead to learn more about Mersenne Twister and how it works because
 it was relevant to another challenge I was trying to solve. I wrote up more
 detailed notes about it in [this post](https://heathhenley.github.io/posts/python-random-module-random-notes/). In short, I learned about how the Mersenne Twister works, how it's seeded in Python specifically, how to clone it and crack, etc.
+
+## Set 4 - Stream Crypto and Randomness
+
+In progress... I jumped ahead again to learn more about MACs, SHA1 and HMAC as
+it helped in some other CTF challenges I was working on. So far I "completed" 28
+which just involved finding a pure python implementation of SHA1 and using it.
+Then 29 involves breaking a SHA1 keyed MAC using a length extension attack which
+is really interesting and was used to [break the Flickr API in 2009](https://www.semanticscholar.org/paper/Flickr's-API-Signature-Forgery-Vulnerability-Duong-Rizzo/785dcbf504173746e96722e4a578ef98f1351557).
+
+### Length extension attack
+
+This is really interesting! It's possible because of how the Merkle-Damgard
+family of hash functions work. Basically, the hash is computed in blocks, with
+the previous block's hash being used as the initial state for the next block. So
+if you know the hash of a message, you can use that to set the initial state of
+the hash function and continue hashing from there. With this, you can compute
+the hash of some evil string to append to a message, append it, and then send it
+to server - where it will actually verify!
+
+This is how it works - assuming that we're trying to crack a SHA1 based message
+authentication code (MAC). The server is using a secret key to sign the message
+like: `SHA1(key || user=heath)`, and sending the hash along with the message, it
+could be something like `user=heath:HASH`. So we know the message and the hash. 
+It would be great if we could add something to the message and have the server
+accept it as valid...maybe changing the message to something like: `user=heath&admin=true` would be neat. But if we try that, the server will receive the new
+message, prepend it with the secret key, hash it, and compare it to the hash it
+received - which won't match. But with the length extension attack, we can
+actually get this to work!
+
+Some things to note about this attack:
+- We know the message and the hash, so we can use the hash to set the initial
+  state of the SHA1 function. This just splits the 40 byte hash into the 5
+  32-bit integers that SHA1 uses as the initial state of the hash function. In
+  some implementations these are h0, h1, h2, h3, and h4.
+- SHA1 pads the thing it's hashing to be a multiple of 512 bits. This means that
+  we don't exactly have the hash for `key || user=heath`, but actually for
+  `key || user=heath || padding`. This is important because now we need to make
+  that padding ourselves before continuing the attack. The padding is always
+  `100...0` followed by the length of the message in bits. After inevitably 
+  messing this up a bunch, you will get it right and be able to generate the 
+  padding to pad any message to be a multiple of 512 bits.
+- We don't actually know the length of the secret key, but really it doesn't
+  matter. We can just keep trying a bunch of reasonable lengths for the key,
+  assuming we have some 'oracle' that will tell us if the hash we generate is
+  correct.
+
+The idea is
+- we guess the length of the key
+- make the padding that the server would have made in generating the hash of 
+  the message `key || user=heath`.
+- Then add the padding to the original message, and append our evil
+  `&admin=true` - something like `user=heath || padding || &admin=true`.
+- Set the state of SHA1 algorithm from the original hash supplied with the
+  message.
+- Hash the evil message, `&admin=true`, and record the hash - this is the new
+  hash that will let us trick the server.
+- Send the new message to the server, with the new hash. If it verifies, then we
+  know we have the correct key length - if not, increment the key length and try
+  again.
+
+When the key length is correct, the server will hash the message we send it and
+compare it to the hash we send along with the message. The first 512 bits of the
+hash will be exactly what it hashed before - we just added the padding for it,
+and that will result in the same hash as the original mac. However, the next
+512 bits will be the evil part we added, `&admin=true` - the server will
+continue hashing with it's state represented by the original hash and end up
+with same hash that we calculated, without knowing the secret key!
+
+### What I learned
+- Length extension attack on SHA1 keyed MACs: I had never seen this before so
+that was pretty cool to learn about. TL;DR - use HMAC which is not vulnerable
+to this attack and made for this purpose.
