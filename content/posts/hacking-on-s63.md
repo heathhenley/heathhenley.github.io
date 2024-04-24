@@ -23,27 +23,27 @@ users in a standardized way and collected payment for access to that
 data.
 
 A [previous post](/posts/how-does-s63-enc-format-work/) walks through how the
-whole scheme works. In short, in involves an encryption step that mostly makes
-sure the that the data provider can charge for the data / avoid pirating, and a
+whole scheme works. In short, it involves an encryption step that mostly makes
+sure that the data provider can charge for the data / avoid pirating, and a
 signature step that makes sure the data hasn't been tampered with and that it is
 actually from an IHO approved data provider. I haven't looked at the signing
 algorithm yet, here we'll just look at the encryption part.
 
 If you recall from the previous post, the data client, who wants to use charts
-from a data provider, need to have a User Permit Number (UPN), specific to each
+from a data provider, needs to have a User Permit Number (UPN), specific to each
 physical install, and send it to the data provider. The UPN is an encrypted way
-to communicate the an installation specific hardware ID to the data provider.
+to communicate an installation specific Hardware ID to the data provider.
 
 The first case: assume we have a UPN - these are generally not too hard to get a
 hold of. This UPN is the hardware id encrypted with an "M_KEY" that is specific
-to the manufacturer of the data client's software (whatever is trying to
-display charts)
+to the manufacturer of the data client's software (whatever OEM system is 
+trying to display charts)
 
 Well - the M_KEY is only 5 bytes, and based on the spec the character set is
-pretty restricted (ascii 0-9) - we can just brute force this. Keep decrypting
-the UPN ciphertext with generated M_KEYs until we get a result with (1) valid
-padding, and (2) three bytes of padding. This is a pretty good indication that
-we've found the right key, it looks like this:
+pretty restricted (valid hex chars) - so we can just brute force this. Keep 
+decrypting the UPN ciphertext with generated M_KEYs until we get a result with 
+(1) valid padding, and (2) three bytes of padding. This is a pretty good 
+indication that we've found the right key, it looks like this:
 
 ```python
 
@@ -62,7 +62,7 @@ crc = upn[16:24]
 assert crc == f"{binascii.crc32(encrypted_hw_id.encode()):x}".upper()
 
 # The crc checks out, time to try to decrypt it, even without the key
-for possible_key in ascii_generator_tr(5, "0123456789"):
+for possible_key in ascii_generator_tr(5, "0123456789ABCDEF"):
   cipher = Blowfish.new(possible_key.encode(), Blowfish.MODE_ECB)
   decrypted_hw_id = cipher.decrypt(bytes.fromhex(encrypted_hw_id))
   # the real hw id will have valid padding:
@@ -87,8 +87,7 @@ The cell permit is the key used to encrypt the actual data, but it's encrypted
 with the user's hardware id (obtained from the UPN). If we were legit, we would
 just use our known hardware id to decrypt the cell permit, and then decrypt our
 chart data. But we don't have the hardware id, so we'll just brute force it
-again - this time with a bit more work because the hardware id is 5 bytes but
-can use ascii 0-9 and A-F (any valid hex character).
+again in basically the same way:
 
 ```python
 
@@ -133,18 +132,21 @@ bytes will be "PK", and the cell name (also in the file name) will be in the
 first 64 bytes of the decrypted data.
 
 Neither of these really pose a threat to anyone except the data provider's
-bottom line - but it's interesting to play around with.
+bottom line - but it's interesting to play around with. And using them to avoid
+licensing fees would be illegal, so don't do that.
 
-Finally if we know nothing, we would have to brute the cell key, this is a
-5 byte (40 bit) key and it can any byte value, so it's more work, but not
+Finally if we know nothing, we would have to brute force the cell key, this is a
+5 byte (40 bit) key and it can any byte value, so it's more work. But still not
 secure by any means. Anyone serious about cracking this would not have an issue,
 though if we try to do it in our little python script in serial, it would take
-1 year and half to enumerate all possible keys 😂.
+a year and half to enumerate all possible keys 😂.
 
 Maybe I'll look at the signing algorithm next time, but I suspect that aspect
 has held up to the test of time a bit better than the encryption part. In the
 new standard, the keys are all longer, with fewer restrictions on the possible
-bytes. For example AES is used instead of Blowfish, and the hardware id is 16
-bytes instead of 5, and the cell key is 16 bytes as well.
+bytes. For example AES is used instead of Blowfish (16 byte key) and the 
+hardware id is 16 bytes instead of 5, and the cell key is 16 bytes as well. It
+also looks like restrictions on the characters used in the keys are relaxed to
+add more entropy.
 
 Anyway, all the code is in this [gist](https://gist.github.com/heathhenley/2f9ad47cf8b818f3ddb592569a013c87)
