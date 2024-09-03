@@ -1,5 +1,5 @@
 ---
-title: "My notes from implementing two similar apps with dissimilar tech stacks"
+title: "Two similar apps with dissimilar tech stacks"
 date: 2024-08-21T06:12:27-07:00
 draft: false
 description: "Notes on implementing two similar apps that interact with NOAA
