@@ -57,7 +57,7 @@ good](https://nextjs.org/docs/app/building-your-application/rendering/compositio
 at explaining how to compose server rendered components (to fetch data for
 example) with client components (for user interaction). Still, it’s not as
 obvious as working on the FastAPI/HTMX app (or a JSON HTTP API server / react
-client, or django, laravel, rails, etc) set up where your server code just
+client, or Django, Laravel, Rails, etc) set up where your server code just
 defines handlers that return rendered html for your specific endpoints.
 * **Updating different areas of the page when user interacts is harder in the FastAPI/HTMX app** -
 This got me while working with the FastAPI/HTMX app. Doing something /
