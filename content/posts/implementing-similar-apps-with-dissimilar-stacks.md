@@ -10,10 +10,10 @@ keywords: ["nextjs", "fastapi", "htmx", "web development", "full stack",
 "typescript", "notes"]
 ---
 
-**TLDR** - My general takeaways two similar apps. One the OG 
+**TLDR** - My general takeaways from working on two similar apps. One the OG 
 server-returns-html way with FastAPI/HTMX and one with Next.js using the app 
 router / RSC / SSR. These are my quick take aways from the point of view of 
-working on them from the perspective of a non-web dev.
+working on them from the perspective of a "non-web-dev dev".
 
 ## Intro
 I am currently working on two somewhat similar web apps, one using
@@ -85,7 +85,7 @@ navigation, for example). Again, both easy fixes, but gotchas.
 but I had to play with the default caching setup for the data that my server
 components were fetching, as it's a regular get request but the data returned
 updates periodically. Not a big deal, but something that had me scratching my
-heading for a bit as I was trying to figure out why my data wasn't updating.
+head for a bit as I was trying to figure out why my data wasn't updating.
 
 My preference so far - it depends 🤣. I like the control and simplicity of a
 classic server-renders-html app using HTMX for some interactions. I personally
