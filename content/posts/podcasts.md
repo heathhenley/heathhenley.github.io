@@ -71,9 +71,21 @@ Mahlum](https://www.mfmpod.com/from-nonprofit-founder-to-building-a-300m-pilates
 about founding Back on My Feet and then Solidcore.
 
 ## Language / Entertainment / Misc.
-These are all in Spanish - I learned Spanish a few years ago, and though I don't
-speak enough to keep it sharp, listening consistently at least means I can still
-understand it.
+- [Science Vs](https://gimletmedia.com/shows/science-vs) - They look at trends
+and fads in the world and try to figure out if they're based in fact
+(Microplastics, Are you getting enough protein?, Is social media rotting our
+brains, etc.).
+- [The Sharp End](https://www.thesharpendpodcast.com/) - This is about climbing
+/ mountaineering / hiking accidents so it's a little niche I guess. Usually
+survivors of the accidents are interviewed explaining what went wrong, if there
+any mistakes made, etc. These are super interesting and as a climber myself I
+think it's good to hear about how things can go wrong to keep on top of your own
+safety. This episode about surviving a [crazy lightning
+storm](https://www.thesharpendpodcast.com/episode-90) was scary.
+
+These next ones are all in Spanish - I learned Spanish a few years ago, and
+though I don't speak enough to keep it sharp, listening consistently at least
+means I can still understand it.
 - [No Hay Tos](https://www.nohaytospodcast.com/) (Mexican Spanish) - this one is
 deliberately for language learners but it's mostly just two friends talking
 about random stuff, with a bit of a lean towards culture and language learning.
