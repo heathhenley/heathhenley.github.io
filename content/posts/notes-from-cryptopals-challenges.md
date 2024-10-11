@@ -93,13 +93,43 @@ is pretty clear now.
 
 ## Set 3 - Block and Stream Crypto
 
-In progress... I've completed 21, 22, and 23 so far from this set - all the
-challenges introducing the 32 bit version of the Mersenne Twister PRNG.
+### CBC padding oracle attack
+
+### Implement and break AES CTR stream cipher mode
+Stream cipher mode is another way to encrypt data - instead of encrypting blocks
+of the plaintext directly, you:
+- Generate a random nonce (just a number)
+- Start a counter at the nonce
+- Generate a random key
+- For each block of plaintext:
+  - Increment the counter
+  - Encrypt the counter with the key using some block
+    cipher (AES in this case), this is the 'keystream'
+  - XOR the resulting 'keystream' with the plaintext to get the ciphertext
+  - Add the ciphertext to the result
+There you have it - still using the same block cipher, but to generate the
+keystream for each block of plaintext, instead of to encrypt the plaintext
+directly.
+
+If the nonce is reused with the same key to encrypt different plaintexts, instead of being generated randomly each time - then each plaintext will be XOR'd with the same keystream to get the ciphertext. This is bad - it basically
+becomes a big repeating key XOR, where the 'repeating key' is the keystream of
+the length of the shortest plaintext you have. Repeating key XOR can be broken
+just as demonstrated in set 1, challenge 6.
+
+### Mersenne Twister PRNG
+See the write up [here](https://heathhenley.dev/posts/python-random-module-random-notes/)
 
 ### What I learned
-I jumped ahead to learn more about Mersenne Twister and how it works because
-it was relevant to another challenge I was trying to solve. I wrote up more
-detailed notes about it in [this post](https://heathhenley.github.io/posts/python-random-module-random-notes/). In short, I learned about how the Mersenne Twister works, how it's seeded in Python specifically, how to clone it and crack, etc.
+Problem 17 - I learned about how to break AES CBC mode encryption by using the
+padding oracle attack, provided a 'padding oracle' is available.
+From problems 18, 19 and 20 - I learned about the AES CTR mode, how it works,
+and how to break it if the nonce is improperly reused.
+From problems 21, 22, and 23 - I learned a lot about Mersenne Twister and how it
+works specifically. I wrote up more detailed notes about it in [this
+post](https://heathhenley.dev/posts/python-random-module-random-notes/).  In
+short, I learned about how the Mersenne Twister works, how it's seeded in Python
+specifically, how to clone it and crack it, what can happen (you get pwn'd) if
+you use it for something it should be used for (security) etc.
 
 ## Set 4 - Stream Crypto and Randomness
 
