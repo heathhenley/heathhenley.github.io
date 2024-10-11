@@ -105,6 +105,38 @@ is pretty clear now.
 ## Set 3 - Block and Stream Crypto
 
 ### CBC padding oracle attack
+Had a lot of trouble debugging this one because of a mistake in my padding /
+unpadding functions. I relied a lot on this [blog
+post](https://www.nccgroup.com/us/research-blog/cryptopals-exploiting-cbc-padding-oracles/)
+to finally get it working.
+The idea here is that if some helpful developer has been a bit too helpful with
+the error messages returned by the server when you send it a bad ciphertext to
+decrypt CBC mode - you may be able to exploit that to decrypt the entire message. In this case if the server returns an error that specifically says when the padding is bad, versus just a generic decryption error, then you can exploit this 'padding oracle' to decrypt the message.
+
+In CBC mode, the IV or the previous block of ciphertext is XOR'd with the
+paintext before it is encrypted. And in decryption, each block of ciphertext is
+decrypted and then XOR's **with the previous block of ciphertext** to get the
+plaintext. That's the key to this attack - we manipulate the n-1 block of
+ciphertext (which is XOR'd with the decrypted n block of the ciphertext on the
+server) until we get a normal deserialization error instead of the padding
+error. This means that the decrypted and XOR'd block of ciphertext had valid
+padding, if this is the last byte of the block, we know that
+
+$$
+\CT_{n-1}^{last byte} \oplus \PT_{n}^{last_byte} = 0x01
+$$
+
+So the the last byte of the previous block of ciphertext, XOR'd with the last
+byte of the current block of plaintext is 0x01 - which we can rearrange to get
+the last byte of the plaintext block:
+$$
+\PT_{n}^{last_byte} = \CT_{n-1}^{last byte} \oplus 0x01
+$$
+
+Then we can repeat this process - next setting the last byte of the current
+block to 0x02 and manipulating the penultimate byte of the previous block of
+ciphertext until we know the padding is good, and so on, decrypting the entire
+message without ever knowing the key!
 
 ### Implement and break AES CTR stream cipher mode
 Stream cipher mode is another way to encrypt data - instead of encrypting blocks
