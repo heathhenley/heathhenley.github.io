@@ -1,5 +1,5 @@
 ---
-title: "Notes From Cryptopals Challenges"
+title: "The Cryptopals Challenges"
 date: 2023-12-29T12:58:01-05:00
 draft: false
 description: "Summary and notes about learnings from the Cryptopals Crypto 
@@ -12,9 +12,20 @@ keywords: ["python", "cryptography", "software", "software-engineering" ]
 ---
 
 **TL;DR:** I'm working through the
-[Cryptopals Crypto Challenges](https://cryptopals.com/), starting with knowing
-nothing about cryptography. These are my (not so) random notes and takeaways 
-from them.
+[Cryptopals Cryptography Challenges](https://cryptopals.com/), starting with
+knowing nothing about cryptography. These are my (not so) random notes and
+takeaways from them. They generally seem to follow a pattern of introducing a
+concept in cryptography (repeating key XOR, ECB mode, CBC mode, stream ciphers,
+etc) and then having you break it in some way(s). I'm hoping to turn my notes on
+some of these in to more detailed posts at some point, but for now, this mostly
+'stream of thought' that I'm updating as I work through them.
+
+** Most difficult so far ** - The CBC padding oracle attack was hard for me to
+understand and tedious to implement. 
+
+** Most interesting so far ** - The length extension attack on SHA1 keyed MACs -
+in general learning about how the Merkle-Damgard hash functions work (their
+state IS the hash digest) was really cool.
 
 ## Set 1 - Basics
 This was pretty quick and easy set to go through, but I'm glad I didn't skip it.
