@@ -9,6 +9,7 @@ hopefully push updates as I have time to work through the challenges."
 tags: ["cryptography", "notes", "software", "software-engineering"]
 categories: ["python", "software", "software-engineering", "notes"]
 keywords: ["python", "cryptography", "software", "software-engineering" ]
+mathjax: true
 ---
 
 **TL;DR:** I'm working through the
@@ -20,10 +21,10 @@ etc) and then having you break it in some way(s). I'm hoping to turn my notes on
 some of these in to more detailed posts at some point, but for now, this mostly
 'stream of thought' that I'm updating as I work through them.
 
-** Most difficult so far ** - The CBC padding oracle attack was hard for me to
+**Most difficult so far** - The CBC padding oracle attack was hard for me to
 understand and tedious to implement. 
 
-** Most interesting so far ** - The length extension attack on SHA1 keyed MACs -
+**Most interesting so far** - The length extension attack on SHA1 keyed MACs -
 in general learning about how the Merkle-Damgard hash functions work (their
 state IS the hash digest) was really cool.
 
@@ -123,14 +124,14 @@ error. This means that the decrypted and XOR'd block of ciphertext had valid
 padding, if this is the last byte of the block, we know that
 
 $$
-\CT_{n-1}^{last byte} \oplus \PT_{n}^{last_byte} = 0x01
+CT_{n-1}^\text{last byte} \oplus PT_{n}^{\text{last byte}} = 0x01
 $$
 
 So the the last byte of the previous block of ciphertext, XOR'd with the last
 byte of the current block of plaintext is 0x01 - which we can rearrange to get
 the last byte of the plaintext block:
 $$
-\PT_{n}^{last_byte} = \CT_{n-1}^{last byte} \oplus 0x01
+PT_{n}^\text{last_byte} = CT_{n-1}^\text{last byte} \oplus 0x01
 $$
 
 Then we can repeat this process - next setting the last byte of the current
