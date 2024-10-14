@@ -29,6 +29,9 @@ in general learning about how the Merkle-Damgard hash functions work (their
 state IS the hash digest) was really cool.
 
 ## Set 1 - Basics
+
+The solutions for this set are in the [set1 solutions](https://github.com/heathhenley/CryptoPals/tree/main/set1).
+
 This was pretty quick and easy set to go through, but I'm glad I didn't skip it.
 It introduced 'repeating key XOR' and how to break some cyphers 'statistically' 
 using letter frequency.
@@ -42,6 +45,9 @@ fun to learn about and decrypt these basic cyphers, even if they aren't relevant
 (directly) to real word crypto systems.
 
 ## Set 2 - Block Crypto
+
+Solutions for this set are in the [set2 solutions](https://github.com/heathhenley/CryptoPals/tree/main/set2).
+
 This set is still basic, but starting to introduce vulnerabilities that are more
 relevant to real world crypto.
 
@@ -105,6 +111,8 @@ is pretty clear now.
 
 ## Set 3 - Block and Stream Crypto
 
+The solutions for this set are in the [set3 solutions](https://github.com/heathhenley/CryptoPals/tree/main/set3)
+
 ### CBC padding oracle attack
 Had a lot of trouble debugging this one because of a mistake in my padding /
 unpadding functions. I relied a lot on this [blog
@@ -115,7 +123,7 @@ the error messages returned by the server when you send it a bad ciphertext to
 decrypt CBC mode - you may be able to exploit that to decrypt the entire message. In this case if the server returns an error that specifically says when the padding is bad, versus just a generic decryption error, then you can exploit this 'padding oracle' to decrypt the message.
 
 In CBC mode, the IV or the previous block of ciphertext is XOR'd with the
-paintext before it is encrypted. And in decryption, each block of ciphertext is
+plaintext before it is encrypted. And in decryption, each block of ciphertext is
 decrypted and then XOR's **with the previous block of ciphertext** to get the
 plaintext. That's the key to this attack - we manipulate the n-1 block of
 ciphertext (which is XOR'd with the decrypted n block of the ciphertext on the
