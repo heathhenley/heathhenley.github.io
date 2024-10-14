@@ -161,7 +161,23 @@ the length of the shortest plaintext you have. Repeating key XOR can be broken
 just as demonstrated in set 1, challenge 6.
 
 ### Mersenne Twister PRNG
-See the write up [here](https://heathhenley.dev/posts/python-random-module-random-notes/)
+I wrote up [some notes on
+MT](https://heathhenley.dev/posts/python-random-module-random-notes/), more
+specifically the implementation in Python, because of this challenge and another
+related challenge for a CTF.
+
+In short, the Mersenne Twister is a PRNG that is used in Python's `random`
+module and in a number of other languages and frameworks - it may be fine for
+some things, but it is definitely **not** fine for anything with security. The
+output is completely deterministic based on the seed and it can be cloned
+(challenge 23) just by collecting enough consecutive outputs. The seed can also
+be brute forced (challenge 22).
+
+Challenge 24 introduced using MT output as the keystream for a stream cipher. If
+this is done, then the attacker can use brute force to find the seed used for
+the PRNG. It's a good example of why you shouldn't use MT for anything security
+related (use a CSPRNG or some other secure way to get random numbers on your
+system).
 
 ### What I learned
 Problem 17 - I learned about how to break AES CBC mode encryption by using the
