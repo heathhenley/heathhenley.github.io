@@ -17,7 +17,7 @@ getting after cooking for a while - we started out pretty chilly anyway (about
 I have one of these little two burner propane stoves that we use when camping,
 it looks something like this:
 
-![Campstove](/campstove.jpeg)
+![Campstove](/campstove/campstove.jpeg)
 
 While we were cooking breakfast and boiling water for coffee, we noticed that
 the propane tank was getting super cold - there was not only a thick layer of
@@ -53,7 +53,7 @@ some real data to compare to...
 In classic ChE fashion, let's start with a little diagram of the system, and
 where the interesting boundaries are:
 
-![Campstove Diagram](/campstove_diagram.png)
+![Campstove Diagram](/campstove/campstove_diagram.png)
 
 I think one of the first things to do is to get an idea of the properties of propane
 - Are we talking about reasonably low enough pressures that we can get away with
@@ -66,7 +66,7 @@ webbook](https://webbook.nist.gov/cgi/fluid.cgi?TLow=-40&THigh=100&TInc=1&Applet
 to get the saturation properties of propane in the temperature range we're
 interested in here, this is what the saturation pressure looks like:
 
-![Propane Saturation Pressure (NIST)](/psat.png)
+![Propane Saturation Pressure (NIST)](/campstove/psat.png)
 
 This is telling us that at any temperature and pressure above the curve we have
 a liquid, and below we have a gas. So at our ambient temperature of about 50 F,
@@ -100,7 +100,7 @@ we start cooking.
 
 Using our little diagram from before:
 
-![Campstove Diagram](/campstove_diagram.png)
+![Campstove Diagram](/campstove/campstove_diagram.png)
 
 And the following assumptions:
 - The propane in the tank is at a uniform temperature, and starts at the same temperature as the ambient air (50 F) (it was left outside overnight for example)
@@ -206,7 +206,7 @@ Here's a plot of the temperature of the tank as a function of time, using some
 reasonable estimates for the heat transfer coefficient, area of valve, area of
 the tank, and the fluid properties of propane as indicated above:
 
-![Campstove Model](/temp_vs_time.png)
+![Campstove Model](/campstove/temp_vs_time.png)
 
 This is a simple model - but some cool things we can see:
 - It does seem reasonable that the tank would freeze water that condenses on it,
