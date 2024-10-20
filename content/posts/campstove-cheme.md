@@ -24,7 +24,7 @@ the propane tank was getting super cold - there was not only a thick layer of
 frost forming on the outside, but a small chunk of solid ice on the bottom of
 the tank where it met the picnic table... 
 
-The propane in the tank is stored a liquid under pressure relative to
+The propane in the tank is stored as a liquid under pressure relative to
 atmospheric. The pressure in the tank will be the saturation pressure of propane
 at the temperature of the tank (at any temperature and pressure conditions
 humans find comfortable). As we use propane, the pressure in the tank tries to
@@ -218,8 +218,16 @@ pretty sensitive to the heat transfer coefficient in air, which was of course
 one the more difficult things to find a good estimate for
 - If we were to insulate the tank very well, the temperature would drop even
 more quickly, which means the pressure in the tank would drop (see the
-saturation pressure curve) - this will eventually lead to dropping below the chocked flow limit, and the flow will begin to decrease - finally as it cools further the flow will stop completely. I guess this the reason why RV people use propane tank warmers - which is not something I thought about before!
-- Ice forming on the tank will increase the surface area of the tank, but it will also insulate the tank, so we'd have to consider the heat transfer properties of ice to get a better estimate of whether it's increasing or decreasing the exchange of heat with the surroundings. The ice itself condensing will also absorb heat from the tank, which is not something we've built into this model - but it's a cool idea to think about! I expect that because the ice forming on the tank is kind of sparse and frosty, it's probably got a lot of air trapped between the ice crystals and that might might make it more insulating than just a solid block of ice - but that's purely speculation on my part.
+saturation pressure curve) - this will eventually lead to dropping below the choked flow limit, and the flow will begin to decrease - finally as it cools further the flow will stop completely. I guess this the reason why RV people use propane tank warmers - which is not something I thought about before!
+- Ice forming on the tank will increase the surface area of the tank, but it
+will also insulate the tank, so we'd have to consider the heat transfer
+properties of ice to get a better estimate of whether it's increasing or
+decreasing the exchange of heat with the surroundings. The ice itself freezing from the condensed water
+will also heat the tank, which is not something we've built into
+this model - but it's a cool idea to think about. I also expect that because the ice
+forming on the tank is kind of sparse and frosty, it's probably got a lot of air
+trapped between the ice crystals and that might might make it more insulating
+than just a solid block of ice - but that's purely speculation on my part. Of course that also means it's got a lot of surface area to exchange heat with the surroundings, so there are a lot of competing effects there.
 - [Coleman's site](https://www.coleman.com/grills-stoves/camping-stoves/multi-burner/classic-propane-gas-camping-stove-2-burner/SAP_2000037883.html) says the 2 burner stove should last about an hour with both
 burner's on high and normal sized camping propane tank, we're getting about 2.5
 hours for 1 burner, which to me suggests we're surprisingly in the ballpark.
@@ -228,8 +236,8 @@ hours for 1 burner, which to me suggests we're surprisingly in the ballpark.
 This was a fun little exercise, remembering some of the basics of heat and mass
 transfer and trying to apply them - I used to be a ChemE not too long ago after
 all!  Looking forward to collecting some real data on the next camping trip to
-compare to this model - maybe I can refine it a bit more and see how it does
-compared to the actual data.
+compare to this model, maybe even insulating the tank to see how that affects things. Afterward I can refine it a bit more and see how it does
+compared to the actual data. Might be a while though - it's getting a little too cold out there for camping in New England.
 
 If you followed along, if you have any questions, notice mistakes, or would have
 set up the model differently, I'd love to hear about it!
