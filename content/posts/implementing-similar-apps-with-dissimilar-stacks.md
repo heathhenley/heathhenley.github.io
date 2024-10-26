@@ -1,13 +1,28 @@
 ---
-title: "Two similar apps with dissimilar tech stacks"
+title: Two similar apps with dissimilar tech stacks
 date: 2024-08-21T06:12:27-07:00
 draft: false
-description: "Notes on implementing two similar apps that interact with NOAA
-bathymetry data endpoints using dissimilar tech stacks - the apps used FastAPI/HTMX and Next.js, respectively."
-tags: ["software", "notes", "web development", "full stack"]
-categories: ["software", "notes", "web development", "full stack"]
-keywords: ["nextjs", "fastapi", "htmx", "web development", "full stack", 
-"typescript", "notes"]
+description: Notes on implementing two similar apps that interact with NOAA bathymetry data endpoints using dissimilar tech stacks - the apps used FastAPI/HTMX and Next.js, respectively.
+tags:
+  - software
+  - notes
+  - web
+  - development
+  - full
+  - stack
+categories:
+  - software
+  - notes
+  - web development
+  - full stack
+keywords:
+  - nextjs
+  - fastapi
+  - htmx
+  - web development
+  - full stack
+  - typescript
+  - notes
 ---
 
 **TLDR** - My general takeaways from working on two similar apps. One the OG 
