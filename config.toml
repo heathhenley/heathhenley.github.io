@@ -17,6 +17,7 @@ theme = "pickles"
   contact = "mailto:heath.j.henley@gmail.com"
   bio = "Just your average software developing, sonar data processing rockclimber with a taste for computational thermodynamics and cookies."
   favicon = "/favicon.png"
+  subtitle = "A mostly technical blog and collection of my notes and thoughts"
   meta_image = "/og_image_main.png"
   meta_description = "Chemical Engineer turned Software Engineer writing about Python, C++, computer simulation methods, full stack application development, CI/CD, travel, and whatever else comes up that seems worth sharing."
 

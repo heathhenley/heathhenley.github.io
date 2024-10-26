@@ -122,7 +122,7 @@ So for:
 - $k=1$ - we have $p(1) = 1/13$  - just the chance of drawing the ace on the first go
 - $k=2$ - we had to have missed on draw one, the chances of that $12/13$ - and then we have to get the ace here, though we have one less card, so we have $1/12$ and $p(2) = \frac{12}{13}\frac{1}{12} = \frac{1}{13}$  
 - $k=3$  -we had to have missed on both the first draws, the chances of that are missing the first $12/13$ , then missing the second $11/12$ , and then we got the ace - but out of two fewer cards now $1/11$ - so that $p(3) =\frac{12}{13}\frac{11}{12}\frac{1}{11}=\frac{1}{13}$
-- And so on, in this case they all cancel nicely to $1/13$  as we expected, and $E = \frac{1}{13}\sum(k) = 7$
+- And so on, in this case they all cancel nicely to $1/13$  as we expected, and $E = \frac{1}{13}\sum k = 7$
 
 The same logic applied to the full deck is more tedious (with 4 aces and 52 total cards):
 - $k=1$ - $p(1) =4/52$ - just the chance of pulling the ace on the first go
@@ -152,10 +152,10 @@ sum([x * p2(x) for x in range(1, 50)]) # 10.599999999999994
 ```
 
 **Very intuitive approach**
-This [answer on SO](https://math.stackexchange.com/a/2265291)presents a very intuitive and less abstract way to think about this problem. The probability that any card, say the 2, shows up before the Ace is $1/2$ . Basically if the cards are laid out randomly it can be either before the Ace or not. This holds for each other card, they all individually have a $1/2$ chance of being before the Ace. Because in this case there are 12 non aces, the average number of cards preceding the Ace will be $12 \cdot 1/2=6$ - so there will be six draws on average before the Ace is drawn - we have to add 1 to actually draw the Ace, coming to the same answer of 7.
+This [answer on SO](https://math.stackexchange.com/a/2265291) presents a very intuitive and less abstract way to think about this problem. The probability that any card, say the 2, shows up before the Ace is $1/2$ . Basically if the cards are laid out randomly it can be either before the Ace or not. This holds for each other card, they all individually have a $1/2$ chance of being before the Ace. Because in this case there are 12 non aces, the average number of cards preceding the Ace will be $12 \cdot 1/2=6$ - so there will be six draws on average before the Ace is drawn - we have to add 1 to actually draw the Ace, coming to the same answer of 7.
 The same line of reasoning works for the full deck too - each of the 48 non ace cards has a 1 in 5 chance of being pulled before an ace is. Then on average the number of cards that precede the ace will be $48 \cdot 1/5= 9.6$ , and drawing the ace makes it $10.6$. 
 
-**A nice shortcut**: it's a math-y way to get there, but I guess problem follows a specific distribution a [negative hypergeometric distribution](https://en.wikipedia.org/wiki/Negative_hypergeometric_distribution)- the math to get there is beyond my current probability and statistics skills - but it boils down to an incredibly simple expression for the expected number of draws to the first success:
+**A nice shortcut**: it's a math-y way to get there, but I guess problem follows a specific distribution a [negative hypergeometric distribution](https://en.wikipedia.org/wiki/Negative_hypergeometric_distribution) - the math to get there is beyond my current probability and statistics skills - but it boils down to an incredibly simple expression for the expected number of draws to the first success:
 $$
 E = \frac{N+1}{k+1} 
 $$ where $N$ is the total number of cards, and $k$ are the number of 'winning' or 'success' events, that we will stop when we draw. For our two examples so far it's $E =\frac{13 + 1}{1 + 1} = 7$ for the small case and $E =\frac{52 + 1}{4 + 1} = 10.6$
