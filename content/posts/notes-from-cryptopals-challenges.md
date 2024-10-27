@@ -1,14 +1,23 @@
 ---
-title: "The Cryptopals Challenges"
+title: The Cryptopals Challenges
 date: 2023-12-29T12:58:01-05:00
 draft: false
-description: "Summary and notes about learnings from the Cryptopals Crypto 
-Challenges. I'm starting with knowing nothing about cryptography, except that
-you can see Tux the penguin if you encrypt him with ECB mode lol. Going to
-hopefully push updates as I have time to work through the challenges."
-tags: ["cryptography", "notes", "software", "software-engineering"]
-categories: ["python", "software", "software-engineering", "notes"]
-keywords: ["python", "cryptography", "software", "software-engineering" ]
+description: Summary and notes about my learnings from the Cryptopals Crypto Challenges. I started knowing nothing about cryptography, except that you can see Tux the penguin if you encrypt him with ECB mode. I am pushing updates as I have time to work through the challenges. Picking them off one at a time, so this page will be a constant work in progress.
+tags:
+  - cryptography
+  - notes
+  - software
+  - software-engineering
+categories:
+  - python
+  - software
+  - software-engineering
+  - notes
+keywords:
+  - python
+  - cryptography
+  - software
+  - software-engineering
 mathjax: true
 ---
 
@@ -139,9 +148,8 @@ So the the last byte of the previous block of ciphertext, XOR'd with the last
 byte of the current block of plaintext is 0x01 - which we can rearrange to get
 the last byte of the plaintext block:
 $$
-PT_{n}^\text{last_byte} = CT_{n-1}^\text{last byte} \oplus 0x01
+PT_{n}^{\text{last byte}} = CT_{n-1}^{\text{last byte}} \oplus 0x01
 $$
-
 Then we can repeat this process - next setting the last byte of the current
 block to 0x02 and manipulating the penultimate byte of the previous block of
 ciphertext until we know the padding is good, and so on, decrypting the entire
