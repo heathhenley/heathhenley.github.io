@@ -1,18 +1,27 @@
 ---
-title: "Notes: gradient descent, Newton-Raphson, Lagrange Multipliers"
+title: "Notes: Gradient Descent, Newton-Raphson, Lagrange Multipliers"
 date: 2024-05-26T00:15:12-04:00
 draft: false
-metathumbnail: "/optimize/gx_constrained.png"
+metathumbnail: /optimize/gx_constrained.png
 mathjax: true
-description: "A quick 'non-mathematical' introduction to the most basic forms of
-gradient descent and Newton-Raphson methods to solve optimization problems
-involving functions of more than one variable. We also look at the Lagrange
-Multiplier method to solve optimization problems subject to constraints (and
-what the resulting system of nonlinear equations looks like, eg what we could
-apply Newton-Raphson to, etc)."
-tags: ["python", "numerical methods", "optimization"]
-categories: ["applied math", "numerical methods", "optimization", "python"]
-keywords: ["gradient descent", "newton's method", "lagrange multipliers", "optimization", "numerical methods", "python"]
+description: A quick 'non-mathematical' introduction to the most basic forms of gradient descent and Newton-Raphson methods to solve optimization problems involving functions of more than one variable. We also look at the Lagrange Multiplier method to solve optimization problems subject to constraints (and what the resulting system of nonlinear equations looks like, eg what we could apply Newton-Raphson to, etc).
+tags:
+  - python
+  - numerical
+  - methods
+  - optimization
+categories:
+  - applied math
+  - numerical methods
+  - optimization
+  - python
+keywords:
+  - gradient descent
+  - newton's method
+  - lagrange multipliers
+  - optimization
+  - numerical methods
+  - python
 ---
 
 *TL;DR:* A quick "non-mathematical" introduction to the most basic forms of
@@ -424,7 +433,7 @@ Our system of equations is:
 
 $$
 \begin{align*}
-\frac{\partial L}{\partial n_{i}} = \frac{G_i^\*}{RT} + \ln(\frac{n_iP}{nP^0}) + \sum_j^{ne}\lambda_j a_{ij} = 0 \quad \text{for} \quad i = 1, \dots, nc \\\
+\frac{\partial L}{\partial n_{i}} = \frac{G_i^*}{RT} + \ln(\frac{n_iP}{nP^0}) + \sum_j^{ne}\lambda_j a_{ij} = 0 \quad \text{for} \quad i = 1, \dots, nc \\\
 \frac{\partial L}{\partial \lambda_{j}} = \sum_i^{nc} a_{ij}n_i - n_j^0 = 0 \quad \text{for} \quad j = 1, \dots, ne
 \end{align*}
 $$
