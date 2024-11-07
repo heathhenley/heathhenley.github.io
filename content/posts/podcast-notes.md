@@ -20,8 +20,7 @@ keywords:
 Takeaways and notes from recent podcasts I've listened to - I'm finding that taking actual notes is helping me retain info and more actively listen lately - and I figured why not share publicly in case it gets someone else interested in listening to (or not) the episode.
 ### Lenny's Podcast
 #### Episode with Anneka Gupta
-The guest on [this episode](https://www.lennysnewsletter.com/p/becoming-more-strategic-anneka-gupta) was Anneka Gupta, Chief Product Officer at [Rurik](https://www.rubrik.com/). She talked about leadership, strategy, decision making and product dev.
-The biggest takeaways that stood out to me from this episode:
+The guest on [this episode](https://www.lennysnewsletter.com/p/becoming-more-strategic-anneka-gupta) was Anneka Gupta, Chief Product Officer at [Rubrik](https://www.rubrik.com/). She talked about leadership, strategy, decision making and product dev.
 ##### On what does "being strategic" actually mean?
 Or what do people really mean when they "want to be more strategic"?
 - She suggests that they're usually looking two things (1) to be able to present a simple and compelling 'why' for your project, and (2) you need to be a champion/change agent for big changes or ideas that might be hard in the short term / but beneficial long term
