@@ -31,10 +31,10 @@ Or what do people really mean when they "want to be more strategic"?
 - Roger Martin - ["Playing to Win"](https://hbr.org/books/playing-to-win)  - mentioned, I might check it out
 ##### On “Becoming a Historian” at work
 - She presented the idea of building up a history because researching and asking about different past products and projects and writing it up.
-- Gather information about what was tried, what didn’t work and why? Learn from mistakes that you didn’t have to make, and build more context
-- It also helps understand the people and potential “baggage” around “we tried X before and Y happened". You can anticipated that responses and be more prepared to address concerns to get buy in
+- Gather information about what was tried, what didn’t work and why? Learn from mistakes that you didn’t have to make yourself, and build more context
+- It also helps understand the people and potential “baggage” around “we tried X before and Y happened". You can anticipate those response and be more prepared to address concerns and get buy in
 ##### On decision making
-- It’s not always about making the right decision it’s about making the decision - avoid [analysis paralysis](https://en.wikipedia.org/wiki/Analysis_paralysis) - just focus on having a good hypothesis based on what you know
+- It’s not always about making the right decision, it’s about making the decision - avoid [analysis paralysis](https://en.wikipedia.org/wiki/Analysis_paralysis) - just focus on having a good hypothesis based on what you know
 - People are often hesitate to make a decision on incomplete information. Once you commit, you start to get more data which you can use to iterate. If you never take the step, you might never get any additional data. Even if it means you go backwards a bit, you will have learned something, in the no decision case, you didn't
 - Basically: have a strong hypothesis, got for it, get data, iterate
 - How do you encourage this type of culture? So that your team is not too hesitant to make a decision that doesn't pan out. It's important to focus on and **reward the learning versus the outcome**
