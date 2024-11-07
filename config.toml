@@ -4,7 +4,7 @@ title = "Blogging by Heath™"
 theme = "pickles"
 
 [params]
-  paginate = 6
+  paginate = 5
   custom_css = ["/css/custom.css"]
   # Social accounts. Link to these accounts are displayed in the header and
   # footer
@@ -12,6 +12,7 @@ theme = "pickles"
   github = "heathhenley"
   linkedin = "hhenley"
   twitter = "Heath_Henley"
+  bluesky = "heathhenley.dev"
   author = "Heath Henley"
   avatar = "/heathcropped.png"
   contact = "mailto:heath.j.henley@gmail.com"
@@ -35,24 +36,14 @@ theme = "pickles"
     weight = 2
 
 [[menu.main]]
-    name = "Tags"
-    url = "/tags"
-    weight = 3
-
-[[menu.main]]
     name = "Tutoring"
     url = "/tutoring"
-    weight = 4
+    weight = 3
 
 [[menu.main]]
     name = "Writing"
     url = "/writing"
-    weight = 5
-
-[[menu.main]]
-    name = "ESOL Class"
-    url = "https://sites.google.com/view/english-at-pcl/home"
-    weight = 6
+    weight = 4
 
 [related]
   # Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.

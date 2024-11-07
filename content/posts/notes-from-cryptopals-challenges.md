@@ -89,7 +89,7 @@ For the case with the random prefix, there's a little more work to do -
 basically finding the padding length first and adjusting above to account for
 it being there.
 
-### CBC bitflipping attack
+### CBC bit flipping attack
 Basically, you can manipulate the ciphertext to change what the resulting
 plaintext is when it's decrypted when using CBC mode. So for example, in
 this challenge the attack was to change the plaintext so that it would
