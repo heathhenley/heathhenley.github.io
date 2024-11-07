@@ -1,6 +1,6 @@
 ---
 title: Podcast Notes and Key Takeaways
-date: 2024-10-27T12:39:09-04:00
+date: 2024-11-06T10:38:00-04
 draft: false
 description: Notes and take aways from specific episodes of podcasts
 tags:
