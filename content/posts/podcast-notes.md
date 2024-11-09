@@ -18,6 +18,17 @@ keywords:
 **TL;DR**- just notes and takeaways from recent podcast episodes. They'll mostly be about product development, software engineering, or other tech stuff (GIS related probably). 
 ## Podcasts
 Takeaways and notes from recent podcasts I've listened to - I'm finding that taking actual notes is helping me retain info and more actively listen lately - and I figured why not share publicly in case it gets someone else interested in listening to (or not) the episode.
+### My First Million
+#### Episode with Christina Cacioppo
+The guest on [this episode](https://www.mfmpod.com/22-failed-ideas-before-finding-one-huge-hit-25b-christina-cacioppo-from-vanta/) was the CEO of [Vanta](https://www.vanta.com/)
+##### Consistency 
+Inspired by her attitude + the story of founding Vanta
+* From her experience at USV - founders not all successful on first or second shot - most are on the "5th or 55th" attempt
+##### Creative work
+I really liked the quote from Art and Fear _"The function of the overwhelming majority of your artwork is simply to teach you how to make the small fraction of your artwork that soars."_ It makes me feel better about the tons of random projects I do for fun, writing, etc. I have a tendency to start projects or writing and then not ship... 
+##### Start up mental stuff
+* Moving goal posts aren't necessarily bad, if you like the actual process they won't stop you from being happy
+* Stick with whatever helps you clear your mind - running, reading, misc exercise, etc, no matter what's going on or how busy you are
 ### Lenny's Podcast
 #### Episode with Anneka Gupta
 The guest on [this episode](https://www.lennysnewsletter.com/p/becoming-more-strategic-anneka-gupta) was Anneka Gupta, Chief Product Officer at [Rubrik](https://www.rubrik.com/). She talked about leadership, strategy, decision making and product dev.
