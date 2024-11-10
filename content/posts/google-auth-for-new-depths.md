@@ -147,7 +147,6 @@ def google_auth_callback(
     raise HTTPException(...)
 
   if not state or state != request.cookies.get("state", None):
-    logging.error("State mismatch - possible CSRF attack")
     raise HTTPException(...)
 
   # If we're here, the state checks out and we're ready to exchange the code
@@ -183,6 +182,11 @@ def google_auth_callback(
   # Google APIs - if you're trying to do something on their behalf or access
   # more information. In the case of Newdepths we don't need it, Google
   # has auth'd the user for us and we're done.
+
+  # USE `info` for something
+
+  # Don't render a template using this endpoint, instead, redirect
+  # your newly registered/logged in user to a new endpoint
 ```
 
 So that's it - you get back the users info and google has handled all the password storage / checking for you. It's then up to for your specific case to figure out what you want to do with that information.
