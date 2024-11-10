@@ -1,7 +1,7 @@
 ---
 title: Adding Basic OAuth Flow to a MPA
 date: 2024-11-10T15:09:10-05:00
-draft: true
+draft: false
 description: I recently added "Sign in with Google" functionality to the https://newdepths.xyz app. Here's an rough overview and some notes about how to do it.
 tags:
   - python
