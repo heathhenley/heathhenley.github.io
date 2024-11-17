@@ -1,8 +1,8 @@
 ---
-title: Notes on tail recursion
+title: Simple tail recursion examples
 date: 2024-11-17T10:09:15-05:00
 draft: false
-description: Finally understanding tail recursion and a bunch of examples in Ocaml and Python, even though it doesn't matter in Python because there's no tail call optimization in the interpreter (it still makes new stack frames even if there's nothing pending).
+description: Notes on tail recursion optimizations for recursive functions with a bunch of simple examples in Ocaml. I also did them in Python, even though it doesn't matter in Python because there's no tail call optimization in the interpreter (it still makes new stack frames even if there's nothing pending).
 tags:
   - algorithms
   - software-engineering
@@ -18,16 +18,17 @@ keywords:
   - software development
   - software-engineering
   - tail recursion
+metathumbnail: /tail_recursion/tail_recursion.png
 ---
 **TL;DR**: re-write the recursive function so that the 1st call doesn't need to wait for the result from the remaining calls, all the way down to the base case, before returning. 
 
-Recursive functions continue calling themselves until the base case it hit - and then return. The continued calls keep pushing frames onto the stack and can lead to a stack overflow for big problems. Some languages include an optimization that cleans this up, provided that the function is written in a way that it doesn't need to weight for the results for all the other recursive calls to resolve to return.
+Recursive functions continue calling themselves until the base case is hit - and then they return. The continued calls keep pushing frames onto the stack and can lead to a stack overflow for large inputs. Some languages include an optimization that cleans this up, provided that the function is written in a way that it doesn't need to wait for the results for all the other recursive calls to resolve to return. See the [Tail call optimization wiki](https://en.wikipedia.org/wiki/Tail_call) for more info (read: a less hand wavy explanation) and a [list of languages that support it](https://en.wikipedia.org/wiki/Tail_call#Language_support) (and some that explicitly don't).
 
 Here's a little diagram that attempts to demonstrate the difference: 
 
 ![tail recursion diagram](/tail_recursion/tail_recursion.png)
 
-I was first exposed to this oddly via [typehero.dev](https://typehero.dev) - during their [Advent of Typescript](https://adventoftypescript)last year a lot of witchcraft is possible in Typescript's type system using recursion. Now that I've started to really look at functional programming, it's come up again in the [Ocaml docs](https://ocaml.org/docs/loops-recursion#tail-recursion)  - and to make an effort to understand it fully I threw together some simple examples, a couple are from the docs. 
+I was first exposed to this oddly via [typehero.dev](https://typehero.dev) - during their [Advent of Typescript](https://adventofts.com) last year a lot of witchcraft is possible in Typescript's type system using recursion. Now that I've started to really look at functional programming, it's come up again in the [Ocaml docs](https://ocaml.org/docs/loops-recursion#tail-recursion)  - and to make an effort to understand it fully I threw together some simple examples, a couple are from the docs. 
 
 The first is a simple function to get the length of list recursively:
 
@@ -58,7 +59,9 @@ In this case the evaluations look like:
 ```
 
 
-The first evaluation hangs out and has to wait for the results from the rest until it finally returns. Versus the tail recursive version:
+The first evaluation hangs out and has to wait for the results from the rest until it finally returns, so that the first stack frame needs to hang around and it can't be cleaned up - the same for each subsequent call until it hits the base case.
+
+Versus the tail recursive version:
 
 ```ocaml 
 (* Tail recursive len function *)
@@ -86,7 +89,7 @@ The stack for this one looks like:
 *)
 ```
 
-Each evaluation can return, it doesn't have the value hanging out waiting like the first version does. 
+Each evaluation can return, it doesn't have the value hanging out waiting like the first version does, and if the language supports it, the same frame is reused.  
 
 Here's a few other examples:
 
@@ -145,10 +148,11 @@ let fibonacci_tr n =
   fibonacci_tr' n 0 1
 ```
 
-Of course these are all trivial examples, but definitely helped me to understand it better. Eg I think it was good exercise to start with a normal function and then make it tail recursive (if possible).
+Of course these are all trivial examples, but definitely helped me to understand it better. If you're working on this, I think it was good exercise to start with a normal function and then make it tail recursive (if possible).
 
 I dropped all these [examples in a Gist](https://gist.github.com/heathhenley/dd69b36ae201db4744b6b292ec336a22) if you want to run them or see more context.
 
+I also did these in Python - even though it doesn't matter in Python because there's no tail call optimization in the interpreter (it still makes new stack frames even if there's nothing pending). You can see those in the [Gist](https://gist.github.com/heathhenley/681e9f7c67ce51ff61b712c467a8dcf8) as well.
 
 
 
