@@ -152,7 +152,7 @@ Of course these are all trivial examples, but definitely helped me to understand
 
 I dropped all these [examples in a Gist](https://gist.github.com/heathhenley/dd69b36ae201db4744b6b292ec336a22) if you want to run them or see more context.
 
-I also did these in Python - even though it doesn't matter in Python because there's no tail call optimization in the interpreter (it still makes new stack frames even if there's nothing pending). You can see those in the [Gist](https://gist.github.com/heathhenley/681e9f7c67ce51ff61b712c467a8dcf8) as well.
+I also did these in Python - even though it doesn't matter in Python because there's no tail call optimization in the interpreter. You can see those in the [Gist](https://gist.github.com/heathhenley/681e9f7c67ce51ff61b712c467a8dcf8) as well. It seems like the argument against adding is that it makes debugging stack traces harder, and maybe they it's not quite 'pythonic'.
 
 
 
