@@ -28,7 +28,7 @@ Here's a little diagram that attempts to demonstrate the difference:
 
 ![tail recursion diagram](/tail_recursion/tail_recursion.png)
 
-I was first exposed to this oddly via [typehero.dev](https://typehero.dev) - during their [Advent of Typescript](https://adventofts.com) last year a lot of witchcraft is possible in Typescript's type system using recursion. Now that I've started to really look at functional programming, it's come up again in the [Ocaml docs](https://ocaml.org/docs/loops-recursion#tail-recursion)  - and to make an effort to understand it fully I threw together some simple examples, a couple are from the docs. 
+I was first exposed to this oddly via [typehero.dev](https://typehero.dev) - during their [Advent of Typescript](https://adventofts.com) last year - turns out a lot of witchcraft is possible in Typescript's type system using recursion (check out some of the later days in the [challenge from last year](https://typehero.dev/aot-2023)). Now that I've started to really look at functional programming, it's come up again in the [Ocaml docs](https://ocaml.org/docs/loops-recursion#tail-recursion)  - and to make an effort to understand it fully I threw together some simple examples, a couple are from the docs. 
 
 The first is a simple function to get the length of list recursively:
 
