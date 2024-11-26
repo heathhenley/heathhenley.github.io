@@ -1,0 +1,67 @@
+<!-- Include comments if the page comments param is true -->
+{{ with ($.Param "bluesky_id") }}
+<div id="comments">
+  <h2>Comments</h2>
+  <p>This is a static site - but you can comment on blog by replying to
+    <a href="https://bsky.app/profile/heathhenley.dev/post/{{ . }}" target="_blank">this Bluesky post</a></p>
+</div>
+<script>
+  function getPostDetails(postRecord) {
+    const post = postRecord.post;
+    const author = post.author;
+    const postId = post.uri.split("/").pop();
+    return {
+      "avatar": author.avatar,
+      "author": author.displayName ?? "@" + author.handle,
+      "authorLink": `https://bsky.app/profile/${author.handle}`,
+      "content": post.record.text,
+      "timestamp": post.indexedAt,
+      "likes": post.likeCount,
+      "link": `https://bsky.app/profile/${author.handle}/post/${postId}`
+    };
+  }
+  // Fetch thread replies from Bluesky's API
+  const baseUri = "https://api.bsky.app/xrpc/app.bsky.feed.getPostThread";
+  const uri = "at://heathhenley.dev/app.bsky.feed.post/{{ . }}";
+  const endpoint = `${baseUri}?uri=${uri}`;
+  async function fetchComments() {
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    const comments = data.thread?.replies || [];
+    const commentsElement = document.getElementById("comments");
+    const commentsCount = comments.length;
+    if (commentsCount === 0) {
+      commentsElement.innerHTML = "<p>No comments yet</p>";
+      return;
+    }
+    comments.sort((a, b) => b.post.indexedAt - a.post.indexedAt);
+    comments.forEach(c => {
+      const { avatar, author, authorLink, likes, link, content} = getPostDetails(c);
+      const commentElement = document.createElement("div");
+      const tmpl = `
+        <div class="comment">
+          <div class="comment_avatar_name">
+            <img src="${avatar}" alt="${author}" class="avatar" width=50 height=50 style="padding:0;margin:0;">
+            <div class="author" style="font-size:0.65em">
+              <a href="${authorLink}" target="_blank" style="text-decoration:none;">
+                ${author}
+              </a>
+            </div>
+          </div>
+          <div class="comment_content">
+            <div class="content">${content}</div>
+            <div class="comment_content_time_likes">
+              <div class="likes" style="font-size:0.65em">${likes} likes</div>
+              <a href="${link}" target="_blank" style="font-size:0.65em">View on Bluesky</a>
+            </div>
+            </div>
+        </div>
+  
+        `;
+      commentElement.innerHTML = tmpl;
+      document.getElementById("comments").appendChild(commentElement);
+    });
+  };
+  fetchComments();
+</script>
+{{ end }}
