@@ -2,6 +2,7 @@
 title: Simple tail recursion examples
 date: 2024-11-17T10:09:15-05:00
 draft: false
+bluesky_id: 3lbuskhkz2s2v
 description: Notes on tail recursion optimizations for recursive functions with a bunch of simple examples in Ocaml. I also did them in Python, even though it doesn't matter in Python because there's no tail call optimization in the interpreter (it still makes new stack frames even if there's nothing pending).
 tags:
   - algorithms
