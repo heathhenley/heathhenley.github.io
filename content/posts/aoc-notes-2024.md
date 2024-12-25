@@ -32,8 +32,8 @@ I plan on completing the ones that I have not yet done in Ocaml here and there a
 ### Favorite Day(s)
 Finding the Christmas tree in the robot grid on day 14. Day 24 pt 2 was cool also - I still haven’t solved programmatically (I worked out semi-manually) - it's a bunch of chained [full adders](https://www.geeksforgeeks.org/full-adder-in-digital-logic/) to add two numbers bit by bit, but a couple of the wires have been swapped. Box pushing on day 15 was a close second - I was really happy with coming up with a “nice” recursive solution without too much trouble (still was tricky to debug when working on samples but not real input). I also enjoyed the reverse engineering one on day 17, it felt a little like a CTF or something. 
 
-### Hardest Day
-Definitely day 21 by far - I didn’t really get the second part of this one on my own. Spent hours on it but could not figure out how to formulate in a way that would be cacheable. Got it with help though and next time I’ll be in better shape for this type of problem. It really helped to look at it as going depth first vs breadth first. It was actually similar to the much simpler stones problem on an earlier day. Day 12 part was also pretty difficult to get right, counting the number of sides on a region in a grid (ended up with basically counting corners).
+### Hardest Day(s)
+Definitely day 21 by far - I didn’t really get the second part of this one on my own. Spent hours on it but could not figure out how to formulate in a way that would be cacheable. Got it with help though and next time I’ll be in better shape for this type of problem. It really helped to look at it as going depth first vs breadth first. It was actually similar to the much simpler stones problem on an earlier day. Day 12 part 2 was also pretty difficult to get right, counting the number of sides on a region in a grid (ended up with basically counting corners).
 
 ### General learnings / re-learnings
 Some topics / notes in general:
