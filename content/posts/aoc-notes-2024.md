@@ -10,8 +10,8 @@ keywords: ["python", "ocaml", "advent of code", "notes"]
 
 **TL;DR** - Misc notes from the 2024 Advent of Code in Python and Ocaml and a little bit of Golang.
 
-The repo with my solutions to the [Advent of Code 2024](https://adventofcode.com/2024) problems can be found [here](https://github.com/heathhenley/AOC). Here's a bunch of random notes from
-this year
+The repo with my solutions to the [Advent of Code 2024](https://adventofcode.com/2024) problems can be found [here](https://github.com/heathhenley/AOC). This is a bunch of random notes from this year's event, no full write-ups or anything for now just general notes and take-aways.
+
 
 ## Languages
 Learned a bunch of Ocaml (even though I didn’t use it everyday as intended)
