@@ -15,7 +15,7 @@ The repo with my solutions to the [Advent of Code 2024](https://adventofcode.com
 
 ## Languages
 Learned a bunch of Ocaml (even though I didn’t use it everyday as intended)
-- Working out to do things without using mutable state
+- Working out how to do things without using mutable state
 - Doing things that would be loops with recursion / thinking about things as recursive vs iterative
 - Data structures in the std lib
 	- Sets are not constant time look up (use Hashtbl)
@@ -27,7 +27,7 @@ Learned a bunch of Ocaml (even though I didn’t use it everyday as intended)
 - Wish that you didn’t have to debug print using format - but I get it
 - Also wish you could keep unreferenced functions around while debugging - but I get it 
 
-I plan on completing the ones that I have not yet done in Ocaml here and there as the year goes on. I did a few in Go too but it’s honestly not as interesting given I already know C++ and Python. I decided not continue with it because it wasn’t as fun / challenging, it was mostly just looking up "how do I do x in go" and doing it. Where learning OCaml was a big switch because I don't have much FP experience. However, that's a big RIP 🪦 to the original goal of an animal mascot themed AOC (python, gopher, camel).
+I plan on completing the ones that I have not yet done in Ocaml here and there as the year goes on. I did a few in Go too but it’s honestly not as interesting given I already know C++ and Python. I decided not to continue with it because it wasn’t as fun / challenging. It was mostly just looking up "how do I do x in go" and doing it. Where learning OCaml was a big switch because I don't have much FP experience. However, that's a big RIP 🪦 to the original goal of an animal mascot themed AOC (python, gopher, camel).
 
 ### Favorite Day(s)
 Finding the Christmas tree in the robot grid on day 14. Day 24 pt 2 was cool also - I still haven’t solved programmatically (I worked out semi-manually) - it's a bunch of chained [full adders](https://www.geeksforgeeks.org/full-adder-in-digital-logic/) to add two numbers bit by bit, but a couple of the wires have been swapped. Box pushing on day 15 was a close second - I was really happy with coming up with a “nice” recursive solution without too much trouble (still was tricky to debug when working on samples but not real input). I also enjoyed the reverse engineering one on day 17, it felt a little like a CTF or something. 
