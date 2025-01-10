@@ -1,6 +1,7 @@
 ---
 title: "Advent of Code 2024 Notes"
 date: 2024-12-25T10:50:52-05:00
+lastmod: 2025-01-10T22:03:52-05:00
 draft: false
 description: "Notes from the 2024 Advent of Code"
 tags: ["python", "ocaml", "advent of code", "notes"]
@@ -41,7 +42,7 @@ Some topics / notes in general:
 	- Definitely need to put together a grid module for next year
 - Bunch of DFS/BFS and [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra's_algorithm) problems
 	- Same with these - used them all a lot - wrote them again each time
-	- Didn't really need [A*](https://en.wikipedia.org/wiki/A*_search_algorithm) for anything, but I tried it on a couple of the problems to revisit how it works. I didn't keep it but glad that I revisited
+	- Didn't really need [A*](https://en.wikipedia.org/wiki/A*_search_algorithm) for anything, but I tried it on a couple of the problems to revisit how it works. I didn't keep it but I'm glad that I revisited
 - Had not seen the reconstruction of best paths from parent nodes in Dijkstra in a long while, took a bit to debug but I got it working
 - [Bron-Kerbosch](https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm) for finding cliques in graphs (fully connected sub groups)
 - Reminded (in great detail) of how [binary addition](https://www.geeksforgeeks.org/full-adder-in-digital-logic/) works
