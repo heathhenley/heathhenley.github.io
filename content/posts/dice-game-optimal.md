@@ -1,5 +1,5 @@
 ---
-title: "Random dice game - simulations and optimal strategy using dynamic programming"
+title: "Random dice game - sims and DP solution"
 date: 2025-03-18T19:07:23-04:00
 draft: false
 mathjax: true
