@@ -89,8 +89,7 @@ but here&rsquo;s the snippet to play the game and the average it a bunch of time
 </span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> profit <span style=color:#f92672>/</span> runs
 </span></span></code></pre></div><p>Finally - with the simple tooling in place, we can play the game a bunch of
 times and see how the strategies compare. Here&rsquo;s a plot of the average profit
-for each strategy as we vary the number of rounds:</p><p><img src=/dice/profit.png alt="Profit plots"></p><p>There are some interesting things to note here. At the start, the &ldquo;take 11 or
-greater&rdquo; strategy is better than the &ldquo;roll until 20&rdquo; strategy - but as we run
+for each strategy as we vary the number of rounds:</p><p><img src=/dice/profit.png alt="Profit plots"></p><p>There are some interesting things to note here. At the start, the &ldquo;take greater than 10&rdquo; strategy is better than the &ldquo;roll until 20&rdquo; strategy - but as we run
 longer, the &ldquo;roll until 20&rdquo; strategy takes over. They both have a short
 &ldquo;explore&rdquo; phase where they&rsquo;re rerolling until they get to their respective
 thresholds, but they settle afterward - with the &ldquo;roll until 20&rdquo; strategy
