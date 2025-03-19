@@ -153,8 +153,7 @@ for each strategy as we vary the number of rounds:
 
 ![Profit plots](/dice/profit.png)
 
-There are some interesting things to note here. At the start, the "take 11 or
-greater" strategy is better than the "roll until 20" strategy - but as we run
+There are some interesting things to note here. At the start, the "take greater than 10" strategy is better than the "roll until 20" strategy - but as we run
 longer, the "roll until 20" strategy takes over. They both have a short
 "explore" phase where they're rerolling until they get to their respective
 thresholds, but they settle afterward - with the "roll until 20" strategy
