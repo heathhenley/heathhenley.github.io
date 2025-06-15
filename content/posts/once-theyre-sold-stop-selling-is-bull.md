@@ -1,7 +1,7 @@
 ---
 title: "Opinion: 'Once They're Sold Stop Selling' promotes the wrong attitude"
 date: 2023-09-24T17:44:04-04:00
-draft: true
+draft: false
 metathumbnail: "/sales_opinion/thumbnail.png"
 description: "Is this 'tried and true' sales advice actually good for the long term health of your organization, and not just your sales numbers?"
 tags: ["business development", "sales", "opinion", "bizdev"]

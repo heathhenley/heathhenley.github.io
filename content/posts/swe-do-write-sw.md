@@ -69,18 +69,38 @@ I suppose it might take more time to turnover at a big place, maybe some of them
 can slip through the cracks. But this type of person would drags down any team;
 at a small company, it's painfully and pretty immediately obvious.
 
+#### A People Problem
+
+This motive for the quote is usually something along the lines of: "You're job 
+isn't to physically write code - you're going to need soft skill to get things
+done and get promoted, etc." I don't disagree with this take at all, you
+definitely need to able to understand and communicate the tradeoff of different
+approaches, get buy in, etc. I would still argue that this falls under the
+umbrella of solving a business problem though software.
+
 ### Better Advice (maybe?)
 
 Here's what might actually help:
 
 - Talk to your customers directly when possible. Engineers should do support at
-least sometimes.
+least sometimes. For example, at FarSounder - the engineering team is the
+support team, so all have a good understanding of the product and common issues,
+etc. I understand that this won't scale or be possible everywhere, but one way 
+or another some version of this could be implemented.
 - Ship early versions / demos / POCs they can actually use and play with when
-it's possible so you can iterate based on their feedback.
+it's possible so you can iterate based on their feedback. I use this approach
+with client work whenever I can. If it's possible, I aim to deploy something in
+the first day or two, even if it's just the bones. For example, I'm working on
+an app to allow fisheries scientists to few photos of fish from a sampler and
+annotate them (species, etc) so that stats about the region can be calculated.
+The first day, I deployed a demo app with a gallery view of images and dummy
+data so that the client could start to be involved and give feedback.
+  - Caveat: this doesn't work with every type of client, you need to feel it out
+    a bit. Less technical clients might need to see something a bit more polished at each iteration.
 - Understand their actual problem, not just the solution they think they need 
-to solve that problem.
-- Don't be too principled to use LLMs to make you faster. But also don't let it 
-rob you of understanding and learning.
+to solve that problem. IMO this works great with the last point.
+- Don't be too principled to use LLMs to make you faster. But also don't let 
+them rob you of understanding and learning.
   - Turn off completions sometimes and make sure you can still think. Do some 
   Advent of Code, coding challenges, side projects, etc, w/e floats your boat.
 
