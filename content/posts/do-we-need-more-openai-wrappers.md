@@ -22,7 +22,7 @@ wine or like milk.
 ### I don't get it
 I just don't see what is going on with [YC](https://www.ycombinator.com/companies?batch=Summer%202025&batch=Spring%202025&batch=Winter%202025&batch=Fall%202024&batch=Summer%202024&batch=Winter%202024&batch=Summer%202023&query=ai) and all the VCs funding OpenAI wrapper
 after OpenAI wrapper. If you see what my blind spot might be, I'd love to hear
-about it. To me, it looks like the .com bubble all over again, expect it's not
+about it. To me, it looks like the .com bubble all over again, except it's not
 super charged by low interest rates / cheap money.
 
 ### LLMs are super valuable
