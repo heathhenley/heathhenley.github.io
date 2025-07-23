@@ -432,10 +432,10 @@ element balance constraint.
 Our system of equations is:
 
 $$
-\begin{align*}
-\frac{\partial L}{\partial n_{i}} = \frac{G_i^*}{RT} + \ln(\frac{n_iP}{nP^0}) + \sum_j^{ne}\lambda_j a_{ij} = 0 \quad \text{for} \quad i = 1, \dots, nc \\\
-\frac{\partial L}{\partial \lambda_{j}} = \sum_i^{nc} a_{ij}n_i - n_j^0 = 0 \quad \text{for} \quad j = 1, \dots, ne
-\end{align*}
+\begin{align\*}
+\frac{\partial L}{\partial n_{i}} &= \frac{G_i^*}{RT} + \ln(\frac{n_iP}{nP^0}) + \sum_j^{ne}\lambda_j a_{ij} = 0 \quad \text{for} \quad i = 1, \dots, nc \\\
+\frac{\partial L}{\partial \lambda_{j}} &= \sum_i^{nc} a_{ij}n_i - n_j^0 = 0 \quad \text{for} \quad j = 1, \dots, ne
+\end{align\*}
 $$
 
 This is a system of nonlinear equations that we could solve using the methods
