@@ -45,6 +45,11 @@ theme = "pickles"
     url = "/writing"
     weight = 4
 
+[[menu.main]]
+    name = "Reading"
+    url = "/reading"
+    weight = 5
+
 [related]
   # Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.
 
