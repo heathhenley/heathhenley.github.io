@@ -18,6 +18,7 @@ keywords:
   - javascript
   - opencv
   - fisheries
+metathumbnail: /fish/og-fish.png
 ---
 
 **TL;DR**: A side project I'm working on is a web interface for the photos collected by a smart scale. The scale and its attached camera is deployed in remote areas and as the fish are caught they are weighed on the scale and their picture is taken. There is a mobile app that coordinates all of the and when the user is back in an area with service / wifi, the photos are sent up to a bucket. The app that I'm working on allows scientists and other interested parties to review and analyze the batches of fish pulled from their fisheries / region. We're using a combination of ML techniques and classical image processing to calculate fish lengths and species.
