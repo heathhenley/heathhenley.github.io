@@ -26,6 +26,7 @@ them on [Goodreads](https://www.goodreads.com/user/show/33307498-heath-henley) w
 - [Zen and the Art of Motorcycle Maintenance](/books/2025/motorcyle-maint)
 - [Operating Systems: Three Easy Pieces](/books/2025/ostep)
 - [On Looking](/books/2025/on-looking)
+- [Project Hail Mary](/books/2025/project-hail-mary)
 - [The Science of Storytelling](/books/2025/science-of-story-telling)
 - [Sea of Tranquility](/books/2025/sea-of-tranquility)
 - [Wild Snail Eating](/books/2025/wild-snail-eating)
