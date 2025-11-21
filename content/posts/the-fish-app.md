@@ -1,7 +1,7 @@
 ---
-title: Catching you up on a side project - Fisheries Data Platform
+title: Working on a Fisheries Data Platform
 date: 2025-11-19T23:47:00-05:00
-lastmod: 2025-11-19T23:47:00-05:00
+lastmod: 2025-11-20T22:29:00-05:00
 draft: false
 description: A side project I'm working on is a web interface for the photos collected by a smart scale. The scale and it's attached cameras is deployed in remote areas and as the fish are caught they are weighed on the scale and their picture is taken. There is a mobile app that coordinates all of the and when the user is back in an area with service / wifi, the photos are sent up to a bucket. The app that I'm working on allows scientists and other interested parties to review and analyze the batches of fish pulled from their fisheries / region. We're using a combination of ML techniques and classical image processing to calculate fish lengths and species.
 tags:
