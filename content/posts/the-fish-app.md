@@ -25,7 +25,7 @@ keywords:
 ## Background
 This is not meant to be an ad for the product, though it's pretty cool and automatically getting fish weight / length relationships per species is something that you're into, get in touch with Todd at [MER Consultants](https://merconsultants.org/). 
 
-The sampling platform consists of a "sample" - which is a package made up of a green board, scale, and a phone / camera. The idea is that as fish are pulled up, they're slid onto the scale, it stabilizes, grabs a picture and records the weight and then they're on to the next in only a few seconds. The software for with part of the system is an Android app in Kotlin that another dev is responsable for.
+The sampling platform consists of a "sampler" - which is a package made up of a green board, scale, and a phone / camera. The idea is that as fish are pulled up, they're slid onto the scale, it stabilizes, grabs a picture and records the weight and then they're on to the next in only a few seconds. The hardware interface and software for that part of the system is an Android app in Kotlin that another dev is responsable for.
 
 ![Picture of sampler system](/fish/sampler.jpg)
 
