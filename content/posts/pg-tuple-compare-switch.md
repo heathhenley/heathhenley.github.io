@@ -78,7 +78,7 @@ order by created_time desc, id desc
 limit 10
 ```
 
-Of course you want to have and index on the columns used in the cursor (here `created_time` and `id`), so that in theory the database can use it and get right there. This doesn't degrade with the size of the table in the same way as the other pagination methods.
+Of course you want to have an index on the columns used in the cursor (here `created_time` and `id`), so that in theory the database can use it and get right there. This doesn't degrade with the size of the table in the same way as the other pagination methods.
 
 But here’s where the surprise came for me…
 ## Switch to Tuple Comparison
