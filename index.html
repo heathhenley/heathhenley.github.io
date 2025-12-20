@@ -3,8 +3,8 @@
 <time datetime=2025-12-20T12:17:28-05:00>Dec 20, 2025</time>
 | Updated on
 <time datetime=2025-12-20T12:17:28-05:00>Dec 20, 2025</time>
-| 1842 words
-| ~9mins</p></header><div class=c-article__summary>TL;DR - Recently set out to speed up a slow query behind a multi-column cursor paginated endpoint. A simple switch to represent the where filters as a tuple makes a huge difference in performance on the exact same data with the same indices. Eg - change where ( a > c or (a = c and b > d )) to where (a, b) > (c, d). In the &ldquo;tuple&rdquo; case postgres can use the index more efficiently and get more of the needed rows using the index condition, versus walking it, reading rows in and filtering.</div><a href=https://heathhenley.dev/posts/pg-tuple-compare-switch/ class="c-article__btn p-list-article__btn">Read more</a></article><article class="c-article p-list-article"><header><h2 class="c-title c-article__title"><a href=https://heathhenley.dev/posts/the-fish-app/>Working on a Fisheries Data Platform</a></h2><p class=c-article__meta>Posted on
+| 1941 words
+| ~10mins</p></header><div class=c-article__summary>TL;DR - Recently set out to speed up a slow query behind a multi-column cursor paginated endpoint. A simple switch to represent the where filters as a tuple makes a huge difference in performance on the exact same data with the same indices. Eg - change where ( a > c or (a = c and b > d )) to where (a, b) > (c, d). In the &ldquo;tuple&rdquo; case postgres can use the index more efficiently and get more of the needed rows using the index condition, versus walking it, reading rows in and filtering.</div><a href=https://heathhenley.dev/posts/pg-tuple-compare-switch/ class="c-article__btn p-list-article__btn">Read more</a></article><article class="c-article p-list-article"><header><h2 class="c-title c-article__title"><a href=https://heathhenley.dev/posts/the-fish-app/>Working on a Fisheries Data Platform</a></h2><p class=c-article__meta>Posted on
 <time datetime=2025-11-19T23:47:00-05:00>Nov 19, 2025</time>
 | Updated on
 <time datetime=2025-11-20T22:29:00-05:00>Nov 20, 2025</time>
