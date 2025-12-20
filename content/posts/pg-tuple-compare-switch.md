@@ -133,10 +133,12 @@ Execution Time: 0.183 ms
 ```
 
 So we can confirm it's using the same index in both. However, in the first it’s not able to use the whole clause as the index condition. I guess it only uses one column to read rows in order and needs to filter out TONS of rows. In the second, it’s able to use the clause as the index condition and it gets right to the data we need, filtering significantly fewer rows. It doesn’t have to read in as much data to find the results, so there are way fewer heap fetches and it's much faster.
+
+**BTW** it's not the order of the calls in the example - switched them to test 😉
 ### Conclusion 
 This wasn’t Intuitive to me, I feel like the query planner is pretty smart usually and was surprised it behaved differently for these. Here’s a [small standalone test case](https://github.com/heathhenley/pg-tuple-comparison) that demonstrates the difference on a randomized dataset that I set up to play with the problem before implementing for real.
 
-You can play with the parameters and depending on what the data looks like even a 100x speed up is possible! (depends on the data shape and your computer of course)
+You can play with the parameters and depending on what the data looks like even a 100x speed up is possible! Depends on the data shape and your computer of course - the same 100x speed up parameters on my work laptop gave about 57x speed up on my personal one.
 
 One major downside to switching to this approach is that you need to have the ordering on the columns going in the same direction. In that case, you can't easily set up the the tuple as above using a single comparison operator. For example, you can’t easily sort by decreasing time and increasing id. But if that is not important for your use case, and you have similar looking clause somewhere - I recommend you try it out. Profile it and check out the query plan in both cases, and see what happens!
 
