@@ -140,7 +140,11 @@ This wasn’t Intuitive to me, I feel like the query planner is pretty smart usu
 
 You can play with the parameters and depending on what the data looks like even a 100x speed up is possible! Depends on the data shape and your computer of course - the same 100x speed up parameters on my work laptop gave about 57x speed up on my personal one.
 
-One major downside to switching to this approach is that you need to have the ordering on the columns going in the same direction. In that case, you can't easily set up the the tuple as above using a single comparison operator. For example, you can’t easily sort by decreasing time and increasing id. But if that is not important for your use case, and you have similar looking clause somewhere - I recommend you try it out. Profile it and check out the query plan in both cases, and see what happens!
+One major downside to switching to this approach is that you need to have the ordering on the columns going in the same direction. In that case, you can't easily set up the the tuple as above using a single comparison operator. Postgres compares using the operator (`<` for example) one column at a time while they're equal, so we can't swap the operator for a column as we could if we wanted to in the first case. For example, you can’t easily sort by decreasing time and increasing id.
+
+Another is that none of the values can be `NULL` - but at least in the case of cursor pagination, and in the use case I had - all the columns are `NOT NULL`.
+
+If you don't have NULLs in the columns of interest, and you don't care about sorting by ascending in one and descending in the other - I recommend you try it out. Profile it and check out the query plan in both cases, and see what happens!
 
 ### Key Takeaways
 
@@ -148,6 +152,7 @@ If you just skimmed:
 - You might be able to switch (a < c or (a = c and b < d)) with (a, b) < (c, d) for a free performance gain
 	- Profile first!
 - You can't use it if you need the columns to go in opposite orders
+- You can't use it if any of the values can be `NULL`
 - This wasn't intuitive for me - expected the planner would sort this out
 - Standalone example here: https://github.com/heathhenley/pg-tuple-comparison
 
@@ -156,3 +161,4 @@ If you have more insight into this, or if you think I missed something I would h
 **Some links**
 - DRF docs on cursor pagination: https://www.django-rest-framework.org/api-guide/pagination/#cursorpagination
 - Disqus blog on it: https://cra.mr/2011/03/08/building-cursors-for-the-disqus-api
+- Technically row constructor comparison I was being imprecise (https://www.postgresql.org/docs/current/functions-comparisons.html#FUNCTIONS-COMPARISONS)
