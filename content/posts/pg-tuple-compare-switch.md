@@ -18,7 +18,7 @@ keywords:
   - software development
   - software engineering
 ---
-**TL;DR** - Recently set out to speed up a slow query behind a multi-column cursor paginated endpoint. A simple switch to represent the `where` filters as a `tuple` makes a huge difference in performance on the exact same data with the same indices. Eg - change where ( a > c or (a = c and b > d )) to (a, b) > (c, d). In the `tuple` case `postgres` can use the index more efficiently and get more of the needed rows using the index condition, versus walking it, reading rows in and filtering. Feel free to just skip straight to [the simple demo](https://github.com/heathhenley/pg-tuple-comparison) without reading all this if that's more your thing.
+**TL;DR** - Recently set out to speed up a slow query behind a multi-column cursor paginated endpoint. A simple switch to represent the `where` filters as a `tuple` makes a huge difference in performance on the exact same data with the same indices. Eg - change `where ( a > c or (a = c and b > d ))` to `where (a, b) > (c, d)`. In the "tuple" case postgres can use the index more efficiently and get more of the needed rows using the index condition, versus walking it, reading rows in and filtering. Feel free to just skip straight to [the simple demo](https://github.com/heathhenley/pg-tuple-comparison) without reading all this if that's more your thing.
 
 ## Intro
 
@@ -39,10 +39,10 @@ offset 10
 ```
 
 ### Page Number
-Another option that's kind of similar is "page number" pagination, we have a set page size and with that we can generate a similar query to the "page" of data we need. For example limit  = page size, and offset = (page_number - 1) x page_size, the API different, you ask for page=x versus sending limit=x and offset=y - but the idea is the same.
+Another option that's kind of similar is "page number" pagination, we have a set page size and with that we can generate a similar query to the "page" of data we need. For example limit  = page size, and offset = (page_number - 1) x page_size, the API is different, you ask for page=x versus sending limit=x and offset=y - but the idea is the same.
 
 ### The Issue w/ these
-Limit / offset and page number pagination both work for a lot of cases. But they begin to fall apart on large datasets - as you get deeper into the dataset, they both get slower and slower. The database isn't actually able to use the `offset` to skip straight to correct spot in the results without making the whole result set. So at first, it can seem fast - getting the first 10 blogs is not an issue. But getting blogs 100,000,001 - 100,00,010 - it's going to need to build the whole set and scan through that millionth record - which is... not great. A lot of these implementations also run a query for the count (using a real count and not caching or other tricks like pulling it from the table metadata) - which is very expensive on large tables.
+Limit / offset and page number pagination both work for a lot of cases. But they begin to fall apart on large datasets. As you get deeper into the dataset, they both get slower and slower. The database isn't actually able to use the `offset` to skip straight to correct spot in the results without making the whole result set. So at first, it can seem fast - getting the first 10 blogs is not an issue. But getting blogs 100,000,001 - 100,00,010 - it's going to need to build the whole set and scan through that millionth record - which is... not great. A lot of these implementations also run a query for the count (using a real `select count(*)` count and not some caching or other tricks; like pulling it from the table metadata) - which is very expensive on large tables.
 ### Cursor Pagination
 
 Another option that performs better on large tables is to use "cursor" pagination. We define a stable ordering of the results, and instead of using a limit and offset to paginate through them, we use a "cursor" - a key that we can use to filter out everything up the last result we've seen in the sorted set. In the blog post example, a simple cursor could be `created_time` - and then our query changes to request the 10 posts with `created_time` less than the last one we’ve seen.
@@ -56,17 +56,15 @@ order by created_time desc
 limit 10
 ```
 
-With the right index (on `created_time` here), the DB can jump straight to the right spot and it will be much faster. So to page through the dataset like this using cursor pagination - on each page, we just need to figure out what the next “cursor” is (the oldest time on the current page), and send it along with the page. It’s common to base64 encode it to pass it around - so it’s not as immediately obvious, but as a first approximation, that’s really all we’re doing.
-
+With the correct index (on `created_time` here), the DB can jump straight to the right spot and it will be much faster. So to page through the dataset like this using cursor pagination - on each page, we just need to figure out what the next “cursor” is (the oldest time on the current page), and send it along with the page. It’s common to base64 encode the cursor to pass it around - so it’s not as immediately obvious and looks really opaque, but that’s really all we’re doing.
 #### Cursor Pagination Downsides
-One downside of cursor pagination is that you can’t easily jump to a certain spot in the result set - there’s no concept of jumping to middle, end, page 13, or offset 1050, really. You end up with your current page of data, and the cursor you need to get the next one, and that’s it (usually the previous is generated too - but trying to keep it simple). But - if you're dealing with a lot of data and implementing infinite scrolling, or generally only care about next / previous navigation for your use case, then cursor pagination can work. 
-
+One downside of cursor pagination is that you can’t easily jump to a certain spot in the result set - there’s no concept of jumping to the middle, the end, page 13, or offset 1050, etc, really. You end up with just your current page of data, and the cursor you need to get the next one, and that’s it (usually the previous is generated too - but trying to keep it simple). If you're dealing with a lot of data and implementing infinite scrolling, or generally only care about next / previous navigation for your use case, then cursor pagination is a good option. 
 ### Multi-column Cursor
-The example above uses a single column as a cursor, which works if it’s unique. If the column you want to sort by isn’t totally unique, you can use multiple columns to define a unique ordering. It's sort of a tie breaker. For our example with blogs, it could be that maybe some posts have the exact same created date (maybe you moved them off sub stack or medium in bulk, for example). The duplicated times causes problems for our simple single column cursor because the sort order isn’t fixed.
+The example above uses a single column as a cursor, which works if it’s unique. If the column you want to sort by isn’t totally unique, you can use multiple columns to define a unique ordering. It's sort of a tie breaker. For our example with blogs, it could be that maybe some posts have the exact same created date (maybe you moved them off of wordpress, sub-stack or medium in bulk 😉). The duplicated times causes problems for our simple single column cursor because the sort order isn’t fixed.
 
 > **Side Note** That exact scenario is actually a simplification of an issue we hit with batch created values and the default [cursor pagination implementation in Django Rest Framework](https://github.com/encode/django-rest-framework/blob/main/rest_framework/pagination.py#L583). Turns out we aren’t [alone](https://github.com/encode/django-rest-framework/discussions/7888) - and this [an alternative with a fix](https://github.com/farsounder/drf-multifield-cursor) was originally a PR against DRF by a contributor (not me) but they don't want to merge.
 
-In summary, you need another column in the “cursor” to enforce a stable ordering. You could for example,  use the id (assuming it’s unique). So we sort by time first, and then any ties are broken by the id. For our page, we just need the pages data and then the `created_time` and id of the last row to use to request the next page. 
+In summary, you need another column in the “cursor” to enforce a stable ordering. You could for example,  use the id also (assuming it’s unique). So we sort by time first, and then any ties are broken by the id. For our page, we just need the page's data and then the `created_time` and id of the last row to be able to request the next page - but we have no idea where we are in the result set.
 
 Now the query would look something like:
 
@@ -80,7 +78,7 @@ order by created_time desc, id desc
 limit 10
 ```
 
-Of course you want to have and index on the columns used in the cursor (here `created_time` and `id`), so that in theory the database can use it and get right there.
+Of course you want to have and index on the columns used in the cursor (here `created_time` and `id`), so that in theory the database can use it and get right there. This doesn't degrade with the size of the table in the same way as the other pagination methods.
 
 But here’s where the surprise came for me…
 ## Switch to Tuple Comparison
