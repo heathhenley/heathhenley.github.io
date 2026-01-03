@@ -1,6 +1,6 @@
 ---
-title: "Story of Your Life and Others"
-draft: true
+title: Story of Your Life and Others
+draft: false
 hideDate: true
 ---
 By Ted Chiang
