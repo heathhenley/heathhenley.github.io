@@ -7,8 +7,10 @@ A sometimes updated list of things I've read and some of the notes I took on
 them if I managed to take any. They are not in order of reading. I also track
 them on [Goodreads](https://www.goodreads.com/user/show/33307498-heath-henley) which may be more up to date.
 
-## 2025
+## 2026
+- [Stories of Your Life and Others](/books/2026/story-of-your-life)
 
+## 2025
 - [Abundance](/books/2025/abundance)
 - [Art and Fear](/books/2025/art-and-fear)
 - [The Book Censor's Library](/books/2025/book-censors-library)
