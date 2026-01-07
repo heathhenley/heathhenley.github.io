@@ -9,6 +9,8 @@ them on [Goodreads](https://www.goodreads.com/user/show/33307498-heath-henley) w
 
 ## 2026
 - [Stories of Your Life and Others](/books/2026/story-of-your-life)
+- [There Is No Antimemetics Division](/books/2026/there-is-no)
+- [Tiny Experiments](/books/2026/tiny-experiments)
 
 ## 2025
 - [Abundance](/books/2025/abundance)
