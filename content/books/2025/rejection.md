@@ -1,5 +1,5 @@
 ---
-title: No Two Persons
+title: Rejection
 draft: false
 hideDate: true
 ---
