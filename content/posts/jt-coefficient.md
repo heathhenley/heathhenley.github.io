@@ -1,7 +1,7 @@
 ---
 title: "Expanding on the Joule-Thomson Effect"
-date: 2026-05-06T17:59:58-04:00
-draft: true
+date: 2026-05-11T18:18:00-04:00
+draft: false
 metathumbnail: "/jt/og_image.png"
 description: "Exploring the Joule-Thomson coefficient and the Joule-Thomson effect and its connection to interactions between molecules. Computing the second virial coefficient using a few different pair potentials and see how it changes the Joule-Thomson coefficient / inversion temperature."
 tags: ["thermodynamics", "statistical mechanics", "physics", "chemical engineering"]
@@ -282,7 +282,6 @@ Pretty cool right? We have:
 - (3) the soft sphere potential - there are only repulsive interactions - the gas always heats up when it expands
 - (4) the square well potential - there are only attractive interactions - the gas always cools when it expands
 - (5) the Lennard-Jones potential - it's a mix of attractive and repulsive interactions - it's positive at low temperatures, negative at high temperatures, and zero at an intermediate temperature. So that at first when attractive forces dominate at low temperature, it cools, but then, after the inversion temperature, when repulsive forces dominate, it heats up instead
-
 
 #### Notes
 Both purely repulsive potentials heat on expansion. I included the hard sphere
