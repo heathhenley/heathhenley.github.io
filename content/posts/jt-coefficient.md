@@ -2,7 +2,7 @@
 title: "Expanding on the Joule-Thomson Effect"
 date: 2026-05-11T18:18:00-04:00
 draft: false
-metathumbnail: "/jt/og_image.png"
+metathumbnail: "/joulethomson/og_image.png"
 description: "Exploring the Joule-Thomson coefficient and the Joule-Thomson effect and its connection to interactions between molecules. Computing the second virial coefficient using a few different pair potentials and see how it changes the Joule-Thomson coefficient / inversion temperature."
 tags: ["thermodynamics", "statistical mechanics", "physics", "chemical engineering"]
 categories: ["thermodynamics", "statistical mechanics", "physics", "chemical engineering"]
@@ -140,7 +140,7 @@ We can look at a cases with:
 
 Here's an example of what they look like, where the 'r' on the x-axis is the distance between the centers of the two molecules, and the 'U' on the y-axis is the potential energy of the interaction between the two molecules according to the chosen potential function.
 
-![pair_potentials](/jt/potentials.png)
+![pair_potentials](/joulethomson/potentials.png)
 
 Ideal gas they don't interact, so the potential energy is zero. The hard sphere
 they don't interact, unless they get too close and the potential energy is
@@ -274,7 +274,7 @@ looked at above:
 
 Here's what the resulting $\mu_{JT}$ looks like for each potential, as a function of temperature:
 
-![mu_JT_results](/jt/mjt_vs_t.png)
+![mu_JT_results](/joulethomson/mjt_vs_t.png)
 
 Pretty cool right? We have:
 - (1) the ideal gas - it's always zero. The molecules don't interact and we don't have change in potential energy when they expand
@@ -320,7 +320,7 @@ basically), and Hydrogen's is pretty low (below room temperature for most rooms)
 - while N2 and CO2 are higher (above room temperature unless your room is an
 oven / furnace).
 
-![real_gases](/jt/real_gases.png)
+![real_gases](/joulethomson/real_gases.png)
 
 I've seen that Helium and Hydrogen in particular, at low temperatures, would
 need quantum effects to be taken in account, so the purely classical model
